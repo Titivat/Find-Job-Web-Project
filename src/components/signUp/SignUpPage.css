@@ -30,9 +30,37 @@
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
   background: #ea5455;
   width: 40%;
   border-radius: 5px;
-  height: 35em;
+  height: 45em;
   margin-top: 2em;
+}
+
+#createAccountText {
+  text-align: center;
+  color: white;
+  font-size: 3em;
+}
+
+.form > input[type="text"] {
+  /* can change later if Mon doesn't want. */
+  width: 55%;
+  height: 3.5em;
+  margin: 0 auto;
+  border-radius: 7px;
+  padding-left: 2em;
+  box-shadow: 3px 4px 9px;
+  font-size: 1.2em;
+}
+
+.form > input[type="text"]:nth-of-type(1) {
+  margin-top: 2em;
+  margin-bottom: 5em;
+}
+
+#createButton {
+  width: 25%;
 }

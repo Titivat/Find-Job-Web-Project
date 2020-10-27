@@ -13,7 +13,10 @@ class SignUpPage extends Component {
                         <img id="signUpImage" src={signUpImage} />
                     </div>
                     <div className="form">
-                        
+                        <h1 id="createAccountText">Create Your Account</h1>
+                        <input type="text" className="signUpTextInput" placeholder="Username" />
+                        <input type="text" className="signUpTextInput" placeholder="Password" />
+                        <button id="createButton">Create</button>
                     </div>
                 </div>
             </React.Fragment>
