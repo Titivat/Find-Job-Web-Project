@@ -1,0 +1,33 @@
+@font-face {
+  font-family: Comfortaa;
+  src: url(../../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+.styledText {
+  font-family: Comfortaa;
+  font-weight: 100;
+  font-size: 5em;
+  text-align: center;
+  margin: 0;
+}
+
+.mainAreaContainer {
+  width: 100%;
+}
+
+#redCurveImage {
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+#root {
+  background-image: url("../../images/redCurve.png");
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
