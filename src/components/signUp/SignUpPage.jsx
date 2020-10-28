@@ -14,9 +14,10 @@ class SignUpPage extends Component {
                     </div>
                     <div className="form">
                         <h1 id="createAccountText">Create Your Account</h1>
-                        <input type="text" className="signUpTextInput" placeholder="Username" />
-                        <input type="text" className="signUpTextInput" placeholder="Password" />
-                        <button id="createButton">Create</button>
+                        <input type="text" className="signUpTextInput roundedShadowed" placeholder="Username" />
+                        <input type="text" className="signUpTextInput roundedShadowed" placeholder="Password" />
+                        <button id="createButton" className="roundedShadowed">Create</button>
+                        <span className="formText">Already Have An Account? <a href="#">Sign in</a></span>
                     </div>
                 </div>
             </React.Fragment>

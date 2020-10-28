@@ -50,9 +50,7 @@
   width: 55%;
   height: 3.5em;
   margin: 0 auto;
-  border-radius: 7px;
   padding-left: 2em;
-  box-shadow: 3px 4px 9px;
   font-size: 1.2em;
 }
 
@@ -62,5 +60,20 @@
 }
 
 #createButton {
-  width: 25%;
+  width: 35%;
+  margin: 5em auto 3em auto;
+  height: 3em;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.roundedShadowed {
+  border-radius: 7px;
+  box-shadow: 3px 4px 9px;
+}
+
+.formText {
+  width: 75%;
+  font-size: 2em;
+  margin: 0 auto;
 }
