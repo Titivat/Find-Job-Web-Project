@@ -1,0 +1,54 @@
+@font-face {
+  font-family: Comfortaa;
+  src: url(../../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+.styledText {
+  font-family: Comfortaa;
+  font-weight: 100;
+  font-size: 5em;
+  text-align: center;
+  margin: 0;
+}
+
+.textContainer {
+  margin-top: 7em;
+}
+
+.halfFlexColumn {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+}
+
+.imageContainer {
+  width: 25%;
+  margin-top: 5em;
+  align-self: center;
+}
+
+.mediumButton {
+  width: 35%;
+  margin: 5em auto 3em auto;
+  height: 3em;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: Comfortaa;
+  background-color: #ea5455;
+}
+
+.roundedShadowed {
+  border-radius: 7px;
+  box-shadow: 3px 4px 9px;
+}
+
+.mediumButton:active {
+  background: #e5e5e5;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+
+.middleArea {
+  display: flex;
+}
