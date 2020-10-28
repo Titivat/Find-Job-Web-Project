@@ -1,26 +1,12 @@
 import React, { useState } from 'react';
 import Button from './components/button/Button.jsx';
+import ForumPage from '../src/pages/ForumPage/ForumPage.jsx';
+import MainPage from '../src/pages/mainPage/MainPage.jsx';
 
 function App() {
-  const [count, setCount] = useState( 0 );
-
-  function changeValue(){
-    setCount( count + 1 );
-    console.log( count );
-  }
-
   return (
     <div>
-      <h1>{ count }</h1>
-
-      <Button name="Apply" 
-              size={[50, 50]} 
-              textSize={29} 
-              bcColour="blue"
-              textColour="white"
-              onClick = {changeValue}
-      />
-
+      <MainPage/>
     </div>
   );
 }

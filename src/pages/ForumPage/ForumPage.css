@@ -1,0 +1,34 @@
+
+@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+
+.forum-page-container{
+    font-family: Comfortaa;
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    grid-template-columns: repeat( auto-fit, minmax( 700px, 1fr));
+}
+
+.forum-page-title{
+    text-align: center;
+}
+.forum-page-input-section{
+    display: flex;
+    align-items: center;
+    background-color: brown;
+    padding-left: 10%;
+
+}
+.forum-page-discription{
+    padding-left: 5%;
+}
+.forum-content-container{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    background-color: chartreuse;
+}
+
+.forum-contnet-item{
+    text-align: center;
+}

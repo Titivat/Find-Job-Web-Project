@@ -11,6 +11,7 @@ class AfterSignUpPage extends Component {
                 <div className="textContainer">
                     <h1 className="styledText">Sign up as</h1>
                 </div>
+
                 <div className="middleArea">
                     <div className="halfFlexColumn">
                         <div className="imageContainer">
@@ -18,6 +19,7 @@ class AfterSignUpPage extends Component {
                         </div>
                         <button className="mediumButton roundedShadowed">Companies</button>
                     </div>
+                    
                     <div className="halfFlexColumn">
                         <div className="imageContainer">
                             <img id="employeeImage" src={employeeImage} />
