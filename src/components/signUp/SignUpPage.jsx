@@ -12,6 +12,7 @@ class SignUpPage extends Component {
                         <h1 className="quote">Start chasing your dream job today at JobSpot</h1>
                         <img id="signUpImage" src={signUpImage} />
                     </div>
+                    
                     <div className="form">
                         <h1 id="createAccountText">Create Your Account</h1>
                         <input type="text" className="signUpTextInput roundedShadowed" placeholder="Username" />

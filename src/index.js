@@ -6,8 +6,8 @@ import AfterSignUpPage from './components/afterSignUp/AfterSignUpPage'
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <AfterSignUpPage />
+    <App />
+    {/*<AfterSignUpPage />*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
