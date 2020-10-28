@@ -6,13 +6,8 @@ import LogInPage from './components/logIn/LogInPage';
 
 ReactDOM.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    {/* <App /> */}
-    <LogInPage />
-=======
     {/*<App />*/}
     <AfterSignUpPage />
->>>>>>> 30a2e34f6168e530db5aad606708d9027b9f293a
   </React.StrictMode>,
   document.getElementById('root')
 );
