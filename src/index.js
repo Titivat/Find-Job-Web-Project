@@ -7,7 +7,7 @@ import LogInPage from './components/logIn/LogInPage';
 ReactDOM.render(
   <React.StrictMode>
     {/*<App />*/}
-    <AfterSignUpPage />
+    <LogInPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
