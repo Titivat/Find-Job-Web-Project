@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+
+.main-page-item3-container{
+    display: grid;
+    font-family: Comfortaa;
+    background-color: red;
+    grid-template-columns: repeat( auto-fit, minmax( 500px, 2fr));
+}
+
+.main-page-item3-lefft{
+    width: 100%;
+    background-color: rgb(21, 255, 0);
+}
+
+.main-page-item3-right{
+    width: 100%;
+    background-color: darkcyan;
+}

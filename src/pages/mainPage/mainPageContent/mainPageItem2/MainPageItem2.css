@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+
+.main-page-item2-title{
+    font-family: Comfortaa;
+}
+
+.main-page-item2-job-forum-container{
+    display: grid;
+    background-color: aqua;
+    grid-template-columns: repeat( auto-fit, minmax( 400px, 3fr));
+}
+
+.main-page-item2-forum-item{
+    display: flex;
+    justify-content: center;
+    background-color: blueviolet;
+}
+
