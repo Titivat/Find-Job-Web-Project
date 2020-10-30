@@ -26,7 +26,7 @@ body {
 }
 
 #root {
-  background-image: url("../../images/redCurve.png");
+  /* background-image: url("../../images/redCurve.png"); */
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;

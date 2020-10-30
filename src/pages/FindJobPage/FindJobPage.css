@@ -1,0 +1,40 @@
+
+.find-job-page-top-container{
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    width: 100%;
+}
+
+.find-job-page-top-text{
+    width: 100%;
+    background-color: blueviolet;
+    padding-left: 3%;
+}
+
+.find-job-page-top-img{
+    width: 50%;
+    background-color: brown;
+}
+
+.find-job-page-content-container{
+    display: grid;
+    background-color: chartreuse;
+    grid-template-columns: repeat( auto-fit, minmax( 500px, 3fr));
+}
+
+.find-job-page-content-container{
+    background-color: blueviolet;
+    padding-left: 3%;
+}
+
+.find-job-page-jobs{
+    background-color: darkorange;
+}
+
+.find-job-page-job-content{
+    background-color: darkseagreen;
+    position: sticky;
+    top: 20px;
+}
+

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Button from './components/button/Button.jsx';
 import ForumPage from '../src/pages/ForumPage/ForumPage.jsx';
-import MainPage from '../src/pages/mainPage/MainPage.jsx';
+import FindJobPage from '../src/pages/FindJobPage/FindJobPage.jsx';
 
 function App() {
   return (
     <div>
-      <MainPage/>
+      <FindJobPage/>
     </div>
   );
 }
