@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+
+
+.User-profile-page-container{
+    background-color: aqua;
+    display: grid;
+    font-family: Comfortaa;
+    grid-template-columns: repeat( auto-fit, minmax( 700px, 2fr));
+}
+
+.user-profile-head-font{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.user-profile-left-item{
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.user-profile-content{
+    background-color: red;
+    width: 90%;
+}
+
+.user-profile-right-item{
+    background-color: chartreuse;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.user-profile-jobs-container{
+    background-color: coral;
+    width: 90%;
+}
+
+.item{
+    margin-top: 10px;
+    background-color: blanchedalmond;
+}
