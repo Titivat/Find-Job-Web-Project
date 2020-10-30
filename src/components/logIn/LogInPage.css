@@ -11,10 +11,6 @@
   margin: 0;
 }
 
-#mainAreaBackground {
-  margin-top: 2.5em;
-}
-
 #redCurveImage {
   width: 100%;
 }
@@ -23,6 +19,10 @@ html,
 body {
   height: 100%;
   margin: 0px;
+}
+
+html {
+  overflow-y: hidden;
 }
 
 #root {
@@ -35,6 +35,9 @@ body {
   background-image: url("../../images/redCurve.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  margin-top: 2.5em;
+  display: flex;
+  align-items: flex-start;
 }
 
 /* #redCurveImage {
@@ -57,6 +60,7 @@ body {
 
 .mainAreaContainer {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
 }
@@ -82,4 +86,38 @@ body {
 }
 
 #loginButton {
+  width: 45%;
+  margin-left: 25%;
+  text-align: left;
+  height: 3.5em;
+  font-size: 1.2em;
+  padding-left: 2.5em;
+  background-color: #2d4059;
+  color: white;
+  border-radius: 6px;
+}
+
+#forgotPasswordText {
+  margin-left: 25%;
+  color: white;
+  font-family: Comfortaa;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+}
+
+h1[id="forgotPasswordText"] > a:link {
+  text-decoration: none;
+}
+
+h1[id="forgotPasswordText"] > a:visited {
+  text-decoration: none;
+}
+
+h1[id="forgotPasswordText"] > a:hover {
+  text-decoration: underline;
+}
+
+h1[id="forgotPasswordText"] > a:active {
+  text-decoration: underline;
+  color: white;
 }

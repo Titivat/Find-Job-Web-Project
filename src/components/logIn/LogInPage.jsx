@@ -18,8 +18,11 @@ class LogInPage extends Component {
                         <div className="formContainer">
                             <input type="text" placeholder="jane@example.com" className="textInput" />
                             <input type="text" placeholder="password" className="textInput" />
-                            <button id="loginButton">Log in</button>
+                            <button id="loginButton" className="styledText">Log in</button>
                         </div>
+                        <h1 id="forgotPasswordText">
+                            <a href="#">forgot password</a>
+                        </h1>
                     </div>
                 </div>
             </React.Fragment>
