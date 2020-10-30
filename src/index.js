@@ -6,8 +6,8 @@ import ForgotPasswordPage from './pages/forgotPassword/ForgotPasswordPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/*<App />*/}
-    <ForgotPasswordPage />
+    <App />
+    {/* <ForgotPasswordPage /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
