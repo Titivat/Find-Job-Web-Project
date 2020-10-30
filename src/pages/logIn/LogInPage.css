@@ -1,0 +1,123 @@
+@font-face {
+  font-family: Comfortaa;
+  src: url(../../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+.styledText {
+  font-family: Comfortaa;
+  font-weight: 100;
+  font-size: 5em;
+  text-align: center;
+  margin: 0;
+}
+
+#redCurveImage {
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+html {
+  overflow-y: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+#mainAreaBackground {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../images/redCurve.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-top: 2.5em;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* #redCurveImage {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+} */
+
+.greetingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.5em;
+}
+
+#welcomeText {
+  margin-right: 1.5em;
+}
+
+.mainAreaContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textInput {
+  width: 50%;
+  height: 3.5em;
+  margin: 0 auto;
+  color: #3964b6;
+  box-sizing: border-box;
+  padding-left: 2.5em;
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
+
+.textInput::placeholder {
+  color: #3964b6;
+}
+
+#loginButton {
+  width: 45%;
+  margin-left: 25%;
+  text-align: left;
+  height: 3.5em;
+  font-size: 1.2em;
+  padding-left: 2.5em;
+  background-color: #2d4059;
+  color: white;
+  border-radius: 6px;
+}
+
+#forgotPasswordText {
+  margin-left: 25%;
+  color: white;
+  font-family: Comfortaa;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+}
+
+h1[id="forgotPasswordText"] > a:link {
+  text-decoration: none;
+}
+
+h1[id="forgotPasswordText"] > a:visited {
+  text-decoration: none;
+}
+
+h1[id="forgotPasswordText"] > a:hover {
+  text-decoration: underline;
+}
+
+h1[id="forgotPasswordText"] > a:active {
+  text-decoration: underline;
+  color: white;
+}

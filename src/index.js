@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import LogInPage from './components/logIn/LogInPage';
+import ForgotPasswordPage from './pages/forgotPassword/ForgotPasswordPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    {/* <AfterSignUpPage />{*/}
+    {/*<App />*/}
+    <ForgotPasswordPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
