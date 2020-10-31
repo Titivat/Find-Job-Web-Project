@@ -1,15 +1,21 @@
 import './UserProfilePage.css'
+import Headers from '../../components/header/Header.jsx';
+import ProfileBar from '../../components/profileBar/ProfileBar.jsx'
 
 function UserProfilePage(){
     
     return(
         <div>
+            <Headers />
+
             <div className="User-profile-page-container">
                 <div className="user-profile-left-item">
                     <p className="user-profile-head-font">Profile</p>
+
                     <div className="user-profile-content">
-                        user user name
+                        <ProfileBar />
                     </div>
+                    
                 </div>
 
                 <div className="user-profile-right-item">
