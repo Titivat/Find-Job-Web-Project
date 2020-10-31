@@ -5,14 +5,25 @@ function JobDescriptionCard(){
 
     return(
         <div className="job-description-card-container">
-            <p><ProfileIcon 
+            <p className="job-description-card-profile"><ProfileIcon 
                 radius={'20px'}
                 size={['57px','56px']}/>
             </p>
-            <p>
-                detail
+
+            <p className="job-description-card-detail">
+                <p>PR & Social Media / Marketing</p>
+                <p>Sharke Hand( Thailand ) Co.,Ltd.</p>
+                <p>Bangkok, Bangkok City, Thailand</p>
+
+                <div className="job-description-card-status">
+                    <p>pending</p>
+                    <p>1 month</p>
+                </div>
             </p>
-            <p>x</p>
+
+            
+
+            <button className="job-description-button">x</button>
         </div>
     );
 }
