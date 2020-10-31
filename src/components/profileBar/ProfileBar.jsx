@@ -1,6 +1,9 @@
 import './ProfileBar.css'
 
 function ProfileBar( props ){
+    const {userName, email, city, seniority, industries, tag, resume } = props;
+
+    const userNameProfile = [userName, email, city, seniority, industries]
 
     return(
         <div>
@@ -18,11 +21,8 @@ function ProfileBar( props ){
                 </div>
 
                 <div className="profile-bar-right-item">
-                    <p>Titivat auetumrongsawat</p>
-                    <p>titivatmo@gmial.com</p>
-                    <p>Bangkok</p>
-                    <p>intern</p>
-                    <p>software enginear</p>
+                    { userNameProfile.map( item  => checkEmpty( item ) )}
+                    
                     <p>tag tag</p>
                     <button className="profile-bar-right-item-btn">+</button>
                 </div>
@@ -34,6 +34,13 @@ function ProfileBar( props ){
 
             
         </div>
+    );
+}
+
+function checkEmpty( string ){
+
+    return(
+    ( string === undefined) ? <p>&nbsp;</p> : <p> { string }</p>
     );
 }
 

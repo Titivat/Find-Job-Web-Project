@@ -1,6 +1,7 @@
 import './UserProfilePage.css'
 import Headers from '../../components/header/Header.jsx';
 import ProfileBar from '../../components/profileBar/ProfileBar.jsx'
+import JobDescriptionCard from '../../components/JobDescriptionCard/JobDescriptionCard.jsx'
 
 function UserProfilePage(){
     
@@ -13,19 +14,28 @@ function UserProfilePage(){
                     <p className="user-profile-head-font">Profile</p>
 
                     <div className="user-profile-content">
-                        <ProfileBar />
+                        <ProfileBar 
+                            userName="Titivat auetumrongsawat"
+                            email="titivatmo@gmial.com"
+                            city="Bangkok"
+                            seniority="intern"
+                            industries="software enginear"
+                        />
                     </div>
-                    
+
                 </div>
 
                 <div className="user-profile-right-item">
                     <p className="user-profile-head-font">Apply Job</p>
 
                     <div className="user-profile-jobs-container">
-                        <div className="item">job1</div>
-                        <div className="item">job2</div>
-                        <div className="item">job3</div>
-                        <div className="item">job4</div>
+                        <div className="item">
+                            <JobDescriptionCard />
+                        </div>
+
+                        <div className="item">
+                            <JobDescriptionCard />
+                        </div>
                     </div>
                 </div>
             </div>  

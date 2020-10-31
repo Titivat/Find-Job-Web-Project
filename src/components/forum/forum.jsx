@@ -7,7 +7,8 @@ function Forum( props ){
     return(
         <div className="forum-container">
             <div className="forum-top-part">
-                <ProfileIcon img={ profile } radius={"50%"}/>
+                <ProfileIcon img={ profile } radius={"50%"}
+                size={['78px','78px']}/>
 
                 <p className="forum-username">#{userId}</p>
             </div>

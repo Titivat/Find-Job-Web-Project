@@ -15,7 +15,9 @@ function ForumPage( props ){
                 <h1 className="forum-page-title">Engineer forum</h1>
 
                 <div className="forum-page-input-section">
-                    <ProfileIcon radius={"50%"}/>
+                    <ProfileIcon 
+                    radius={"50%"}
+                    size={['78px', '78px']}/>
           
                     <button className='forum-page-button'>What is in your mind?</button>
                 </div>
