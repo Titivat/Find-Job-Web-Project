@@ -1,7 +1,8 @@
 import './ForumPage.css';
 import logo from '../../images/logo.png';
-import Header from '../../components/header/Header.jsx'
-import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx'
+import Header from '../../components/header/Header.jsx';
+import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
+import Forum from '../../components/forum/forum.jsx';
 
 function ForumPage( props ){
     const { forumName } = props 
@@ -21,10 +22,23 @@ function ForumPage( props ){
 
                 <p className="forum-page-discription-text">Post:</p>
 
-                <div className="forum-content-container">
-                    <div className="forum-contnet-item">post1</div>
+                <div  className="forum-content-container">
+                    <div className="forum-contnet-item">
+                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'123'}/>
+                    </div>
 
-                    <div className="forum-contnet-item">post1</div>
+                    <div className="forum-contnet-item">
+                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'123'}/>
+                    </div>
+
+                    <div className="forum-contnet-item">
+                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'456'}/>
+                    </div>
+
+                    <div className="forum-contnet-item">
+                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'456'}/>
+                    </div>
+
                 </div>
 
             </div> 

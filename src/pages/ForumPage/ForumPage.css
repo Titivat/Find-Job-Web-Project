@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
     grid-template-columns: repeat( auto-fit, minmax( 700px, 1fr));
+    height: 100%;
 }
 
 .forum-page-title{
@@ -51,14 +52,15 @@
     flex-direction: column;
     align-items: center;
     gap: 35px;
-    background-color: chartreuse;
+    height: 100%;
+    overflow-y: scroll !important;
+    background-color: aqua;
 }
 
 .forum-contnet-item{
-    background-color: brown;
     text-align: center;
     width: 80%;
-    height: 150px;
+    height: 190px;
 }
 
 
