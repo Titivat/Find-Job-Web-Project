@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    font-size: 30px;
+    background-color: aqua;
+    font-family: Comfortaa;
+}
+
+.header-left-item{
+    padding-left: 20px;
+    width: 100%;
+}
+
+.header-right-item{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 20px;
+    background-color: blueviolet;
+}
