@@ -5,30 +5,60 @@
     font-family: Comfortaa;
     display: flex;
     flex-direction: column;
-    background-color: aqua;
     grid-template-columns: repeat( auto-fit, minmax( 700px, 1fr));
 }
 
 .forum-page-title{
     text-align: center;
+    font-size: 48px;
 }
+
 .forum-page-input-section{
     display: flex;
     align-items: center;
-    background-color: brown;
     padding-left: 10%;
 
 }
-.forum-page-discription{
-    padding-left: 5%;
+
+.forum-page-profile{
+    width: 78px;
+    height: 78px;
+    background: #E5E5E5;
+    border: 3px solid black; 
+    border-radius: 50%;
+    margin: 20px;
 }
+
+.forum-page-button{
+    width: 80%;
+    height: 59px;
+    text-align: left;
+    background: #F5F5F5;
+    border-radius: 10px;   
+    border: 1px solid #747474; 
+    font-size: 24px;
+    margin-left: 2%;
+}
+
+.forum-page-discription-text{
+    padding-left: 10.5%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .forum-content-container{
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
     background-color: chartreuse;
 }
 
 .forum-contnet-item{
+    background-color: brown;
     text-align: center;
+    width: 80%;
+    height: 150px;
 }
+
+

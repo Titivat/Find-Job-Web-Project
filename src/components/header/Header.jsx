@@ -17,7 +17,7 @@ function Header( props ){
             </div>
 
             <div className="header-right-item">
-                < DisplaySignUp isDisplay = { false } >
+                < DisplaySignUp isDisplay = { isDisplay } >
                     { props.children }
                 </DisplaySignUp>
             </div>

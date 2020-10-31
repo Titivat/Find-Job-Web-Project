@@ -1,25 +1,30 @@
 import './ForumPage.css';
+import logo from '../../images/logo.png';
+import Header from '../../components/header/Header.jsx'
+import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx'
 
-function ForumPage(){
-    
+function ForumPage( props ){
+    const { forumName } = props 
+
     return(
         <div>
+            <Header isDisplay={ true }/>
+
             <div className="forum-page-container">
-                <h1 className="forum-page-title">Engineer</h1>
+                <h1 className="forum-page-title">Engineer forum</h1>
 
                 <div className="forum-page-input-section">
-                    <p>image</p>
-                    <p>input colum</p>
+                    <ProfileIcon radius={"50%"}/>
+          
+                    <button className='forum-page-button'>What is in your mind?</button>
                 </div>
 
-                <p className="forum-page-discription">Post:</p>
+                <p className="forum-page-discription-text">Post:</p>
 
                 <div className="forum-content-container">
-                    <p className="forum-contnet-item">post1</p>
-                    <p className="forum-contnet-item">post2</p>
-                    <p className="forum-contnet-item">post3</p>
-                    <p className="forum-contnet-item">post4</p>
-                    <p className="forum-contnet-item">post5</p>
+                    <div className="forum-contnet-item">post1</div>
+
+                    <div className="forum-contnet-item">post1</div>
                 </div>
 
             </div> 
