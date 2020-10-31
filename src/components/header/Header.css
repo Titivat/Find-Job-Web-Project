@@ -6,13 +6,24 @@
     align-items: center;
     height: 50px;
     font-size: 30px;
-    background-color: aqua;
+    background-color: #E5E5E5;
     font-family: Comfortaa;
+
 }
 
 .header-left-item{
+    display: flex;
     padding-left: 20px;
     width: 100%;
+}
+
+.header-left-img{
+    padding-top: 10%;
+}
+
+.header-left-text{
+    padding-top: 1%;
+    padding-left: 1.5%;
 }
 
 .header-right-item{
