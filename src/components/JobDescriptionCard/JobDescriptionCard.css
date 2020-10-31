@@ -1,0 +1,8 @@
+
+.job-description-card-container{
+    display: flex;
+    background-color: #2D4059;
+    border-radius: 20px;
+    justify-content: space-around;
+    height: 100%;
+}
