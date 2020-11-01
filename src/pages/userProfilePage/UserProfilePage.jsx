@@ -9,7 +9,7 @@ function UserProfilePage(){
         <div>
             <Headers />
 
-            <div className="User-profile-page-container">
+            <div className="user-profile-page-container">
                 <div className="user-profile-left-item">
                     <p className="user-profile-head-font">Profile</p>
 
@@ -30,12 +30,18 @@ function UserProfilePage(){
 
                     <div className="user-profile-jobs-container">
                         <div className="item">
-                            <JobDescriptionCard />
+                            <JobDescriptionCard 
+                                haveButton = {true}
+                            />
                         </div>
 
                         <div className="item">
-                            <JobDescriptionCard />
+                            <JobDescriptionCard 
+                                haveButton = {true}
+                            />
                         </div>
+
+
                     </div>
                 </div>
             </div>  

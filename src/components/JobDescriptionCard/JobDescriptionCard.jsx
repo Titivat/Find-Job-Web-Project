@@ -1,7 +1,8 @@
 import './JobDescriptionCard.css'
 import ProfileIcon from '../profileIcon/ProfileIcon.jsx'
 
-function JobDescriptionCard(){
+function JobDescriptionCard( props ){
+    const { compName, compDetail, compCity, status, time, haveButton } = props;
 
     return(
         <div className="job-description-card-container">
@@ -17,13 +18,13 @@ function JobDescriptionCard(){
 
                 <div className="job-description-card-status">
                     <p>pending</p>
-                    <p>1 month</p>
+                    <p>&nbsp;&nbsp;1 month</p>
                 </div>
             </p>
 
             
 
-            <button className="job-description-button">x</button>
+            { (haveButton) && <button className="job-description-button">x</button> }
         </div>
     );
 }

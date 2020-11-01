@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
 
 
-.User-profile-page-container{
+.user-profile-page-container{
     display: flex;
     font-family: Comfortaa;
+    height: 100vh;
+    overflow-y: scroll !important;
 }
 
 .user-profile-head-font{
@@ -19,7 +21,8 @@
 }
 
 .user-profile-content{
-    width: 90%;
+    width: 100%;
+    margin-left: 7%;
 }
 
 .user-profile-right-item{
