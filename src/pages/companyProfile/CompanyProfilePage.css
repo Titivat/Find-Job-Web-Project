@@ -21,9 +21,9 @@ body {
   margin: 0px;
 }
 
-html {
+/* html {
   overflow-y: hidden;
-}
+} */
 
 #root {
   height: 100%;
@@ -58,6 +58,7 @@ html {
   font-weight: bold;
   border-radius: 10px;
   outline: none;
+  margin-bottom: 1.5em;
 }
 
 #jobOfferInputField::placeholder {
