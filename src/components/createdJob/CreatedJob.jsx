@@ -12,6 +12,7 @@ class CreatedJob extends Component {
                 <h2 className="comfortaa whiteLight">{companyName}</h2>
                 <h2 className="comfortaa greyLight">{jobLocation}</h2>
                 <button className="comfortaa" id="editJobButton">Edit Job</button>
+                <button onClick={() => this.props.onDelete(this.props.jobId)} id="removeButton" className="comfortaa">X</button>
             </div>
         );
     }
