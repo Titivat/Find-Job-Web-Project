@@ -3,6 +3,7 @@ import CompanyProfileContainer from "../../components/companyProfileContainer/Co
 import "./CompanyProfilePage.css";
 import testingCompanyImage from "../../images/companyLogo.jpg";
 import CreatedJob from "../../components/createdJob/CreatedJob";
+import CreateJobForm from "../../components/createJobForm/CreateJobForm";
 
 class CompanyProfilePage extends Component {
   state = {
@@ -68,6 +69,7 @@ class CompanyProfilePage extends Component {
         jobLocation: "Bangkok, Bangkok City, Thailand",
       },
     ],
+    showPopUp: true,
   };
 
   handleDelete = (jobId) => {
@@ -78,11 +80,17 @@ class CompanyProfilePage extends Component {
     this.setState({ createdJobs });
   };
 
+  toggleShowPopUp = () => {
+    this.setState({
+      showPopUp: !this.state.showPopUp,
+    });
+  };
+
   render() {
-    console.log(this.state);
+    console.log(this.state.showPopUp);
     return (
       <React.Fragment>
-        <div className="mainAreaContainer">
+        <div className={"mainAreaContainer"}>
           <div className="profileSection">
             <h1 className="comfortaa">Company Profile</h1>
             <CompanyProfileContainer
@@ -112,6 +120,9 @@ class CompanyProfilePage extends Component {
             ))}
           </div>
         </div>
+        {this.state.showPopUp ? (
+          <CreateJobForm onToggle={this.toggleShowPopUp} />
+        ) : null}
       </React.Fragment>
     );
   }
