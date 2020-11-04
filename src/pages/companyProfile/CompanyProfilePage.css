@@ -49,7 +49,7 @@ body {
   align-items: center;
 }
 
-#jobOfferInputField {
+#jobOfferButton {
   width: 90%;
   height: 3.5em;
   font-size: 1.2em;
@@ -59,6 +59,7 @@ body {
   border-radius: 10px;
   outline: none;
   margin-bottom: 1.5em;
+  background-color: white;
 }
 
 #jobOfferInputField::placeholder {

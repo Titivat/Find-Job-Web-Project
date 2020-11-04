@@ -9,7 +9,7 @@
   left: 0;
 }
 
-.createJobFormContainer {
+.JobFormContainer {
   height: 80%;
   overflow-y: scroll;
   border-radius: 7px;
