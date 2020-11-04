@@ -27,13 +27,9 @@ class JobForm extends Component {
     });
   };
 
-  handleBlur = (event, childRenderMethod) => {
-    const target = event.target;
-    const name = parseInt(target.name);
-
-    const blurredSkill = this.state.jobFormInfo.neededSkills
-      .map((skill) => skill.id)
-      .indexOf(name).skill;
+  handleBlur = (blurredTag, childRenderMethod) => {
+    const blurredSkill = blurredTag.skill;
+    console.log("BlurredSKill: " + blurredSkill);
 
     if (blurredSkill !== "") {
       const textElement = (
@@ -41,12 +37,12 @@ class JobForm extends Component {
           className="skillTag white comfortaa"
           onDoubleClick={this.handleDoubleClick}
         >
-          {this.state.value}
+          {blurredSkill}
         </span>
       );
       childRenderMethod(textElement);
     } else {
-      this.removeSkill(name);
+      this.removeSkill(blurredTag.id);
     }
   };
 
@@ -54,10 +50,8 @@ class JobForm extends Component {
     const target = event.target;
     const value = target.value;
     const name = parseInt(target.name);
-    console.log("ID: " + name);
     let newJobFormInfo = { ...this.state.jobFormInfo };
     const changedNeededSkills = newJobFormInfo.neededSkills;
-    // const index = changedNeededSkills.findIndex((skill) => skill.id === name);
     const index = changedNeededSkills.map((skill) => skill.id).indexOf(name);
     changedNeededSkills[index].skill = value;
     newJobFormInfo.neededSkills = changedNeededSkills;

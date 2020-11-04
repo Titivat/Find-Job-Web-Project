@@ -4,7 +4,6 @@ import "./TagInput.css";
 class TagInput extends Component {
   constructor(props) {
     super(props);
-    console.log(props.tagInput.id);
 
     this.state = {
       renderElement: null,
@@ -20,8 +19,8 @@ class TagInput extends Component {
         className="tagInput"
         defaultValue={this.state.value}
         onChange={props.onChangeSkill}
-        onBlur={(event) => {
-          this.props.onBlur(event, this.renderElement);
+        onBlur={() => {
+          this.props.onBlur(props.tagInput, this.renderElement);
         }}
       />
     );
@@ -85,8 +84,6 @@ class TagInput extends Component {
   };
 
   render() {
-    console.log("TagInput Rendering");
-    console.log(this.state.value);
     return (
       // <input
       //   type="text"
