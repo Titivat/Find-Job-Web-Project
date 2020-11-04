@@ -13,13 +13,16 @@ class TagInput extends Component {
 
     let input = (
       <input
+        name={props.inputName}
         autoFocus
         type="text"
         onKeyDown={this.handleEnter}
         className="tagInput"
         defaultValue={this.state.value}
-        onChange={this.handleInputChange}
-        onBlur={this.handleBlur}
+        onChange={props.onChangeSkill}
+        onBlur={(event) => {
+          this.props.onBlur(event, this.renderElement);
+        }}
       />
     );
 
@@ -30,21 +33,25 @@ class TagInput extends Component {
     this.setState({ value: event.target.value });
   };
 
-  handleBlur = (event) => {
-    if (this.state.value !== "") {
-      const textElement = (
-        <span
-          className="skillTag white comfortaa"
-          onDoubleClick={this.handleDoubleClick}
-        >
-          {this.state.value}
-        </span>
-      );
-      this.setState({ renderElement: textElement });
-    } else {
-      this.props.onRemove(this.props.tagInput.id);
-    }
+  renderElement = (element) => {
+    this.setState({ renderElement: element });
   };
+
+  // handleBlur = (event) => {
+  //   if (this.state.value !== "") {
+  //     const textElement = (
+  //       <span
+  //         className="skillTag white comfortaa"
+  //         onDoubleClick={this.handleDoubleClick}
+  //       >
+  //         {this.state.value}
+  //       </span>
+  //     );
+  //     this.setState({ renderElement: textElement });
+  //   } else {
+  //     this.props.onRemove(this.props.tagInput.id);
+  //   }
+  // };
 
   handleDoubleClick = (event) => {
     const inputElement = (
@@ -52,7 +59,7 @@ class TagInput extends Component {
         autoFocus
         type="text"
         onKeyDown={this.handleEnter}
-        onChange={this.handleInputChange}
+        onChange={this.props.onChangeSkill}
         className="tagInput"
         defaultValue={this.state.value}
         onBlur={this.handleBlur}
@@ -78,6 +85,7 @@ class TagInput extends Component {
   };
 
   render() {
+    console.log("TagInput Rendering");
     console.log(this.state.value);
     return (
       // <input

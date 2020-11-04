@@ -6,32 +6,18 @@ class TagInputs extends Component {
   constructor(props) {
     super(props);
     const addButton = (
-      <button onClick={this.addSkill} className="addTagButton mediumFont">
+      <button
+        onClick={this.props.onAddSkill}
+        className="addTagButton mediumFont"
+      >
         +
       </button>
     );
 
     this.state = {
-      jobInfo: null,
-      skills: [],
-      currentId: 0,
+      skills: props.skills,
     };
   }
-
-  removeSkill = (skillId) => {
-    const skills = this.state.skills.filter((skill) => skill.id != skillId);
-    this.setState({ skills });
-  };
-
-  addSkill = () => {
-    const skills = [...this.state.skills];
-    const newSkill = { id: this.state.currentId, skill: "" };
-    skills.push(newSkill);
-    this.setState((state) => ({
-      skills,
-      currentId: state.currentId + 1,
-    }));
-  };
 
   render() {
     return (
@@ -43,15 +29,21 @@ class TagInputs extends Component {
           Needed Skills
         </label>
         <div className="skillsContainer">
-          <button onClick={this.addSkill} className="addTagButton mediumFont">
+          <button
+            onClick={this.props.onAddSkill}
+            className="addTagButton mediumFont"
+          >
             +
           </button>
-          {this.state.skills.map((skill) => (
+          {this.props.skills.map((skill) => (
             <TagInput
+              onBlur={this.props.onBlur}
+              onChangeSkill={this.props.onChangeSkill}
+              inputName={skill.id}
               tagInput={skill}
               value={skill.skill}
               key={skill.id}
-              onRemove={this.removeSkill}
+              onRemove={this.props.onRemoveSkill}
             />
           ))}
         </div>

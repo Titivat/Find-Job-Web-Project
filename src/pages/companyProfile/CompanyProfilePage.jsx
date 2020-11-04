@@ -8,141 +8,20 @@ import JobForm from "../../components/jobForm/JobForm";
 class CompanyProfilePage extends Component {
   constructor(props) {
     super(props);
+    this.companyName = "Sharke Hand( Thailand ) Co.,Ltd.";
+    this.jobLocation = "Bangkok, Bangkok City, Thailand";
     this.state = {
-      createdJobs: [
-        {
-          jobId: 0,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 1,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 2,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 3,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 4,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 5,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 6,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 7,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 8,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-        {
-          jobId: 9,
-          neededSkills: [
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-            "testing1",
-          ],
-          jobPosition: "PR & Social Media / Marketing",
-          companyName: "Sharke Hand( Thailand ) Co.,Ltd.",
-          jobLocation: "Bangkok, Bangkok City, Thailand",
-        },
-      ],
+      createdJobs: [],
       showPopUp: false,
-      jobFormInfo: {},
+      jobFormInfo: {
+        jobTitle: "",
+        seniority: "",
+        employmentType: "",
+        jobFunction: "",
+        industries: "",
+        jobDescription: "",
+        neededSkills: [],
+      },
       formType: null,
     };
   }
@@ -161,23 +40,55 @@ class CompanyProfilePage extends Component {
     });
   };
 
-  createNewJob = () => {
+  createNewJobPopUp = () => {
     this.setState({
       showPopUp: !this.state.showPopUp,
       formType: "Create Job",
+      jobFormInfo: {
+        jobTitle: "",
+        seniority: "",
+        employmentType: "",
+        jobFunction: "",
+        industries: "",
+        jobDescription: "",
+        neededSkills: [],
+      },
     });
   };
 
-  editJob = () => {
+  createNewJob = (newJob) => {
+    console.log("Creatign new job");
+    console.log(newJob);
+    const createdJobs = [...this.state.createdJobs];
+    createdJobs.push(newJob);
+    this.setState({ createdJobs });
+    this.toggleShowPopUp();
+  };
+
+  editJobPopUp = (jobInfo) => {
     this.setState({
       showPopUp: !this.state.showPopUp,
       formType: "Edit Job",
+      jobFormInfo: jobInfo,
     });
   };
 
+  editJob = (oldJob, newJob) => {
+    console.log("old job vs new job");
+    console.log(oldJob);
+    console.log(newJob);
+    const createdJobs = [...this.state.createdJobs];
+    const index = createdJobs.indexOf(oldJob);
+    console.log(index);
+    createdJobs[index] = { ...newJob };
+    this.setState({ createdJobs });
+    this.toggleShowPopUp();
+  };
+
   render() {
-    console.log(this.state.formType);
-    console.log(this.state.showPopUp);
+    console.log("CreatedJobs");
+    console.log(this.state.createdJobs);
+
     return (
       <React.Fragment>
         <div className={"mainAreaContainer"}>
@@ -192,7 +103,7 @@ class CompanyProfilePage extends Component {
           <div className="createdJobContainer">
             <h1 className="comfortaa">Created Job</h1>
             <button
-              onClick={this.createNewJob}
+              onClick={this.createNewJobPopUp}
               type="text"
               placeholder="New job offer?"
               id="jobOfferButton"
@@ -205,12 +116,12 @@ class CompanyProfilePage extends Component {
               <CreatedJob
                 key={index}
                 job={createdJob}
-                jobPosition={createdJob.jobPosition}
-                companyName={createdJob.companyName}
-                jobLocation={createdJob.jobLocation}
+                jobPosition={createdJob.jobFunction}
+                companyName={this.companyName}
+                jobLocation={this.jobLocation}
                 jobId={createdJob.jobId}
                 onDelete={this.handleDelete}
-                onTogglePopUp={this.editJob}
+                onTogglePopUp={this.editJobPopUp}
               />
             ))}
           </div>
@@ -218,7 +129,13 @@ class CompanyProfilePage extends Component {
         {this.state.showPopUp ? (
           <JobForm
             formType={this.state.formType}
-            onTogglePopUp={this.toggleShowPopUp}
+            onTogglePopUp={
+              this.state.formType === "Edit Job"
+                ? this.editJob
+                : this.createNewJob
+            }
+            onCancel={this.toggleShowPopUp}
+            formInfo={this.state.jobFormInfo}
           />
         ) : null}
       </React.Fragment>

@@ -5,30 +5,93 @@ import TagInputs from "../tagInputs/TagInputs";
 class JobForm extends Component {
   constructor(props) {
     super(props);
+    this.oldJob = props.formInfo;
+    this.editJob = props.formType === "Edit Job" ? true : false;
     this.state = {
-      jobTitle: null,
-      seniority: null,
-      employmentType: null,
-      jobFUnction: null,
-      industries: null,
-      jobDescription: null,
+      jobFormInfo: props.formInfo,
+      currentSkillId: 0,
     };
+    console.log("Edit Job?" + this.editJob);
   }
 
   handleInputChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
+    let newJobFormInfo = { ...this.state.jobFormInfo };
+
+    newJobFormInfo[name] = value;
 
     this.setState({
-      [name]: value,
+      jobFormInfo: newJobFormInfo,
     });
+  };
 
-    console.log(this.state[name]);
+  handleBlur = (event, childRenderMethod) => {
+    const target = event.target;
+    const name = parseInt(target.name);
+
+    const blurredSkill = this.state.jobFormInfo.neededSkills
+      .map((skill) => skill.id)
+      .indexOf(name).skill;
+
+    if (blurredSkill !== "") {
+      const textElement = (
+        <span
+          className="skillTag white comfortaa"
+          onDoubleClick={this.handleDoubleClick}
+        >
+          {this.state.value}
+        </span>
+      );
+      childRenderMethod(textElement);
+    } else {
+      this.removeSkill(name);
+    }
+  };
+
+  handleChangeSkill = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = parseInt(target.name);
+    console.log("ID: " + name);
+    let newJobFormInfo = { ...this.state.jobFormInfo };
+    const changedNeededSkills = newJobFormInfo.neededSkills;
+    // const index = changedNeededSkills.findIndex((skill) => skill.id === name);
+    const index = changedNeededSkills.map((skill) => skill.id).indexOf(name);
+    changedNeededSkills[index].skill = value;
+    newJobFormInfo.neededSkills = changedNeededSkills;
+
+    this.setState({ jobFormInfo: newJobFormInfo });
+  };
+
+  removeSkill = (skillId) => {
+    const skills = this.state.jobFormInfo.neededSkills.filter(
+      (skill) => skill.id != skillId
+    );
+    const newJobFormInfo = { ...this.state.jobFormInfo };
+    newJobFormInfo.neededSkills = skills;
+    this.setState({ jobFormInfo: newJobFormInfo });
+  };
+
+  addSkill = () => {
+    const skills = [...this.state.jobFormInfo.neededSkills];
+    const newSkill = { id: this.state.currentSkillId, skill: "" };
+    const newJobFormInfo = { ...this.state.jobFormInfo };
+
+    skills.push(newSkill);
+    newJobFormInfo.neededSkills = skills;
+    this.setState((state) => ({
+      jobFormInfo: newJobFormInfo,
+      currentSkillId: state.currentSkillId + 1,
+    }));
   };
 
   render() {
     let buttonText = this.props.formType.split(" ")[0];
+
+    console.log("ReRendering");
+    console.log(this.state.jobFormInfo.neededSkills);
 
     return (
       <React.Fragment>
@@ -47,6 +110,7 @@ class JobForm extends Component {
                 type="text"
                 id="jobTitle"
                 className="comfortaa input"
+                defaultValue={this.state.jobFormInfo.jobTitle}
               />
             </div>
             <div className="inputRowContainer">
@@ -59,6 +123,7 @@ class JobForm extends Component {
                 type="text"
                 id="seniority"
                 className="comfortaa input"
+                defaultValue={this.state.jobFormInfo.seniority}
               />
             </div>
             <div className="inputRowContainer">
@@ -71,6 +136,7 @@ class JobForm extends Component {
                 type="text"
                 id="employmentType"
                 className="comfortaa input"
+                defaultValue={this.state.jobFormInfo.employmentType}
               />
             </div>
             <div className="inputRowContainer">
@@ -83,6 +149,7 @@ class JobForm extends Component {
                 type="text"
                 id="jobFunction"
                 className="comfortaa input"
+                defaultValue={this.state.jobFormInfo.jobFunction}
               />
             </div>
             <div className="inputRowContainer">
@@ -95,6 +162,7 @@ class JobForm extends Component {
                 type="text"
                 id="industries"
                 className="comfortaa input"
+                defaultValue={this.state.jobFormInfo.industries}
               />
             </div>
             <div className="inputRowContainer">
@@ -106,18 +174,34 @@ class JobForm extends Component {
                 name="jobDescription"
                 id="jobDescription"
                 className="input textarea"
+                defaultValue={this.state.jobFormInfo.jobDescription}
               ></textarea>
             </div>
-            <TagInputs />
+            <TagInputs
+              onBlur={this.handleBlur}
+              onChangeSkill={this.handleChangeSkill}
+              skills={this.state.jobFormInfo.neededSkills}
+              onAddSkill={this.addSkill}
+              onRemoveSkill={this.removeSkill}
+            />
             <div className="buttonContainer">
               <button
-                onClick={this.props.onTogglePopUp}
+                onClick={() => {
+                  if (this.editJob) {
+                    this.props.onTogglePopUp(
+                      this.oldJob,
+                      this.state.jobFormInfo
+                    );
+                  } else {
+                    this.props.onTogglePopUp(this.state.jobFormInfo);
+                  }
+                }}
                 className="button comfortaa white"
               >
                 {buttonText}
               </button>
               <button
-                onClick={this.props.onTogglePopUp}
+                onClick={this.props.onCancel}
                 id="cancelButton"
                 className="button comfortaa white"
               >

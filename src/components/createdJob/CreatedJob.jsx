@@ -13,7 +13,7 @@ class CreatedJob extends Component {
         <h2 className="comfortaa greyLight">{jobLocation}</h2>
         <button
           onClick={() => {
-            this.props.onTogglePopUp();
+            this.props.onTogglePopUp(this.props.job);
           }}
           className="comfortaa"
           id="editJobButton"
