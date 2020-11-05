@@ -37,6 +37,9 @@ class TagInputs extends Component {
           </button>
           {this.props.skills.map((skill) => (
             <TagInput
+              onEnter={this.props.onEnter}
+              onDoubleClick={this.props.handleDoubleClick}
+              onGetSkill={this.props.onGetSkill}
               onBlur={this.props.onBlur}
               onChangeSkill={this.props.onChangeSkill}
               inputName={skill.id}

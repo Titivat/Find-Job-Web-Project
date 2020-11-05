@@ -7,11 +7,11 @@ class JobForm extends Component {
     super(props);
     this.oldJob = props.formInfo;
     this.editJob = props.formType === "Edit Job" ? true : false;
+    const jobInfo = props.formInfo;
     this.state = {
-      jobFormInfo: props.formInfo,
-      currentSkillId: 0,
+      jobFormInfo: jobInfo,
+      currentSkillId: jobInfo.neededSkills.length,
     };
-    console.log("Edit Job?" + this.editJob);
   }
 
   handleInputChange = (event) => {
@@ -27,15 +27,40 @@ class JobForm extends Component {
     });
   };
 
-  handleBlur = (blurredTag, childRenderMethod) => {
+  handleDoubleClick = (tagInput, childRenderMethod) => {
+    let input = (
+      <input
+        name={tagInput.id}
+        autoFocus
+        type="text"
+        onKeyDown={(event) => {
+          this.handleEnter(event, tagInput, childRenderMethod);
+        }}
+        className="tagInput"
+        defaultValue={tagInput.skill}
+        onChange={this.handleChangeSkill}
+        onBlur={() => {
+          this.handleBlur(tagInput, childRenderMethod, this.handleDoubleClick);
+        }}
+      />
+    );
+
+    childRenderMethod(input);
+  };
+
+  handleBlur = (blurredTag, childRenderMethod, handleDoubleClick) => {
     const blurredSkill = blurredTag.skill;
     console.log("BlurredSKill: " + blurredSkill);
+    console.log("BlurredID", blurredTag.id);
 
     if (blurredSkill !== "") {
       const textElement = (
         <span
+          name={blurredTag.id}
           className="skillTag white comfortaa"
-          onDoubleClick={this.handleDoubleClick}
+          onDoubleClick={() => {
+            this.handleDoubleClick(blurredTag, childRenderMethod);
+          }}
         >
           {blurredSkill}
         </span>
@@ -43,6 +68,32 @@ class JobForm extends Component {
       childRenderMethod(textElement);
     } else {
       this.removeSkill(blurredTag.id);
+    }
+
+    console.log("After blurred");
+    console.log(this.state.jobFormInfo);
+  };
+
+  handleEnter = (event, tagInput, childRenderMethod) => {
+    console.log("Entered");
+    console.log(event);
+    const enteredSkill = tagInput.skill;
+
+    if (event.key === "Enter") {
+      if (enteredSkill !== "") {
+        const textElement = (
+          <span
+            className="skillTag white comfortaa"
+            onDoubleClick={() => {
+              this.handleDoubleClick(tagInput, childRenderMethod);
+            }}
+          >
+            {enteredSkill}
+          </span>
+        );
+
+        childRenderMethod(textElement);
+      }
     }
   };
 
@@ -57,6 +108,28 @@ class JobForm extends Component {
     newJobFormInfo.neededSkills = changedNeededSkills;
 
     this.setState({ jobFormInfo: newJobFormInfo });
+  };
+
+  getSkill = (event) => {
+    // const target = event.target;
+    // const name = parseInt(target.name);
+    // let newJobFormInfo = { ...this.state.jobFormInfo };
+    // const neededSkills = newJobFormInfo.neededSkills;
+    // const index = neededSkills.map((skill) => skill.id).indexOf(name);
+    // console.log(index);
+    // const skill = neededSkills[index].skill;
+
+    const target = event.target;
+    const value = target.value;
+    const name = parseInt(target.name);
+    console.log("getSkill");
+    console.log(name);
+    let newJobFormInfo = { ...this.state.jobFormInfo };
+    const changedNeededSkills = newJobFormInfo.neededSkills;
+    const index = changedNeededSkills.map((skill) => skill.id).indexOf(name);
+    const skill = changedNeededSkills[index].skill;
+
+    return skill;
   };
 
   removeSkill = (skillId) => {
@@ -84,8 +157,8 @@ class JobForm extends Component {
   render() {
     let buttonText = this.props.formType.split(" ")[0];
 
-    console.log("ReRendering");
-    console.log(this.state.jobFormInfo.neededSkills);
+    // console.log("ReRendering");
+    // console.log(this.state.jobFormInfo.neededSkills);
 
     return (
       <React.Fragment>
@@ -172,6 +245,9 @@ class JobForm extends Component {
               ></textarea>
             </div>
             <TagInputs
+              onEnter={this.handleEnter}
+              onDoubleClick={this.handleDoubleClick}
+              onGetSkill={this.getSkill}
               onBlur={this.handleBlur}
               onChangeSkill={this.handleChangeSkill}
               skills={this.state.jobFormInfo.neededSkills}

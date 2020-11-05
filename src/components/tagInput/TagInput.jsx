@@ -15,12 +15,18 @@ class TagInput extends Component {
         name={props.inputName}
         autoFocus
         type="text"
-        onKeyDown={this.handleEnter}
+        onKeyDown={(event) => {
+          props.onEnter(event, props.tagInput, this.renderElement);
+        }}
         className="tagInput"
         defaultValue={this.state.value}
         onChange={props.onChangeSkill}
         onBlur={() => {
-          this.props.onBlur(props.tagInput, this.renderElement);
+          this.props.onBlur(
+            props.tagInput,
+            this.renderElement,
+            this.handleDoubleClick
+          );
         }}
       />
     );
@@ -34,6 +40,10 @@ class TagInput extends Component {
 
   renderElement = (element) => {
     this.setState({ renderElement: element });
+  };
+
+  handleDoubleClick = (event) => {
+    this.props.onDoubleClick();
   };
 
   // handleBlur = (event) => {
@@ -52,36 +62,56 @@ class TagInput extends Component {
   //   }
   // };
 
-  handleDoubleClick = (event) => {
-    const inputElement = (
-      <input
-        autoFocus
-        type="text"
-        onKeyDown={this.handleEnter}
-        onChange={this.props.onChangeSkill}
-        className="tagInput"
-        defaultValue={this.state.value}
-        onBlur={this.handleBlur}
-      />
-    );
-    this.setState({ renderElement: inputElement });
-  };
+  // handleDoubleClick = (event) => {
+  //   // const inputElement = (
+  //   //   <input
+  //   //     autoFocus
+  //   //     type="text"
+  //   //     onKeyDown={this.handleEnter}
+  //   //     onChange={this.props.onChangeSkill}
+  //   //     className="tagInput"
+  //   //     defaultValue={this.state.value}
+  //   //     onBlur={this.handleBlur}
+  //   //   />
+  //   // );
+  //   const skillValue = this.props.onGetSkill(event);
 
-  handleEnter = (event) => {
-    if (event.key === "Enter") {
-      if (this.state.value !== "") {
-        const textElement = (
-          <span
-            className="skillTag white comfortaa"
-            onDoubleClick={this.handleDoubleClick}
-          >
-            {this.state.value}
-          </span>
-        );
-        this.setState({ renderElement: textElement });
-      }
-    }
-  };
+  //   const inputElement = (
+  //     <input
+  //       name={this.props.inputName}
+  //       autoFocus
+  //       type="text"
+  //       onKeyDown={this.handleEnter}
+  //       className="tagInput"
+  //       defaultValue={skillValue}
+  //       onChange={this.props.onChangeSkill}
+  //       onBlur={() => {
+  //         this.props.onBlur(
+  //           this.props.tagInput,
+  //           this.renderElement,
+  //           this.handleDoubleClick
+  //         );
+  //       }}
+  //     />
+  //   );
+  //   this.setState({ renderElement: inputElement });
+  // };
+
+  // handleEnter = (event) => {
+  //   if (event.key === "Enter") {
+  //     if (this.state.value !== "") {
+  //       const textElement = (
+  //         <span
+  //           className="skillTag white comfortaa"
+  //           onDoubleClick={this.handleDoubleClick}
+  //         >
+  //           {this.state.value}
+  //         </span>
+  //       );
+  //       this.setState({ renderElement: textElement });
+  //     }
+  //   }
+  // };
 
   render() {
     return (
