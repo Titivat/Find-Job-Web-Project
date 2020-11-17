@@ -1,0 +1,35 @@
+ @import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+
+ .full-job-detail-card-container{
+    display: grid;
+    gap: 15px;
+    width: 80%;
+    height: 500px;
+    background-color: #EA5455;
+    border-radius: 20px;
+    font-family: Comfortaa;
+    position: sticky;
+    top: 0px;
+ }
+
+ .full-job-detail-top-container{
+    background-color: white;
+    width: 90%;
+    border-radius: 21px;
+    margin: auto;
+    margin-top: 10px;
+ }
+
+ .full-job-detail-button{
+    width: 117px;
+    height: 30px;
+    border-radius: 7px;
+    border-color: white;
+    margin-left: 26px;
+ }
+ .full-job-detail-top-text{
+     margin-left: 10px;
+ }
+
+ .full-job-detail-bottom-container{
+ }
