@@ -1,0 +1,66 @@
+@font-face {
+  font-family: Comfortaa;
+  src: url(../../fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+.companyProfileContainer {
+  background-color: #ea5455;
+  width: 100%;
+  border-radius: 20px;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  box-sizing: border-box;
+}
+
+.companyProfileContainer > div {
+  margin-bottom: 1.2em;
+}
+
+.mediumSize {
+  font-size: 1.2em;
+}
+
+.rowContainer {
+  display: flex;
+  width: 100%;
+}
+
+#profileImage {
+  width: 15%;
+}
+
+.label {
+  color: white;
+  text-align: right;
+  margin-right: 1.2em;
+  width: 100px;
+  display: inline-block;
+  overflow-wrap: break-word;
+}
+
+.white {
+  color: white;
+}
+
+#companyText {
+  width: 17em;
+  overflow-wrap: break-word;
+}
+
+#editProfileButton {
+  display: inline-block;
+  border-radius: 7px;
+  justify-self: center;
+  width: 35%;
+  margin: 0 auto;
+  font-size: 1.2em;
+  min-height: 2.5em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1.2em;
+}
