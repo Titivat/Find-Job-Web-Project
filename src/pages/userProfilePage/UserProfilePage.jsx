@@ -32,12 +32,14 @@ function UserProfilePage(){
                         <div className="item">
                             <JobDescriptionCard 
                                 haveButton = {true}
+                                backgroundColor = "#2D4059"
                             />
                         </div>
 
                         <div className="item">
                             <JobDescriptionCard 
                                 haveButton = {true}
+                                backgroundColor = "#2D4059"
                             />
                         </div>
 

@@ -7,7 +7,7 @@ function Header( props ){
     return(
         <div className="header-container">
             <div className="header-left-item">
-                <a><img className="header-left-img" src={logo}></img></a>
+                <a><img alt="description of image" href="#" className="header-left-img" src={logo}></img ></a>
 
                 <div className="header-left-text">
                     <a>job spot </a>
