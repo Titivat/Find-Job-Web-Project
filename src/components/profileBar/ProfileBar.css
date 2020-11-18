@@ -27,13 +27,12 @@
     height: 40px;
     font-size: 20px;
     border-radius: 7px;
+    margin-bottom: 5px;
+    border: 0px;
 }
 .profile-bar-button-container{
-    display: flex;
-    justify-content: center;
     width: 200%;
 }
-
 .profile-bar-edit-button{
     background: #2D4059;
     border-radius: 20px;

@@ -6,7 +6,7 @@ import CompanyProfilePage from './pages/companyProfile/CompanyProfilePage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CompanyProfilePage />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

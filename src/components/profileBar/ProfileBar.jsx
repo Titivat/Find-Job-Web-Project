@@ -27,11 +27,11 @@ function ProfileBar( props ){
                     <button className="profile-bar-right-item-btn">+</button>
                 </div>
 
-                <p className="profile-bar-button-container">
-                    <button className="profile-bar-edit-button">edit profile</button>
-                </p>
+                
             </div>
-
+            <p className="profile-bar-button-container">
+                    <button className="profile-bar-edit-button">edit profile</button>
+            </p>
             
         </div>
     );
