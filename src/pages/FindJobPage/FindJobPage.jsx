@@ -27,11 +27,9 @@ function FindJobPage(){
                 <div className="find-job-page-job-list-container">
                     <div className="find-job-page-list-item"><JobDescriptionCard backgroundColor="#FFFFFF"/></div>
 
-                    <div className="find-job-page-list-item"><JobDescriptionCard backgroundColor="#FFFFFF"/></div>
+                    
 
-                    <div className="find-job-page-list-item"><JobDescriptionCard backgroundColor="#FFFFFF"/></div>
 
-                    <div className="find-job-page-list-item"><JobDescriptionCard backgroundColor="#FFFFFF"/></div>
                 </div>
 
                 <div   className="find-job-page-job-deatail-container">

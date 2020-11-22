@@ -9,7 +9,6 @@ function JobDescriptionCard( props ){
         backgroundColor: backgroundColor,
         borderRadius: "20px",
         justifyContent: "spaceBetween",
-        height: "100%",
     }
 
     return(
