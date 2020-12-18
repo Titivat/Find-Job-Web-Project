@@ -45,6 +45,10 @@ function ForumPage( props ){
                         <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'654'}/>
                     </div>
 
+                    <div className="forum-contnet-item">
+                        
+                    </div>
+
                 </div>
 
             </div> 

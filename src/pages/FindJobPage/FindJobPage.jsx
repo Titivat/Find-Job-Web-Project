@@ -25,10 +25,38 @@ function FindJobPage(){
                 </div>
 
                 <div className="find-job-page-job-list-container">
-                    <div className="find-job-page-list-item"><JobDescriptionCard backgroundColor="#FFFFFF"/></div>
+                    <div className="find-job-page-list-item">
+                        <JobDescriptionCard 
+                            haveButton = {true}
+                            compName = 'PR & Social Media / Marketing'
+                            compCity = 'Bangkok, Bangkok City, Thailand'
+                            compDetail = 'Sharke Hand( Thailand ) Co.,Ltd.'
+                            time = '1 month'
+                            backgroundColor="#FFFFFF"
+                        />
+                    </div>
 
-                    
+                    <div className="find-job-page-list-item">
+                        <JobDescriptionCard 
+                            haveButton = {true}
+                            compName = 'PR & Social Media / Marketing'
+                            compCity = 'Bangkok, Bangkok City, Thailand'
+                            compDetail = 'Sharke Hand( Thailand ) Co.,Ltd.'
+                            time = '1 month'
+                            backgroundColor="#FFFFFF"
+                        />
+                    </div>
 
+                    <div className="find-job-page-list-item">
+                        <JobDescriptionCard 
+                            haveButton = {true}
+                            compName = 'PR & Social Media / Marketing'
+                            compCity = 'Bangkok, Bangkok City, Thailand'
+                            compDetail = 'Sharke Hand( Thailand ) Co.,Ltd.'
+                            time = '1 month'
+                            backgroundColor="#FFFFFF"
+                        />
+                    </div>
 
                 </div>
 

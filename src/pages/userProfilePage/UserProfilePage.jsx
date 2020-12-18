@@ -32,6 +32,11 @@ function UserProfilePage(){
                         <div className="item">
                             <JobDescriptionCard 
                                 haveButton = {true}
+                                compName = 'PR & Social Media / Marketing'
+                                compDetail = 'Sharke Hand( Thailand ) Co.,Ltd.'
+                                compCity = 'Bangkok, Bangkok City, Thailand'
+                                status = 'pending'
+                                time = '1 month'
                                 backgroundColor = "#2D4059"
                             />
                         </div>
@@ -39,13 +44,24 @@ function UserProfilePage(){
                         <div className="item">
                             <JobDescriptionCard 
                                 haveButton = {true}
+                                compName = 'PR & Social Media / Marketing'
+                                compCity = 'Bangkok, Bangkok City, Thailand'
+                                compDetail = 'Sharke Hand( Thailand ) Co.,Ltd.'
+                                status = 'pending'
+                                time = '1 month'
                                 backgroundColor = "#2D4059"
                             />
                         </div>
 
+                        <div className="item">
+                            <div className="dummy-square">
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
+
             </div>  
         </div>
     );

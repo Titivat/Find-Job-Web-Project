@@ -18,6 +18,7 @@
     flex-direction: column;
     align-items: center;    
     width: 50%;
+    grid-gap: 50px;
 }
 
 .user-profile-content{
@@ -37,6 +38,11 @@
 }
 
 .item{
-    margin-top: 20px;
+    margin-top: 50px;
     height: 180px;
+}
+
+.dummy-square{
+    height: 50px;
+    width: 50px;
 }

@@ -27,12 +27,10 @@
 
 .find-job-page-content-container{
     display: grid;
-    background-color: chartreuse;
-    grid-template-columns: repeat( auto-fit, minmax( 400px, 3fr));
+    grid-template-columns: repeat( auto-fit, minmax( 00px, 3fr));
 }
 
 .find-job-page-content-container{
-    background-color: blueviolet;
     padding-left: 3%;
 }
 
@@ -40,10 +38,8 @@
     height: 100px;
 }
 .find-job-page-job-list-container{
-    background-color: crimson;
 }
 .find-job-page-job-deatail-container{
-    background-color: darkseagreen;
     display: flex;
     justify-content: center;
 }   

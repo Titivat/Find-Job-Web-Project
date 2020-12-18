@@ -35,7 +35,7 @@ function FullJobDetailCard(){
                 <p className="full-job-detail-top-text">Detail:</p>
 
                 <p className="full-job-detail-top-text">
-                    { jobDetail( detailList) }
+                    { ( detailList) }
                 </p>
             </div>
         </div>

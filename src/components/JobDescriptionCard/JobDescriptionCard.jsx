@@ -9,6 +9,7 @@ function JobDescriptionCard( props ){
         backgroundColor: backgroundColor,
         borderRadius: "20px",
         justifyContent: "spaceBetween",
+        border: '1px solid #000000',
     }
 
     return(
@@ -19,18 +20,16 @@ function JobDescriptionCard( props ){
             </p>
 
             <p className="job-description-card-detail">
-                <p>PR & Social Media / Marketing</p>
-                <p>Sharke Hand( Thailand ) Co.,Ltd.</p>
-                <p>Bangkok, Bangkok City, Thailand</p>
+                <p>{compName}</p>
+                <p>{compDetail}</p>
+                <p>{compCity}</p>
 
                 <div className="job-description-card-status">
-                    <p>pending</p>
-                    <p>&nbsp;&nbsp;1 month</p>
+                    <p>{status}</p>
+                    <p>&nbsp;&nbsp;{time}</p>
                 </div>
             </p>
-
             
-
             { (haveButton) && <button className="job-description-button">x</button> }
         </div>
     );
