@@ -6,13 +6,31 @@
 
 .main-page-item2-job-forum-container{
     display: grid;
+    place-items: center;
     background-color: aqua;
-    grid-template-columns: repeat( auto-fit, minmax( 400px, 3fr));
+    grid-template-columns: repeat( auto-fit, minmax( 200px, 3fr));
 }
 
 .main-page-item2-forum-item{
     display: flex;
+    width: 75%;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     background-color: blueviolet;
 }
 
+.main-page-item2-forum-item-description{
+    display: flex;
+}
+
+.main-page-item2-line{
+    width: 250px;
+    color: black;
+    border-color: 10px solid black;
+}
+
+.main-page-item2-image{
+    width: 200px;
+    height: 200px;
+}

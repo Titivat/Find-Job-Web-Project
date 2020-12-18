@@ -1,4 +1,7 @@
 import './MainPageItem2.css'
+import enginearImg from '../../../../images/enginearImg.jpg'; 
+import designImg from '../../../../images/designImg.jpg'; 
+import businessImg from '../../../../images/businessImg.jpg'; 
 
 function MainPageItem2(){
     return(
@@ -10,15 +13,37 @@ function MainPageItem2(){
 
             <div className="main-page-item2-job-forum-container">
                 <div className="main-page-item2-forum-item">
-                    Engineer
+                    <img className="main-page-item2-image" src={enginearImg} />
+                    
+                    <hr className="main-page-item2-line"/>
+
+                    <div className="main-page-item2-forum-item-description">
+                        <p>Engineer</p>
+                        <p>image</p>
+                    </div>
+                    
                 </div>
 
                 <div className="main-page-item2-forum-item">
-                    Business
+                    <img className="main-page-item2-image" src={businessImg} />
+
+                    <hr className="main-page-item2-line"/>
+
+                    <div className="main-page-item2-forum-item-description">
+                        <p>Business</p>
+                        <p>image</p>
+                    </div>
                 </div>
 
                 <div className="main-page-item2-forum-item">
-                    Disign
+                    <img className="main-page-item2-image" src={designImg} />
+
+                    <hr className="main-page-item2-line"/>
+                    
+                    <div className="main-page-item2-forum-item-description">
+                        <p>Design</p>
+                        <p>image</p>
+                    </div>
                 </div>
             </div>
 
