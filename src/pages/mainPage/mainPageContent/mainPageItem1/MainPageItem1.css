@@ -2,19 +2,38 @@
 
 .main-page-item1-container{
     display: grid;
-    background-color: aqua;
+
     font-family: Comfortaa;
     grid-template-columns: repeat( auto-fit, minmax( 400px, 2fr));
 }
 
 .main-page-left-item{
-    background-color: brown;
+
 }
 
 .main-page-left-item-background-img{
     position: relative;
-    z-index: 10;
-    top: 50px;
+    padding-left: 20px;
+    width: 600px;
+    height: 500px;
+    z-index: -10;
+    top: -60px;
+}
+
+.main-page-left-text{
+    position: relative;
+    color: white;
+    font-size: 20px;
+    top: -410px;
+    letter-spacing: 1px;
+    left: 150px;
+}
+
+.main-page-left-buttom-text{
+    position: relative;
+    font-size: 15px;
+    left: 180px;
+    top: 35px;
 }
 
 .main-page-right-item{
