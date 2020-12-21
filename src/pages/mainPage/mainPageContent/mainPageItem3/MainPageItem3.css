@@ -3,16 +3,22 @@
 .main-page-item3-container{
     display: grid;
     font-family: Comfortaa;
-    background-color: red;
     grid-template-columns: repeat( auto-fit, minmax( 500px, 2fr));
 }
 
 .main-page-item3-lefft{
     width: 100%;
-    background-color: rgb(21, 255, 0);
+    margin-left: 50px;
 }
 
 .main-page-item3-right{
+    font-size: 30px;
+    margin-left: 170px;
     width: 100%;
-    background-color: darkcyan;
+}
+
+.main-page-iten3-right-title{
+    margin-left: 125px;
+    font-weight: bold;
+    text-decoration: underline;
 }

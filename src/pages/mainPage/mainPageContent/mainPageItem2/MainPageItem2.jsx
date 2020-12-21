@@ -4,7 +4,7 @@ import designImg from '../../../../images/designImg.jpg';
 import businessImg from '../../../../images/businessImg.jpg'; 
 import businessIcon from '../../../../images/handshake.png'; 
 import designIcon from '../../../../images/designIcon.png'; 
-import enginearIcon from '../../../../images/enginearIcon.png'; 
+import enginearIcon from '../../../../images/enginearIcon.png';  
 
 function MainPageItem2(){
     return(
