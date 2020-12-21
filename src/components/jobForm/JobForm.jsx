@@ -266,14 +266,14 @@ class JobForm extends Component {
                     this.props.onTogglePopUp(this.state.jobFormInfo);
                   }
                 }}
-                className="button comfortaa white"
+                className="jobFormButton comfortaa white"
               >
                 {buttonText}
               </button>
               <button
                 onClick={this.props.onCancel}
                 id="cancelButton"
-                className="button comfortaa white"
+                className="jobFormButton comfortaa"
               >
                 Cancel
               </button>

@@ -1,75 +1,74 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
+@import url("https://fonts.googleapis.com/css?family=Comfortaa%27");
 
-.main-page-item1-container{
-    display: grid;
-    font-family: Comfortaa;
-    grid-template-columns: repeat( auto-fit, minmax( 400px, 2fr));
+.main-page-item1-container {
+  display: grid;
+  font-family: Comfortaa;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
 }
 
-.main-page-left-item{
-
+.main-page-left-item {
 }
 
-.main-page-left-item-background-img{
-    position: relative;
-    padding-left: 20px;
-    width: 600px;
-    height: 500px;
-    z-index: -10;
-    top: -60px;
+.main-page-left-item-background-img {
+  position: relative;
+  padding-left: 20px;
+  width: 600px;
+  height: 500px;
+  z-index: -10;
+  top: -60px;
 }
 
-.main-page-left-text{
-    position: relative;
-    color: white;
-    font-size: 20px;
-    top: -410px;
-    letter-spacing: 1px;
-    left: 150px;
+.main-page-left-text {
+  position: relative;
+  color: white;
+  font-size: 20px;
+  top: -410px;
+  letter-spacing: 1px;
+  left: 150px;
 }
 
-.main-page-left-buttom-text{
-    position: relative;
-    font-size: 15px;
-    left: 180px;
-    top: 35px;
+.main-page-left-buttom-text {
+  position: relative;
+  font-size: 15px;
+  left: 180px;
+  top: 35px;
 }
 
-.main-page-right-item{
-    background-color: wheat;
+.main-page-right-item {
+  background-color: wheat;
 }
 
-.main-page-right-item-decoration{
-    margin-left: 159px;
+.main-page-right-item-decoration {
+  margin-left: 325px;
 }
 
-.main-page-right-item-background-img{
-    position: relative;
-    z-index: 100;
-    top: -10px;
-    left: 416px;
+.main-page-right-item-background-img {
+  position: relative;
+  z-index: 100;
+  top: -10px;
+  left: 416px;
 }
 
-.main-page-right-item-decoration-img{
-    position: relative;
-    z-index: 101;
-    top: -100px;
-    width: 330px;
-    height: 400px;
+.main-page-right-item-decoration-img {
+  position: relative;
+  z-index: 101;
+  top: -100px;
+  width: 330px;
+  height: 400px;
 }
 
-.main-page-right-item-arrow-img{
-    position: relative;
-    top: -65px;
-    right: 300px;
-    width: 40px;
+.main-page-right-item-arrow-img {
+  position: relative;
+  top: -65px;
+  right: 300px;
+  width: 40px;
 }
 
-.main-page-right-item-text{
-    position: relative;
-    color: #3964B6;
-    top: -124px;
-    font-size: 25px;
-    left: 300px;
-    text-decoration: underline;
+.main-page-right-item-text {
+  position: relative;
+  color: #3964b6;
+  top: -124px;
+  font-size: 25px;
+  left: 300px;
+  text-decoration: underline;
 }
