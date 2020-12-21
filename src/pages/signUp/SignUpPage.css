@@ -12,7 +12,7 @@
 }
 
 .mainArea {
-  margin-top: 7em;
+  margin-top: 2em;
   display: flex;
 }
 
@@ -33,10 +33,11 @@
   display: flex;
   flex-direction: column;
   background: #ea5455;
-  width: 40%;
+  width: 39%;
   border-radius: 5px;
-  height: 45em;
+  height: 42em;
   margin-top: 2em;
+  margin-right: 40px;
 }
 
 #createAccountText {

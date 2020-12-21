@@ -6,7 +6,7 @@ class SignUpPage extends Component {
     state = {  }
     render() { 
         return (
-            <React.Fragment>
+            <div>
                 <div className="mainArea">
                     <div className="leftHalf">
                         <h1 className="quote">Start chasing your dream job today at JobSpot</h1>
@@ -21,7 +21,7 @@ class SignUpPage extends Component {
                         <span className="formText">Already Have An Account? <a href="#">Sign in</a></span>
                     </div>
                 </div>
-            </React.Fragment>
+            </div>
         );
     }
 }
