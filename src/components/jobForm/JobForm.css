@@ -55,7 +55,7 @@
   vertical-align: top;
 }
 
-.button {
+.jobFormButton {
   margin-left: 2em;
   font-size: 1.2em;
   width: 45%;
@@ -67,6 +67,7 @@
 #cancelButton {
   width: 42%;
   margin-left: 2.5em;
+  background-color: white;
 }
 
 .buttonContainer {

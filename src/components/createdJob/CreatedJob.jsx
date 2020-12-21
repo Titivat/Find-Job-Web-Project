@@ -21,7 +21,7 @@ class CreatedJob extends Component {
           Edit Job
         </button>
         <button
-          onClick={() => this.props.onDelete(this.props.jobId)}
+          onClick={() => this.props.onDelete(this.props.job)}
           id="removeButton"
           className="comfortaa"
         >

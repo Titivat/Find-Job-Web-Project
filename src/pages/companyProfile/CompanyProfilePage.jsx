@@ -26,9 +26,12 @@ class CompanyProfilePage extends Component {
     };
   }
 
-  handleDelete = (jobId) => {
-    console.log("Deleting jobId " + typeof jobId);
-    const createdJobs = this.state.createdJobs.filter((c) => c.jobId !== jobId);
+  handleDelete = (job) => {
+    console.log("Deleting job");
+    console.log(job);
+    const createdJobs = this.state.createdJobs.filter(
+      (createdJob) => createdJob !== job
+    );
     console.log("new state");
     console.log(createdJobs);
     this.setState({ createdJobs });
@@ -81,17 +84,16 @@ class CompanyProfilePage extends Component {
     const index = createdJobs.indexOf(oldJob);
     console.log(index);
     createdJobs[index] = { ...newJob };
-    this.setState({ createdJobs });
-    this.toggleShowPopUp();
+    this.setState({
+      createdJobs: createdJobs,
+      showPopUp: !this.state.showPopUp,
+    });
   };
 
   render() {
-    console.log("CreatedJobs");
-    console.log(this.state.createdJobs);
-
     return (
       <React.Fragment>
-        <div className={"mainAreaContainer"}>
+        <div className={"mainAreaContainer"} id="companyProfileContainer">
           <div className="profileSection">
             <h1 className="comfortaa">Company Profile</h1>
             <CompanyProfileContainer
@@ -119,7 +121,7 @@ class CompanyProfilePage extends Component {
                 jobPosition={createdJob.jobFunction}
                 companyName={this.companyName}
                 jobLocation={this.jobLocation}
-                jobId={createdJob.jobId}
+                jobId={index}
                 onDelete={this.handleDelete}
                 onTogglePopUp={this.editJobPopUp}
               />

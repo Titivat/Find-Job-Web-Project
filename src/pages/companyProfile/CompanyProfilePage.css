@@ -42,6 +42,10 @@ body {
   display: flex;
 }
 
+#companyProfileContainer {
+  flex-direction: row;
+}
+
 .createdJobContainer {
   display: flex;
   flex-direction: column;
