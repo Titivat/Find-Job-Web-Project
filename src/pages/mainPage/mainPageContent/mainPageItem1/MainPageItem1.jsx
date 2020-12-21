@@ -24,13 +24,16 @@ function MainPageItem1(){
                 </div>
 
                 <div className="main-page-right-item">
-                    <img className="main-page-right-item-background-img" src={ellipse2}></img>
+                    <div className="main-page-right-item-decoration">
+                        <img className="main-page-right-item-background-img" src={ellipse2}></img>
 
-                    <img className="main-page-right-item-decoration-img"  src={decrationImg}></img>
-                    
-                    <img className="main-page-right-item-arrow-img" src={arrowImg}></img>
+                        <img className="main-page-right-item-decoration-img"  src={decrationImg}></img>
+                        
+                        <img className="main-page-right-item-arrow-img" src={arrowImg}></img>
 
-                    <p className="main-page-right-item-text">Find jobs</p>
+                        <p className="main-page-right-item-text">Find jobs</p>
+                                            
+                    </div>
                 </div>
             </div>
 

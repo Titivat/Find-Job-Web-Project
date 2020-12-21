@@ -39,6 +39,10 @@
     background-color: wheat;
 }
 
+.main-page-right-item-decoration{
+    margin-left: 159px;
+}
+
 .main-page-right-item-background-img{
     position: relative;
     z-index: 100;
