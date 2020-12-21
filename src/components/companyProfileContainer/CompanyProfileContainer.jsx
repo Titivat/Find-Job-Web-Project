@@ -3,6 +3,10 @@ import "./CompanyProfileContainer.css";
 
 class CompanyProfileContainer extends Component {
   state = {};
+
+  selectFile = (event) => {
+    this.refs.profileSelector.click();
+  };
   render() {
     const { profileImage, companyName, email } = this.props;
     return (
@@ -23,9 +27,19 @@ class CompanyProfileContainer extends Component {
             {email}
           </span>
         </div>
-        <button id="editProfileButton" className="comfortaa">
+        <button
+          id="editProfileButton"
+          className="comfortaa"
+          onClick={this.selectFile}
+        >
           edit profile
         </button>
+        <input
+          type="file"
+          id="profileSelector"
+          ref="profileSelector"
+          className="comfortaa"
+        />
       </div>
     );
   }
