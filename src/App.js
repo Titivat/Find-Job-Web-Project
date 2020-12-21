@@ -12,7 +12,6 @@ import UserProfilePage from './pages/userProfilePage/UserProfilePage.jsx';
 
 function App() {
   return (
-    <div>
       <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={MainPage} />
@@ -26,7 +25,6 @@ function App() {
                 <Route exact path="/userProfilePage" component={UserProfilePage} />
             </Switch>
         </BrowserRouter>
-    </div>
   );
 }
 
