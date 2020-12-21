@@ -12,10 +12,13 @@ class ForgotPasswordPage extends Component {
                         <h1 id="errorStatusText" className="comfortaa">error status text</h1>
                         <h1 className="styledText">Find your account</h1>
                         <h2 className="comfortaa">please enter your email</h2>
-                        <h3 className="comfortaa">Email *</h3>
+                        
 
                         <div className="formContainer">
+                            <h3 className="comfortaa">Email *</h3>
+
                             <input type="text" placeholder="jane@example.com" className="textInput" />
+                            
                         </div>
 
                         <div className="buttonContainer">
