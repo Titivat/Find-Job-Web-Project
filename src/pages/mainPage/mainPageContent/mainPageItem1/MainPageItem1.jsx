@@ -1,5 +1,8 @@
 import './MainPageItem1.css';
 import ellipse1 from '../../../../images/ellipse1.png';
+import ellipse2 from '../../../../images/ellipse2.png';
+import decrationImg from '../../../../images/enginearImg.png';
+import arrowImg from '../../../../images/arrow.png';
 
 function MainPageItem1(){
     return(
@@ -21,9 +24,13 @@ function MainPageItem1(){
                 </div>
 
                 <div className="main-page-right-item">
-                    <p className="main-page-right-item-background-img">image in the background</p>
-                    <p>image</p>
-                    <p>Find jobs</p>
+                    <img className="main-page-right-item-background-img" src={ellipse2}></img>
+
+                    <img className="main-page-right-item-decoration-img"  src={decrationImg}></img>
+                    
+                    <img className="main-page-right-item-arrow-img" src={arrowImg}></img>
+
+                    <p className="main-page-right-item-text">Find jobs</p>
                 </div>
             </div>
 

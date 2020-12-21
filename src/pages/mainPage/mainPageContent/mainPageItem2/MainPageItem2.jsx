@@ -1,5 +1,5 @@
 import './MainPageItem2.css'
-import enginearImg from '../../../../images/enginearImg.jpg'; 
+import enginearImg from '../../../../images/enginearImg.png'; 
 import designImg from '../../../../images/designImg.jpg'; 
 import businessImg from '../../../../images/businessImg.jpg'; 
 import businessIcon from '../../../../images/handshake.png'; 
