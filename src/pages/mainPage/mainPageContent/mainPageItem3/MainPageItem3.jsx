@@ -6,7 +6,7 @@ function MainPageItem3(){
         <div>
             <div className="main-page-item3-container">
 
-                <img src={officeImg} className="main-page-item3-lefft">
+                <img src={officeImg} alt="image" className="main-page-item3-lefft">
                 </img>
 
                 <div className="main-page-item3-right">

@@ -9,7 +9,7 @@ class CompanyProfileContainer extends Component {
       <div className="companyProfileContainer">
         <div className="rowContainer">
           <span className="comfortaa mediumSize label">Profile:</span>
-          <img src={profileImage} id="profileImage" />
+          <img src={profileImage} alt="" id="profileImage" />
         </div>
         <div className="rowContainer">
           <span className="comfortaa mediumSize label">Company name:</span>
