@@ -3,8 +3,37 @@ import logo from '../../images/logo.png';
 import Header from '../../components/header/Header.jsx';
 import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
+import React, { useState } from 'react';
 
 function ForumPage( props ){
+
+    const postList = [{
+            text: 'Build a Pharmacy Inventory manager with Django.',
+            userId:'123'
+        },
+        {
+            text: 'A tips for a good interview',
+            userId:'456'
+        },
+        {
+            text: 'React server component',
+            userId:'789'
+        },
+        {
+            text: 'How the web is really built',
+            userId:'12'
+        },
+        {
+            text: 'Understand peer dependecies',
+            userId:'568'
+        },
+        {
+            text: 'Frontend Talk',
+            userId:'104'
+        }
+    ]
+    
+    
     const { forumName } = props.location
 
     return(
@@ -25,26 +54,17 @@ function ForumPage( props ){
                 <p className="forum-page-discription-text">Post:</p>
 
                 <div  className="forum-content-container">
-                    <div className="forum-contnet-item">
-                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'123'}/>
-                    </div>
+                    { postList.map( (item) => {
+                        return <div className="forum-contnet-item">
+                                    <Forum 
+                                        userId={ item.userId }
+                                        text={ item.text } 
+                                        />
+                                </div>
+                       })
 
-                    <div className="forum-contnet-item">
-                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'123'}/>
-                    </div>
-
-                    <div className="forum-contnet-item">
-                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'456'}/>
-                    </div>
-
-                    <div className="forum-contnet-item">
-                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'456'}/>
-                    </div>
-
-                    <div className="forum-contnet-item">
-                        <Forum text={'Build a Pharmacy Inventory manager with Django.'} userId={'654'}/>
-                    </div>
-
+                    }
+                    
                     <div className="forum-contnet-item">
                         {/*dummy item*/}
                     </div>
