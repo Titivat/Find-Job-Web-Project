@@ -13,7 +13,7 @@ class CompanyProfileContainer extends Component {
       <div className="companyProfileContainer">
         <div className="rowContainer">
           <span className="comfortaa mediumSize label">Profile:</span>
-          <img src={profileImage} id="profileImage" />
+          <img src={profileImage} id="profileImage" onClick={this.selectFile} />
         </div>
         <div className="rowContainer">
           <span className="comfortaa mediumSize label">Company name:</span>
@@ -27,11 +27,7 @@ class CompanyProfileContainer extends Component {
             {email}
           </span>
         </div>
-        <button
-          id="editProfileButton"
-          className="comfortaa"
-          onClick={this.selectFile}
-        >
+        <button id="editProfileButton" className="comfortaa">
           edit profile
         </button>
         <input

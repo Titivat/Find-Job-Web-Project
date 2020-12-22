@@ -31,6 +31,10 @@
   width: 15%;
 }
 
+#profileImage:hover {
+  cursor: pointer;
+}
+
 .label {
   color: white;
   text-align: right;
