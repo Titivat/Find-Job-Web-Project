@@ -4,6 +4,7 @@ import "./CompanyProfilePage.css";
 import testingCompanyImage from "../../images/companyLogo.jpg";
 import CreatedJob from "../../components/createdJob/CreatedJob";
 import JobForm from "../../components/jobForm/JobForm";
+import CompanyProfileForm from "../../components/companyProfileForm/CompanyProfileForm";
 
 class CompanyProfilePage extends Component {
   constructor(props) {
@@ -11,6 +12,11 @@ class CompanyProfilePage extends Component {
     this.companyName = "Sharke Hand( Thailand ) Co.,Ltd.";
     this.jobLocation = "Bangkok, Bangkok City, Thailand";
     this.state = {
+      companyInfo: {
+        companyName: "Mon",
+        companyEmail: "titivat@gmail.com",
+      },
+      showProfilePopUp: false,
       createdJobs: [],
       showPopUp: false,
       jobFormInfo: {
@@ -40,6 +46,12 @@ class CompanyProfilePage extends Component {
   toggleShowPopUp = () => {
     this.setState({
       showPopUp: !this.state.showPopUp,
+    });
+  };
+
+  toggleShowProfilePopUp = () => {
+    this.setState({
+      showProfilePopUp: !this.state.showProfilePopUp,
     });
   };
 
@@ -77,9 +89,6 @@ class CompanyProfilePage extends Component {
   };
 
   editJob = (oldJob, newJob) => {
-    console.log("old job vs new job");
-    console.log(oldJob);
-    console.log(newJob);
     const createdJobs = [...this.state.createdJobs];
     const index = createdJobs.indexOf(oldJob);
     console.log(index);
@@ -90,6 +99,14 @@ class CompanyProfilePage extends Component {
     });
   };
 
+  editProfile = (newProfile) => {
+    console.log(newProfile);
+    this.setState({
+      companyInfo: newProfile,
+      showProfilePopUp: !this.state.showProfilePopUp,
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -97,9 +114,10 @@ class CompanyProfilePage extends Component {
           <div className="profileSection">
             <h1 className="comfortaa">Company Profile</h1>
             <CompanyProfileContainer
+              onEditProfile={this.toggleShowProfilePopUp}
               profileImage={testingCompanyImage}
-              companyName="Octopus"
-              email="titivatmo@gmail.com"
+              companyName={this.state.companyInfo.companyName}
+              email={this.state.companyInfo.companyEmail}
             />
           </div>
           <div className="createdJobContainer">
@@ -137,6 +155,15 @@ class CompanyProfilePage extends Component {
                 : this.createNewJob
             }
             onCancel={this.toggleShowPopUp}
+            formInfo={this.state.jobFormInfo}
+          />
+        ) : null}
+
+        {this.state.showProfilePopUp ? (
+          <CompanyProfileForm
+            companyInfo={this.state.companyInfo}
+            onCancel={this.toggleShowProfilePopUp}
+            onEditProfile={this.editProfile}
             formInfo={this.state.jobFormInfo}
           />
         ) : null}
