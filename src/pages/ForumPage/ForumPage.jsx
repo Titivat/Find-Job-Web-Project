@@ -1,11 +1,15 @@
 import './ForumPage.css';
-import logo from '../../images/logo.png';
+import PostForum from '../../components/postForum/PostForum.jsx';
 import Header from '../../components/header/Header.jsx';
 import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
 import React, { useState } from 'react';
 
 function ForumPage( props ){
+
+    const [ isPop, setPop] = useState( false );
+
+    function togglePopup(){ setPop( !isPop ) }  
 
     const postList = [{
             text: 'Build a Pharmacy Inventory manager with Django.',
@@ -45,10 +49,13 @@ function ForumPage( props ){
 
                 <div className="forum-page-input-section">
                     <ProfileIcon 
-                    radius={"50%"}
-                    size={['78px', '78px']}/>
+                        radius={"50%"}
+                        size={['78px', '78px']}
+                    />
           
-                    <button className='forum-page-button'>What is in your mind?</button>
+                    <button  
+                        onClick={ () => togglePopup()}                    className='forum-page-button'>What is in your mind?
+                    </button>
                 </div>
 
                 <p className="forum-page-discription-text">Post:</p>
@@ -72,6 +79,12 @@ function ForumPage( props ){
                 </div>
 
             </div> 
+
+            { isPop ?  <PostForum text='Click "Close Button" to hide popup'  
+                          closePopup={ () => togglePopup() }  
+                    />  
+                : null  
+            }  
         </div>
     );
 }
