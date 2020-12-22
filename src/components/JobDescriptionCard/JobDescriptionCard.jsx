@@ -2,7 +2,7 @@ import './JobDescriptionCard.css'
 import ProfileIcon from '../profileIcon/ProfileIcon.jsx'
 
 function JobDescriptionCard( props ){
-    const { compName, compDetail, compCity, status, time, haveButton , backgroundColor } = props;
+    const { compName, compDetail, compCity, status, time, haveButton , backgroundColor , clickToDisplay} = props;
 
     const container = {
         display: "flex",
@@ -12,8 +12,16 @@ function JobDescriptionCard( props ){
         border: '1px solid #000000',
     }
 
+    const comonentValue = {
+        compName: compName,
+        compDetail: compDetail, 
+        compCity: compCity,
+        status: status,
+        time: time,
+    }
+    
     return(
-        <div style={ container }>
+        <div style={ container } onClick={ () => clickToDisplay(comonentValue)}>
             <p className="job-description-card-profile"><ProfileIcon 
                 radius={'20px'}
                 size={['57px','56px']}/>

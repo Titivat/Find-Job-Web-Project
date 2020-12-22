@@ -66,6 +66,10 @@ class FindJobPage extends Component{
         this.setState({ filter: event.target.value });
     };
 
+    displayStatus = (childData) => {
+        console.log( `value: ${childData.compName}` )
+    }
+
     render() {
         const { filter, data, maleChecked, select} = this.state;
         const lowercasedFilter = filter.toLowerCase();
@@ -102,6 +106,8 @@ class FindJobPage extends Component{
                                 <JobDescriptionCard 
                                     haveButton = {false}
                                     key={item.compName}
+                                    name={item.compName}
+                                    clickToDisplay={ this.displayStatus }
                                     compCity={ item.compCity}
                                     compName={item.compName}
                                     compDetail={item.compDetail}
@@ -123,5 +129,7 @@ class FindJobPage extends Component{
     }
     
 }
+
+
 
 export default FindJobPage;
