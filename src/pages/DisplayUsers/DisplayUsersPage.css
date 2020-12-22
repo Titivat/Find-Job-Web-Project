@@ -1,0 +1,12 @@
+.usersInfoContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 2em;
+}
+
+#displayUsersPage {
+  height: 100%;
+  overflow-y: scroll;
+}

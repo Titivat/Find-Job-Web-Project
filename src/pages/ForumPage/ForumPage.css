@@ -1,65 +1,60 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa%27");
 
-@import url('https://fonts.googleapis.com/css?family=Comfortaa%27');
-
-.forum-page-container{
-    font-family: Comfortaa;
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: repeat( auto-fit, minmax( 700px, 1fr));
-    height: 100vh;
-    overflow-y: scroll !important;
-
+.forum-page-container {
+  font-family: Comfortaa;
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+  height: 100vh;
+  overflow-y: scroll !important;
 }
 
-.forum-page-title{
-    text-align: center;
-    font-size: 48px;
+.forum-page-title {
+  text-align: center;
+  font-size: 48px;
 }
 
-.forum-page-input-section{
-    display: flex;
-    align-items: center;
-    padding-left: 10%;
-
+.forum-page-input-section {
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
 }
 
-.forum-page-profile{
-    width: 78px;
-    height: 78px;
-    background: #E5E5E5;
-    border: 3px solid black; 
-    border-radius: 50%;
-    margin: 20px;
+.forum-page-profile {
+  width: 78px;
+  height: 78px;
+  background: #e5e5e5;
+  border: 3px solid black;
+  border-radius: 50%;
+  margin: 20px;
 }
 
-.forum-page-button{
-    width: 80%;
-    height: 59px;
-    text-align: left;
-    background: #F5F5F5;
-    border-radius: 10px;   
-    border: 1px solid #747474; 
-    font-size: 24px;
-    margin-left: 2%;
+.forum-page-button {
+  width: 80%;
+  height: 59px;
+  text-align: left;
+  background: #f5f5f5;
+  border-radius: 10px;
+  border: 1px solid #747474;
+  font-size: 24px;
+  margin-left: 2%;
 }
 
-.forum-page-discription-text{
-    padding-left: 10.5%;
-    font-size: 25px;
-    font-weight: bold;
+.forum-page-discription-text {
+  padding-left: 10.5%;
+  font-size: 25px;
+  font-weight: bold;
 }
 
-.forum-content-container{
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
+.forum-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
 }
 
-.forum-contnet-item{
-    text-align: center;
-    width: 80%;
-    height: 190px;
+.forum-contnet-item {
+  text-align: center;
+  width: 80%;
+  height: 190px;
 }
-
-

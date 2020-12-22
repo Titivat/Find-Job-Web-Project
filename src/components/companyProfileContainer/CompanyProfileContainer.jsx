@@ -1,4 +1,3 @@
-import { faStumbleuponCircle } from "@fortawesome/free-brands-svg-icons";
 import React, { Component } from "react";
 import "./CompanyProfileContainer.css";
 
