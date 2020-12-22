@@ -21,6 +21,8 @@
 
 .main-page-item2-forum-item-description{
     display: flex;
+    text-decoration: none;
+    color: #000000;
 }
 
 .main-page-item2-line{

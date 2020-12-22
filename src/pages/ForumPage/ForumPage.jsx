@@ -5,14 +5,14 @@ import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
 
 function ForumPage( props ){
-    const { forumName } = props 
+    const { forumName } = props.location
 
     return(
         <div>
             <Header isDisplay={ true }/>
 
             <div className="forum-page-container">
-                <h1 className="forum-page-title">Engineer forum</h1>
+                <h1 className="forum-page-title">{ forumName } forum</h1>
 
                 <div className="forum-page-input-section">
                     <ProfileIcon 
@@ -46,7 +46,7 @@ function ForumPage( props ){
                     </div>
 
                     <div className="forum-contnet-item">
-                        
+                        {/*dummy item*/}
                     </div>
 
                 </div>
