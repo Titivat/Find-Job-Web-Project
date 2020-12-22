@@ -8,6 +8,13 @@ import React, { Component } from 'react';
 
 class FindJobPage extends Component{
     state = {
+        comPanyDetail: {
+            compName: "PR & Social Media / Marketing",
+            compCity: "Bangkok, Bangkok City, Thailand",
+            compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
+            time: "1 month",
+            detail:''
+        },
         filter: "",
         jobType: "",
         data: [
@@ -66,16 +73,27 @@ class FindJobPage extends Component{
         this.setState({ filter: event.target.value });
     };
 
-    render() {
-        const { filter, data, maleChecked, select} = this.state;
+    displayStatus = (childData) => {
+        this.setState({ comPanyDetail: childData });
+    }
+
+    getObjectList =() => {
+        const { filter, data} = this.state;
         const lowercasedFilter = filter.toLowerCase();
 
         const filteredData = data.filter(item => {
 
         return Object.keys(item).some(key =>
             item[key].toLowerCase().includes(lowercasedFilter)
-        );
+            );
         });
+
+        return filteredData
+    }
+
+    render() {
+        const { comPanyDetail } = this.state
+        const { compName, compCity, compDetail, time, detail} = comPanyDetail
 
         return(
             <div className="findjob-page-overflow">
@@ -97,11 +115,12 @@ class FindJobPage extends Component{
                     </div>
                 
                     <div className="find-job-page-job-list-container">
-                        {filteredData.map(item => (
+                        { this.getObjectList().map(item => (
                             <div className="find-job-page-list-item">
                                 <JobDescriptionCard 
                                     haveButton = {false}
                                     key={item.compName}
+                                    clickToDisplay={ this.displayStatus }
                                     compCity={ item.compCity}
                                     compName={item.compName}
                                     compDetail={item.compDetail}
@@ -114,7 +133,12 @@ class FindJobPage extends Component{
                     </div>
 
                     <div   className="find-job-page-job-deatail-container">
-                        <FullJobDetailCard />
+                        <FullJobDetailCard 
+                            compName={ compName }
+                            compDetail={ compDetail }
+                            compCity={ compCity}
+                            time = { time }
+                        />
                     </div>
 
                 </div>

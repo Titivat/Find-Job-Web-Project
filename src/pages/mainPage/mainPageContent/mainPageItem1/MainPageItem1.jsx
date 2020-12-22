@@ -31,7 +31,9 @@ function MainPageItem1(){
                         
                         <img className="main-page-right-item-arrow-img" src={arrowImg}></img>
 
-                        <p className="main-page-right-item-text">Find jobs</p>
+                        <a href="/findJobPage">
+                            <p  className="main-page-right-item-text">Find jobs</p>
+                        </a>
                                             
                     </div>
                 </div>

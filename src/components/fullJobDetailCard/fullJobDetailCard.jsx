@@ -1,6 +1,7 @@
 import './fullJobDetailCard.css'
 
-function FullJobDetailCard(){
+function FullJobDetailCard( props ){
+    const {compName, compCity, compDetail, time} = props
 
     const detailList = ['Senniority level',
                   'Entry Level',
@@ -22,10 +23,10 @@ function FullJobDetailCard(){
         <div className="full-job-detail-card-container">
             <div className="full-job-detail-top-container">
                 <div className="full-job-detail-top-text">
-                    <p>PR & Social Media / Marketing</p>
-                    <p>Sharke Hand( Thailand ) Co.,Ltd.</p>
-                    <p>Bangkok, Bangkok City, Thailand</p>
-                    <p>1 month ago</p>
+                    <p>{compName}</p>
+                    <p>{compDetail}</p>
+                    <p>{compCity}</p>
+                    <p>{time}</p>
                 </div>
             </div>
 
@@ -35,7 +36,7 @@ function FullJobDetailCard(){
                 <p className="full-job-detail-top-text">Detail:</p>
 
                 <p className="full-job-detail-top-text">
-                    { ( detailList) }
+                    { jobDetail( detailList) }
                 </p>
             </div>
         </div>
