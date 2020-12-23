@@ -1,0 +1,71 @@
+.applicantContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #ea5455;
+  background: #ea5455;
+  border: 1px solid #2d4059;
+  box-sizing: border-box;
+  border-radius: 50px;
+  width: 80%;
+  /* height: 15em; */
+  overflow-y: auto;
+  position: relative;
+  margin-bottom: 3.5em;
+}
+
+.mediumFontSize {
+  font-size: 1.75em;
+}
+
+.userImageContainer {
+  width: 5%;
+  position: absolute;
+  left: 25px;
+  top: 10px;
+}
+
+.userProfileImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.textInfoContainer {
+  margin: 2.5em 0 2.5em 5em;
+}
+
+#acceptButton {
+  width: 10%;
+}
+
+.acceptButtonsContainer {
+  /* display: flex; */
+  margin: 0 0 2.5em 2.5em;
+}
+
+.acceptUserButtons {
+  margin-left: 2em;
+  font-size: 1.2em;
+  width: 20%;
+  padding: 1.2em;
+  border-radius: 7px;
+  transition: 1s;
+}
+
+#acceptButton:hover {
+  background-color: #3e8e41;
+  color: white;
+}
+
+#acceptButton {
+  color: #3e8e41;
+}
+
+#declineButton {
+  color: #5c1ad9;
+}
+
+#declineButton:hover {
+  background-color: #5c1ad9;
+  color: white;
+}

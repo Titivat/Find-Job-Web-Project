@@ -9,6 +9,7 @@ import Login from './pages/logIn/LogInPage.jsx';
 import MainPage from './pages/mainPage/MainPage.jsx';
 import SignUp from './pages/signUp/SignUpPage.jsx';
 import UserProfilePage from './pages/userProfilePage/UserProfilePage.jsx';
+import DisplayUsersPage from './pages/DisplayUsers/DisplayUsersPage.jsx';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signUp" component={SignUp} />
                 <Route exact path="/userProfilePage" component={UserProfilePage} />
+                <Route exact path="/displayUsersPage" component={DisplayUsersPage} />
             </Switch>
         </BrowserRouter>
   );
