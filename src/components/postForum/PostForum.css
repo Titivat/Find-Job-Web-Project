@@ -27,19 +27,51 @@
   .post-forum-title{
     text-align: center;
   }
-
+  
   .post-forum-input-container{
     display: flex;
     gap: 12px;
     flex-direction: column;
+    justify-content: center;
   }
-
+  
   .post-forum-input-item{
     border:none;
+    font-size: 30px;
+    width: 90%;
+    height: 100%;
+    margin-left: 5%;
+    border-radius: 10px;
+    font-family: Comfortaa; 
     background-color: #EA5455;
   }
 
+  ::-webkit-input-placeholder {
+    color: black;
+  }
+
+  .post-forum-input-item-top{
+    height:100px;
+    font-size: 30px;
+    
+  }
+
+  .post-forum-input-item-bottom{
+    height:150px;
+  }
+  
   .post-forum-button-container{
     display: flex;
+    height: 100%;
     justify-content: center;
+    gap: 5%;
+  }
+
+  .post-forum-button-style{
+    width: 35%;
+    height: 10%;
+    background: #EA5455;
+    border: 1px solid #EA5455;
+    box-sizing: border-box;
+    border-radius: 20px;
   }
