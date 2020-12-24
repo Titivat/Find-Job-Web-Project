@@ -1,12 +1,11 @@
 import React from "react";  
 import "./PostForum.css";  
 
-
-function postForum() {
-    console.log("I am click")
-}
 function Popup( props ){ 
-    const { closePopup } = props
+    const nameInput = React.createRef();
+    const valueInput = React.createRef();
+
+    const { closePopup, handleAddPost } = props
 
     return (  
         <div className='popup'>  
@@ -16,13 +15,20 @@ function Popup( props ){
                 <hr/>
 
                 <div className="post-forum-input-container">
-                    <input type="text" 
-                    placeholder="Title" className="post-forum-input-item 
-                               post-forum-input-item-top">
-                                
+                    <input 
+                        ref={ nameInput }
+                        type="text" 
+                        placeholder="Title" 
+                        className="post-forum-input-item 
+                               post-forum-input-item-top"
+                    >     
                     </input>
-                    <textarea type="text" placeholder="Description" className="post-forum-input-item
-                               post-forum-input-item-bottom"></textarea>
+                    <textarea 
+                        ref={ valueInput }
+                        type="text" 
+                        placeholder="Description" className="post-forum-input-item
+                                    post-forum-input-item-bottom">
+                    </textarea>
                 </div>
 
                 <hr/>
@@ -30,7 +36,13 @@ function Popup( props ){
                 <div className="post-forum-button-container">
                         <button 
                             className="post-forum-button-style"
-                            onClick={ () => { closePopup();                         postForum(); } }>
+                            onClick={ () => { 
+                                closePopup();                     
+                                handleAddPost( nameInput.current.value, 
+                                                valueInput.current.value 
+                                            ); 
+                            } }
+                        >
                             Post
                         </button> 
 

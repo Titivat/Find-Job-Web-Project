@@ -2,7 +2,7 @@ import './forum.css';
 import ProfileIcon from '../profileIcon/ProfileIcon.jsx'
 
 function Forum( props ){
-    const { profile, text, userId , backgroundColor } = props
+    const { profile, title, userId , backgroundColor } = props
 
     return(
         <div style={{backgroundColor: "#EA5455" }} className="forum-container">
@@ -14,7 +14,7 @@ function Forum( props ){
             </div>
 
             <div className="forum-content">
-                { text }
+                { title }
             </div>
         </div>
     );
