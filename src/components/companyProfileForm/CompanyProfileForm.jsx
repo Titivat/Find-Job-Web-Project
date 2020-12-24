@@ -24,6 +24,7 @@ class CompanyProfileForm extends Component {
       companyInfo: newProfile,
     });
   };
+
   render() {
     return (
       <div className="modal">
