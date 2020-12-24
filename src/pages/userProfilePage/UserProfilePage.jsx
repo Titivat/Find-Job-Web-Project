@@ -4,10 +4,13 @@ import Headers from "../../components/header/Header.jsx";
 import ProfileBar from "../../components/profileBar/ProfileBar.jsx";
 import JobDescriptionCard from "../../components/JobDescriptionCard/JobDescriptionCard.jsx";
 import UserProfileForm from "../../components/userProfileForm/UserProfileForm";
+import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 
 class UserProfilePage extends Component {
   constructor(props) {
     super(props);
+
+    this.fileUploader = React.createRef();
 
     this.state = {
       showEditProfilePopUp: false,
@@ -18,7 +21,7 @@ class UserProfilePage extends Component {
         seniority: "Internship",
         industries: "Software Engineer",
         skills: [],
-        resume: "https://web.facebook.com/?_rdc=1&_rdr",
+        resume: "",
       },
       applJobList: [{
         compName:"PR & Social Media / Marketing",
@@ -41,6 +44,30 @@ class UserProfilePage extends Component {
       userInfo: newUserProfile,
       showEditProfilePopUp: !this.state.showEditProfilePopUp,
     });
+  };
+
+  handleFileUpload = (e) => {
+    var file = e.target.files[0]
+    const newUserProfile = { ...this.state.userInfo};
+    newUserProfile.resume = file;
+    this.setState({
+      userInfo: newUserProfile
+    });
+
+    // let reader = new FileReader()
+    // reader.readAsDataURL(file)
+    // const newUserProfile = { ...this.state.userInfo}
+    
+    // reader.onload = () => {
+    //   newUserProfile.resume = reader.result;
+    //   this.setState({
+    //     userInfo: newUserProfile
+    //   })
+    // };
+    // reader.onerror = function (error) {
+    //   console.log('Error: ', error);
+    // }
+
   };
 
   toggleShowEditProfilePopUp = () => {
@@ -69,6 +96,16 @@ class UserProfilePage extends Component {
   render() {
     return (
       <div>
+        <a style={{display: "table-cell"}} href={ this.state.userInfo.resume} target="_blank">text</a>
+        <input
+        type="file"
+        accept=""
+        onChange={this.handleFileUpload}
+        ref={this.fileUploader}
+        style={{
+          display: "none"
+        }}
+      />
         <Headers />
 
         <div className="user-profile-page-container">
@@ -84,6 +121,7 @@ class UserProfilePage extends Component {
                 city="Bangkok"
                 seniority="intern"
                 industries="software enginear"
+                fileInputRef={this.fileUploader}
               />
             </div>
           </div>

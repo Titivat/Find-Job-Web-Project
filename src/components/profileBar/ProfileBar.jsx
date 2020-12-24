@@ -29,7 +29,8 @@ function ProfileBar(props) {
 
         <div className="profile-bar-right-item">
           {userNameProfile.map((item) => checkEmpty(item))}
-          <input type="file" className="profile-bar-right-item-btn"></input>
+          {/* <input type="file" className="profile-bar-right-item-btn"></input> */}
+          <button onClick={ () => props.fileInputRef.current.click()}>+</button>
 
           {checkEmpty(skillsString)}
         </div>
