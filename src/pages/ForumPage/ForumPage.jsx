@@ -77,14 +77,15 @@ function ForumPage( props ){
                     />
           
                     <button  
-                        onClick={ () => togglePopup()}                    className='forum-page-button'>What is in your mind?
+                        onClick={ () => togglePopup()}                   
+                        className='forum-page-button'>What is in your mind?
                     </button>
                 </div>
 
                 <p className="forum-page-discription-text">Post:</p>
 
                 <div  className="forum-content-container">
-                    { postList.map( (item) => {
+                    { postList.map( (item, index) => {
                         return <div className="forum-contnet-item">
                                     <Forum 
                                         userId={ item.userId }
