@@ -2,7 +2,7 @@ import "./ProfileBar.css";
 
 function ProfileBar(props) {
   let skills = props.user.skills.map((skill) => skill.skill);
-  let skillsString = skills.join(" ");
+  let skillsString = skills.join(", ");
 
   const userNameProfile = [
     props.user.username,
@@ -10,7 +10,6 @@ function ProfileBar(props) {
     props.user.city,
     props.user.seniority,
     props.user.industries,
-    skillsString,
   ];
 
   return (
@@ -23,15 +22,16 @@ function ProfileBar(props) {
             <p>city:</p>
             <p>seniority:</p>
             <p>industries:</p>
-            <p>tag:</p>
             <p>resume:</p>
+            <p style={{ marginTop: "41px" }}>tag:</p>
           </div>
         </div>
 
         <div className="profile-bar-right-item">
           {userNameProfile.map((item) => checkEmpty(item))}
+          <input type="file" className="profile-bar-right-item-btn"></input>
 
-          <button className="profile-bar-right-item-btn">+</button>
+          {checkEmpty(skillsString)}
         </div>
       </div>
       <p className="profile-bar-button-container">
