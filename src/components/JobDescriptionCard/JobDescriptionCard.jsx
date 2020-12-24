@@ -2,7 +2,7 @@ import './JobDescriptionCard.css'
 import ProfileIcon from '../profileIcon/ProfileIcon.jsx'
 
 function JobDescriptionCard( props ){
-    const { compName, compDetail, compCity, status, time, haveButton , backgroundColor , clickToDisplay} = props;
+    const { compName, compDetail, compCity, status, time, haveButton , backgroundColor , clickToDisplay, handleDeleate} = props;
 
     const container = {
         display: "flex",
@@ -22,9 +22,11 @@ function JobDescriptionCard( props ){
     
     return(
         <div style={ container } onClick={ () => clickToDisplay(comonentValue)}>
-            <p className="job-description-card-profile"><ProfileIcon 
-                radius={'20px'}
-                size={['57px','56px']}/>
+            <p className="job-description-card-profile">
+                <ProfileIcon 
+                    radius={'20px'}
+                    size={['57px','56px']}
+                />
             </p>
 
             <p className="job-description-card-detail">
@@ -38,7 +40,12 @@ function JobDescriptionCard( props ){
                 </div>
             </p>
             
-            { (haveButton) && <button className="job-description-button">x</button> }
+            { (haveButton) && 
+                <button 
+                    onClick={() => handleDeleate(comonentValue)}
+                    className="job-description-button">x
+                </button> 
+            }
         </div>
     );
 }

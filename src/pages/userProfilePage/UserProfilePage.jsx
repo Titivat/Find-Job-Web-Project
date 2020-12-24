@@ -20,6 +20,19 @@ class UserProfilePage extends Component {
         skills: [],
         resume: "https://web.facebook.com/?_rdc=1&_rdr",
       },
+      applJobList: [{
+        compName:"PR & Social Media / Marketing",
+        compDetail:"Sharke Hand( Thailand ) Co.,Ltd.",
+        compCity:"Bangkok, Bangkok City, Thailand",
+        status:"pending",
+        time:"1 month"
+      },{
+        compName:"Win - Win (Asia) Co. Ltd.",
+        compCity:"Bangkok, Bangkok City, Thailand",
+        compDetail:"English data entry officer",  
+        status:"pending",
+        time:"1 month"
+      }]
     };
   }
 
@@ -34,6 +47,24 @@ class UserProfilePage extends Component {
     console.log("Toggling");
     this.setState({ showEditProfilePopUp: !this.state.showEditProfilePopUp });
   };
+
+  handleDeleate = ( companyDetail ) => {
+    
+    const newApplyJobList = this.state.applJobList.filter(item => {
+
+      if( item.compName === companyDetail.compName ){
+        return false
+      }
+
+      return item
+    });
+
+    this.setState( {applJobList : newApplyJobList })
+  }
+
+  clickToDisplay = ( compDetail ) =>{
+
+  }
 
   render() {
     return (
@@ -61,41 +92,38 @@ class UserProfilePage extends Component {
             <p className="user-profile-head-font">Apply Job</p>
 
             <div className="user-profile-jobs-container">
-              <div className="item">
-                <JobDescriptionCard
-                  haveButton={true}
-                  compName="PR & Social Media / Marketing"
-                  compDetail="Sharke Hand( Thailand ) Co.,Ltd."
-                  compCity="Bangkok, Bangkok City, Thailand"
-                  status="pending"
-                  time="1 month"
-                  backgroundColor="#2D4059"
-                />
-              </div>
+              { this.state.applJobList.map( (item) => {
+                  return  <div className="item">
+                            <JobDescriptionCard
+                              key={ item.compName }
+                              haveButton={true}
+                              clickToDisplay = { this.clickToDisplay }
+                              handleDeleate = { this.handleDeleate }
+                              compName={ item.compName }
+                              compDetail={item.compDetail}
+                              compCity={item.compCity }
+                              status={item.status }
+                              time={item.time }
+                              backgroundColor="#2D4059"
+                            />
+                          </div>
+                })
+              }
 
               <div className="item">
-                <JobDescriptionCard
-                  haveButton={true}
-                  compName="PR & Social Media / Marketing"
-                  compCity="Bangkok, Bangkok City, Thailand"
-                  compDetail="Sharke Hand( Thailand ) Co.,Ltd."
-                  status="pending"
-                  time="1 month"
-                  backgroundColor="#2D4059"
-                />
+                <div className="dummy-square">
+                </div>
               </div>
 
-              <div className="item">
-                <div className="dummy-square"></div>
+                {this.state.showEditProfilePopUp ? (
+                  <UserProfileForm
+                    user={this.state.userInfo}
+                    onCancel={this.toggleShowEditProfilePopUp}
+                    onEditProfile={this.editProfile}
+                  />
+                ) : null}
               </div>
-              {this.state.showEditProfilePopUp ? (
-                <UserProfileForm
-                  user={this.state.userInfo}
-                  onCancel={this.toggleShowEditProfilePopUp}
-                  onEditProfile={this.editProfile}
-                />
-              ) : null}
-            </div>
+
           </div>
         </div>
       </div>
