@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'posts.apps.PostsConfig',
     'forums.apps.ForumsConfig',
-    'positions.apps.PositionsConfig'
+    'positions.apps.PositionsConfig',
+    'appliedjobs.apps.AppliedjobsConfig',
 ]
 
 REST_FRAMEWORK = {
