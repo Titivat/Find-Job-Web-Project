@@ -32,5 +32,5 @@ api/position/           GET
 api/position/<int:pk>/  GET/POST/PUT/DELETE
 
 api/post/               GET
-api/post/forum/<forum>  (integer) 1.Engineer 2.Business 3.Design  GET
+api/post/forum/<forum>  (integer)GET
 api/post/<int:pk>/      GET/POST/PUT/DELETE
