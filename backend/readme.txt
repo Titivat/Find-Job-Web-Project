@@ -19,6 +19,8 @@ api/v1/dj-rest-auth/
 api/v1/dj-rest-auth/registration/
 
 
+api/user/               GET/POST
+
 api/employee/           GET/POST
 api/employee/<int:pk>/  GET/POST/PUT/DELETE
 
