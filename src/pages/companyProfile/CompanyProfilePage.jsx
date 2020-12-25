@@ -5,6 +5,7 @@ import testingCompanyImage from "../../images/companyLogo.jpg";
 import CreatedJob from "../../components/createdJob/CreatedJob";
 import JobForm from "../../components/jobForm/JobForm";
 import CompanyProfileForm from "../../components/companyProfileForm/CompanyProfileForm";
+import Api from "../../Api";
 
 class CompanyProfilePage extends Component {
   constructor(props) {
@@ -33,11 +34,9 @@ class CompanyProfilePage extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/api/position/")
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      });
+    const apiCaller = new Api();
+    let result = apiCaller.get("position");
+    console.log(result);
   }
 
   handleDelete = (job) => {
