@@ -32,5 +32,5 @@ api/position/           GET
 api/position/<int:pk>/  GET/POST/PUT/DELETE
 
 api/post/               GET
-api/post/forum/<forum>  (integer)GET
+api/post/?forum=<int:forum_id> (integer)GET
 api/post/<int:pk>/      GET/POST/PUT/DELETE
