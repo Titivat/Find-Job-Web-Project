@@ -5,8 +5,15 @@ import SearchBar from '../../components/searchBar/SearchBar.jsx'
 import JobDescriptionCard from '../../components/JobDescriptionCard/JobDescriptionCard.jsx'
 import FullJobDetailCard from '../../components/fullJobDetailCard/fullJobDetailCard.jsx'
 import React, { Component } from 'react';
+import { faWizardsOfTheCoast } from "@fortawesome/free-brands-svg-icons";
 
 class FindJobPage extends Component{
+
+    constructor( props ){
+        super( props )
+        this.count = 0
+    }
+
     state = {
         comPanyDetail: {
             compName: "PR & Social Media / Marketing",
@@ -90,7 +97,7 @@ class FindJobPage extends Component{
 
         return filteredData
     }
-
+    
     render() {
         const { comPanyDetail } = this.state
         const { compName, compCity, compDetail, time, detail} = comPanyDetail
@@ -115,7 +122,8 @@ class FindJobPage extends Component{
                     </div>
                 
                     <div className="find-job-page-job-list-container">
-                        { this.getObjectList().map(item => (
+                        
+                        { this.getObjectList().map((item, index) => (
                             <div className="find-job-page-list-item">
                                 <JobDescriptionCard 
                                     haveButton = {false}
@@ -125,8 +133,9 @@ class FindJobPage extends Component{
                                     compName={item.compName}
                                     compDetail={item.compDetail}
                                     time = {item.time}
-                                    backgroundColor="#FFFFFF"
+                                    backgroundColor={"white"}
                                 />
+    
                             </div>
                             ))
                         }
