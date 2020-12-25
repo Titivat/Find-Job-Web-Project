@@ -1,16 +1,16 @@
 class Api {
     constructor() {
-        this.basePath = "https://horrible-turkey-61.loca.lt";
+        this.basePath = "https://horrible-turkey-61.loca.lt/api";
     }
 
     get = async (path) => {
-        const response = await fetch('http://localhost:8000/api/position/');
+        const response = await fetch(this.basePath + path);
         const result = await response.json();
         return result;
     }
 
     set = async (path, method, body) => {
-        const response = await fetch(`http://localhost:8000/api/${path}`, {
+        const response = await fetch((this.basePath + path), {
             method: method,
             body: body, // string or object
             headers: {
