@@ -4,56 +4,21 @@ import Header from '../../components/header/Header.jsx';
 import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
 import Api from '../../Api.js'
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+
 
 function ForumPage( props ){
-    
-    var count = 0;
-    
-    const [ isPop, setPop] = useState( false );
+    let count = 0;
+
+    const [ isPop, setIsPop] = useState( false );
 
     const { forumName } = props.location
     const forumNumber = forumNameToId( forumName )
 
-    getPostList()
     const userId = null
 
-    const [postList, setPostList] = useState([{
-            title: 'Build a Pharmacy Inventory manager with Django.',
-            userId:'123',
-            description: "bulid a pharmacy is easy"
-        },
-        {
-            title: 'A tips for a good interview',
-            userId:'456',
-            description: "be prepair"
-        },
-        {
-            title: 'React server component',
-            userId:'789',
-            description: "easy to bulid component"
-        },
-        {
-            title: 'How the web is really built',
-            userId:'12',
-            description: "from beging to the end"
-        },
-        {
-            title: 'Understand peer dependecies',
-            userId:'568',
-            description: "from basic"
-        },
-        {
-            title: 'Frontend Talk',
-            userId:'104',
-            description: "road map to fontend"
-        }
-    ])
-
-    function getPostList() {
-        console.log( Api.get(`/api/post/?forum=${forumNumber}`))
-
-    }
+    const [postList, setPostList] = useState([])
 
     function forumNameToId( name ) {
         if( name === "Enginear"){
@@ -66,8 +31,33 @@ function ForumPage( props ){
         
     }
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            fetch(`https://horrible-turkey-61.loca.lt/api/post/?forum=${forumNumber}`,
+            {
+                method: "GET",
+                headers: new Headers({'Content-Type': 'application/json'})
+            }
+            ).then(res => res.json())
+            .then(response => {
+                const postList = []
+
+                response.map( (item) => {
+                    const newElement = {
+                        title: item.title,
+                        userId: item.issuer,
+                        description: item.desc
+                    }
+                    postList.push( newElement )
+                })
+                console.log( postList ) 
+                setPostList( postList )
+            }).catch(error => console.log(error));
+        }, 1 );
+    });
+
     function togglePopup(){ 
-        setPop( !isPop ) 
+        setIsPop( !isPop ) 
     } 
     
     function handleAddPost( name, value){
