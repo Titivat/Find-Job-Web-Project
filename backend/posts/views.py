@@ -8,8 +8,8 @@ class PostFromSameForumList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
 
     def get_queryset(self):
-        forum = self.kwargs['forum']
-        return Post.objects.filter(post__forum=forum.forumType)
+        # forum = self.kwargs['forum']
+        return Post.objects.filter(forum=self.kwargs['forum'])
 
 
 class PostList(generics.ListCreateAPIView):
