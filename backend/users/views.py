@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import User, Company, Employee
-from rest_framework import generics
+from rest_framework import generics, status
 from .serializers import EmployeeSerializer, CompanySerializer
+from requests.models import Response
 
 
 class CompanyList(generics.ListCreateAPIView):

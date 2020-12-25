@@ -7,16 +7,14 @@ class UserEMSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'name', 'last_name',  'email',
-                  'is_staff', 'is_active', 'date_joined',
-                  'is_superuser', 'city', 'type', )
+                  'city', 'type', )
 
 
 class UserCOMSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'name', 'email',
-                  'is_staff', 'is_active', 'date_joined',
-                  'is_superuser', 'city', 'type', )
+                  'city', 'type', )
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -24,7 +22,38 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ('id', 'user', 'senority', 'industry', 'skills',)
+        fields = ('id', 'user', 'senority', 'industry', 'skills')
+
+    def create(self, validated_data):
+        user_data = validated_data.pop('user')
+        user = User.objects.create(**user_data)
+        validated_data['user'] = user
+        employee = Employee.objects.create(**validated_data)
+
+        return employee
+
+    # def update(self, instance, validated_data):
+    #     user_data = validated_data.pop('user')
+    #     user = instance.user
+
+    #     # Employee data
+    #     instance.id = validated_data.get('id', instance.id)
+    #     instance.senority = validated_data.get('senority', instance.senority)
+    #     instance.industry = validated_data.get('industry', instance.industry)
+    #     instance.skills = validated_data.get('skills', instance.skills)
+    #     instance.save()
+
+    #     # user
+    #     user.id = validated_data.get('id', user.id)
+    #     user.username = validated_data.get('username', user.username)
+    #     user.name = validated_data.get('name', user.name)
+    #     user.last_name = validated_data.get('last_name', user.last_name)
+    #     user.email = validated_data.get('email', user.email)
+    #     user.city = validated_data.get('city', user.city)
+    #     user.type = validated_data.get('type', user.type)
+    #     user.save()
+
+    #     return instance
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -34,6 +63,13 @@ class CompanySerializer(serializers.ModelSerializer):
         model = Company
         fields = ('id', 'user', 'desc', 'address_line', 'logo',)
 
+    def create(self, validated_data):
+        user_data = validated_data.pop('user')
+        user = User.objects.create(**user_data)
+        validated_data['user'] = user
+        company = Company.objects.create(**validated_data)
+
+        return company
 
 # class LoginSerializer(serializers.Serializer):
 #     username = serializers.CharField()
