@@ -2,6 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import AppliedJob
 from .serializers import AppliedJobSerializer
+from rest_framework import filters
+from positions.models import Position
 
 
 class AppliedJobList(generics.ListCreateAPIView):
@@ -9,17 +11,23 @@ class AppliedJobList(generics.ListCreateAPIView):
     serializer_class = AppliedJobSerializer
 
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+class AppliedJobDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = AppliedJob.objects.all()
     serializer_class = AppliedJobSerializer
 
 
-class AppliedJobUserViewList(generics.ListAPIView):
+class AppliedJobEmployeeViewList(generics.ListAPIView):
     serializer_class = AppliedJobSerializer
-    filter_backends = [DjangoFilterBackend]
 
     def get_queryset(self):
-        user_type = self.kwargs['user_type']  # 'employee' or 'company'
-        if str(user_type) == "employee":
-            return AppliedJob.objects.filter(employee=self.kwargs['employee'])
-        # elif str(user_type) == "company":
+        user_id = self.kwargs['user_id']
+        return AppliedJob.objects.filter(employee=user_id)
+
+
+class AppliedJobCompanyViewList(generics.ListAPIView):
+    serializer_class = AppliedJobSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        position_id = Position.objects.filter(id=user_id)
+        return AppliedJob.objects.filter(position=position_id)

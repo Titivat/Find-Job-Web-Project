@@ -32,6 +32,6 @@ urlpatterns = [
     path('api/forum/', include('forums.urls')),
     path('api/position/', include('positions.urls')),
     path('api/post/', include('posts.urls')),
-    # path('api/appliedjob/', include('appliedjobs.urls')),
+    path('api/appliedjob/', include('appliedjobs.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
