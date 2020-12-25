@@ -32,6 +32,14 @@ class CompanyProfilePage extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch("http://localhost:8000/api/position/")
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      });
+  }
+
   handleDelete = (job) => {
     console.log("Deleting job");
     console.log(job);
