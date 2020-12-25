@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 class Api {
     constructor() {
         this.basePath = "https://horrible-turkey-61.loca.lt/api";
@@ -21,3 +23,5 @@ class Api {
         return result;
     }
 }
+
+export default Api
