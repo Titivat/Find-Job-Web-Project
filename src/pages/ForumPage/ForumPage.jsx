@@ -3,9 +3,11 @@ import PopUpPostForum from '../../components/postForum/PopUpPostForum.jsx';
 import Header from '../../components/header/Header.jsx';
 import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
+import Api from '../../Api.js'
 import React, { useState } from 'react';
 
 function ForumPage( props ){
+    
     var count = 0;
     
     const [ isPop, setPop] = useState( false );
@@ -13,6 +15,7 @@ function ForumPage( props ){
     const { forumName } = props.location
     const forumNumber = forumNameToId( forumName )
 
+    getPostList()
     const userId = null
 
     const [postList, setPostList] = useState([{
@@ -46,6 +49,11 @@ function ForumPage( props ){
             description: "road map to fontend"
         }
     ])
+
+    function getPostList() {
+        console.log( Api.get(`/api/post/?forum=${forumNumber}`))
+
+    }
 
     function forumNameToId( name ) {
         if( name === "Enginear"){
