@@ -11,7 +11,7 @@ function Header( props ){
                 <a href="/"><img alt="description of image" href="#" className="header-left-img" src={logo}></img ></a>
 
                 <div className="header-left-text">
-                    <a href="/">job spot </a>
+                    <a className="header-no-display-a" href="/">job spot </a>
                 </div>
             </div>
 
@@ -30,12 +30,12 @@ function DisplaySignUp( props  ){
 
     return ( ( isDisplay )  ? 
               <div>
-                <a href="/login">sign in</a> 
+                <a className="header-no-display-a" href="/login">sign in</a> 
                 <a> &nbsp; | &nbsp; </a>
-                <a href="/signUp">sign up</a>
+                <a className="header-no-display-a" href="/signUp">sign up</a>
               </div>
               : 
-              <div><a href="/">Profile</a></div>
+              <div><a className="header-no-display-a" href="/">Profile</a></div>
               
     );
 }
