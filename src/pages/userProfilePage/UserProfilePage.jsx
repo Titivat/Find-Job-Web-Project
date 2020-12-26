@@ -96,7 +96,6 @@ class UserProfilePage extends Component {
   render() {
     return (
       <div>
-        <a style={{display: "table-cell"}} href={ this.state.userInfo.resume} target="_blank">text</a>
         <input
         type="file"
         accept=""
