@@ -5,6 +5,7 @@ import testingCompanyImage from "../../images/companyLogo.jpg";
 import CreatedJob from "../../components/createdJob/CreatedJob";
 import JobForm from "../../components/jobForm/JobForm";
 import CompanyProfileForm from "../../components/companyProfileForm/CompanyProfileForm";
+import Header from '../../components/header/Header.jsx'
 
 class CompanyProfilePage extends Component {
   constructor(props) {
@@ -118,6 +119,7 @@ class CompanyProfilePage extends Component {
   render() {
     return (
       <React.Fragment>
+        <Header isDisplay={false}/>
         <div className={"mainAreaContainer"} id="companyProfileContainer">
           <div className="profileSection">
             <h1 className="comfortaa">Company Profile</h1>

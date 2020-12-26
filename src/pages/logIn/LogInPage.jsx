@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './LogInPage.css';
 import redCurveImage from '../../images/redCurve.png';
 import personImage from '../../images/personImage.png';
+import Header from '../../components/header/Header.jsx'
 import axios from 'axios';
 
 class LogInPage extends Component {
@@ -28,7 +29,6 @@ class LogInPage extends Component {
             method: 'get',
             headers: { 'Content-Type': 'application/json'},
             url: `${this.urlPath}/api/login/${this.state.email}/${this.state.password}/`,
-            data: sentData
         }).then(response => { 
             const type = response.type
 
@@ -39,7 +39,7 @@ class LogInPage extends Component {
             }
         })
         .catch(error => {
-            alert("your email or username or name is alredy taken");
+            alert("username or password is wrong");
             console.log(`error: ${error.response}`)
         });    
     }
@@ -47,6 +47,7 @@ class LogInPage extends Component {
     render() { 
         return (
             <React.Fragment>
+                <Header isDisplay={false} />
                 <div id="mainAreaBackground">
                     {/* <img src={redCurveImage} id="redCurveImage"/> */}
                     <div className="mainAreaContainer">

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./SignUpPage.css";
 import signUpImage from "../../images/signUpImage.jpg";
+import Header from '../../components/header/Header.jsx'
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class SignUpPage extends Component {
   render() {
     return (
       <div>
+        <Header isDisplay={false} />
         <div className="mainArea">
           <div className="leftHalf">
             <h1 className="quote">
