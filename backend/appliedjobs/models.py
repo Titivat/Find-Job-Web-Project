@@ -18,7 +18,7 @@ class AppliedJob(models.Model):
         verbose_name_plural = "AppliedJobs"
 
     def __str__(self):
-        return "employee:" + str(self.employee.name) + "Applied for:" + str(self.position)
+        return "employee:" + str(self.employee) + "Applied for:" + str(self.position)
 
     def get_absolute_url(self):
         return reverse("AppliedJob_detail", kwargs={"pk": self.pk})

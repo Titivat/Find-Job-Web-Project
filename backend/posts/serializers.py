@@ -9,3 +9,11 @@ class PostSerializer(serializers.ModelSerializer):
 
         fields = ('id', 'issuer', 'title', 'forum',
                   'desc', 'created_at', 'updated_at')
+
+# class PostSerializer(serializers.HyperlinkedIdentityField):
+#     url = ParameterisedHyperlinkedIdentityField()
+#     class Meta:
+#         model = Post
+
+#         fields = ('id', 'issuer', 'title', 'forum',
+#                   'desc', 'created_at', 'updated_at')
