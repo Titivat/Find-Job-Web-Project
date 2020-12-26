@@ -4,13 +4,21 @@ from .models import Position
 from .serializers import PositionSerializer
 
 # search
-from rest_framework import filters
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class PositionList(generics.ListCreateAPIView):
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
-    filter_backends = [filters.SearchFilter]
+
+
+class PositionSearch(generics.ListCreateAPIView):
+    queryset = Position.objects.all()
+    serializer_class = PositionSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['title', 'desc', 'senority',
+                        'jobtype', 'industry', 'company']
 
 
 class PositionDetail(generics.RetrieveUpdateDestroyAPIView):
