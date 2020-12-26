@@ -9,8 +9,8 @@ urlpatterns = [
     # path('company/(?P<user_id>.+)/', AppliedJobCompanyViewList.as_view(),
     #      name='Applied Job view for Company'),
 
-    path('employee/<int:pk>/', AppliedJobEmployeeViewList.as_view(),
+    path('employee/<int:employee_id>/', AppliedJobEmployeeViewList.as_view(),
          name='Applied Job view for Employee'),
-    path('company/<int:pk>/', AppliedJobCompanyViewList.as_view(),
+    path('company/<int:company_id>/', AppliedJobCompanyViewList.as_view(),
          name='Applied Job view for Company'),
 ]

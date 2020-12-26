@@ -37,3 +37,8 @@ api/position/company/<int:company_id>/ GET/
 api/post/               GET/POST
 api/post/forum/<int:forum_id> GET   
 api/post/<int:pk>/      GET/POST/PUT/DELETE
+
+api/appliedjob/             GET/POST
+api/appliedjob/<int:pk>/    GET/POST/PUT/DELETE
+api/appliedjob/company/<int:company_id>     GET/
+api/appliedjob/employee/<int:employee_id>   GET/

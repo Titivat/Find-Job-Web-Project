@@ -16,7 +16,7 @@ class User(AbstractUser):
                             choices=Types.choices, default=BASE_USER_TYPE)
     name = models.CharField(max_length=200, blank=False, null=False)
     email = models.EmailField(max_length=254, unique=True)
-    city = models.CharField(max_length=50)
+    city = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.username
@@ -41,8 +41,9 @@ class Employee(models.Model):
     user = models.OneToOneField(
         User, verbose_name=_("user"), on_delete=models.CASCADE)
     senority = models.CharField(_("Senority"), max_length=10,
-                                choices=SenorityType.choices, default=SenorityType.INTERN)
-    industry = models.CharField(_("Industry"), max_length=50)
+                                choices=SenorityType.choices, default=SenorityType.INTERN, blank=True, null=True)
+    industry = models.CharField(
+        _("Industry"), max_length=50, blank=True, null=True)
     skills = ArrayField(base_field=models.CharField(
         _("Skill-tags"), max_length=200), blank=True, null=True)
     objects = EmployeeManager()
