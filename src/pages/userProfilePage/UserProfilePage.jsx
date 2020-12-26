@@ -6,6 +6,8 @@ import JobDescriptionCard from "../../components/JobDescriptionCard/JobDescripti
 import UserProfileForm from "../../components/userProfileForm/UserProfileForm";
 import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 
+const URL = "https://clever-parrot-62.loca.lt/api/";
+
 class UserProfilePage extends Component {
   constructor(props) {
     super(props);
@@ -23,21 +25,73 @@ class UserProfilePage extends Component {
         skills: [],
         resume: "",
       },
-      applJobList: [{
-        compName:"PR & Social Media / Marketing",
-        compDetail:"Sharke Hand( Thailand ) Co.,Ltd.",
-        compCity:"Bangkok, Bangkok City, Thailand",
-        status:"pending",
-        time:"1 month"
-      },{
-        compName:"Win - Win (Asia) Co. Ltd.",
-        compCity:"Bangkok, Bangkok City, Thailand",
-        compDetail:"English data entry officer",  
-        status:"pending",
-        time:"1 month"
-      }]
+      applJobList: [
+        {
+          compName: "PR & Social Media / Marketing",
+          compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          status: "pending",
+          time: "1 month",
+        },
+        {
+          compName: "Win - Win (Asia) Co. Ltd.",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "English data entry officer",
+          status: "pending",
+          time: "1 month",
+        },
+      ],
     };
   }
+
+  componentDidMount() {
+    this.setUp();
+  }
+
+  setUp = async () => {
+    console.log(URL + "/employee/15");
+    const userResponse = await fetch(URL + "employee/15");
+    const appliedJobResponse = await fetch(URL + "appliedjob/employee/15");
+
+    const user = await userResponse.json();
+    const appliedJobs = await appliedJobResponse.json();
+
+    const userInfo = {
+      username: user.user.username,
+      email: user.user.email,
+      city: user.user.city,
+      seniority: user.senority,
+      industries: user.industry,
+      skills: [],
+      resume: "",
+    };
+
+    const appliedJobsList = [];
+
+    appliedJobs.map((appliedJob, index) => {
+      const job = {
+        compName: appliedJob.position.title,
+        compDetail: appliedJob.position.desc,
+        compCity: appliedJob.position.company.user.city,
+        status: appliedJob.is_accepted,
+        time: appliedJob.created_at,
+      };
+
+      appliedJobsList.push(job);
+    });
+
+    let skillsList = [];
+
+    if (user.skills) {
+      for (let i = 0; i < user.skills.length; i++) {
+        skillsList.push({ id: i, skill: user.skills[i] });
+      }
+    }
+
+    userInfo.skills = skillsList;
+
+    this.setState({ userInfo, applJobList: appliedJobsList });
+  };
 
   editProfile = (newUserProfile) => {
     this.setState({
@@ -47,17 +101,17 @@ class UserProfilePage extends Component {
   };
 
   handleFileUpload = (e) => {
-    var file = e.target.files[0]
-    const newUserProfile = { ...this.state.userInfo};
+    var file = e.target.files[0];
+    const newUserProfile = { ...this.state.userInfo };
     newUserProfile.resume = file;
     this.setState({
-      userInfo: newUserProfile
+      userInfo: newUserProfile,
     });
 
     // let reader = new FileReader()
     // reader.readAsDataURL(file)
     // const newUserProfile = { ...this.state.userInfo}
-    
+
     // reader.onload = () => {
     //   newUserProfile.resume = reader.result;
     //   this.setState({
@@ -67,45 +121,45 @@ class UserProfilePage extends Component {
     // reader.onerror = function (error) {
     //   console.log('Error: ', error);
     // }
-
   };
 
   toggleShowEditProfilePopUp = () => {
-    console.log("Toggling");
     this.setState({ showEditProfilePopUp: !this.state.showEditProfilePopUp });
   };
 
-  handleDeleate = ( companyDetail ) => {
-    
-    const newApplyJobList = this.state.applJobList.filter(item => {
-
-      if( item.compName === companyDetail.compName ){
-        return false
+  handleDeleate = (companyDetail) => {
+    const newApplyJobList = this.state.applJobList.filter((item) => {
+      if (item.compName === companyDetail.compName) {
+        return false;
       }
 
-      return item
+      return item;
     });
 
-    this.setState( {applJobList : newApplyJobList })
-  }
+    this.setState({ applJobList: newApplyJobList });
+  };
 
-  clickToDisplay = ( compDetail ) =>{
-
-  }
+  clickToDisplay = (compDetail) => {};
 
   render() {
     return (
       <div>
-        <a style={{display: "table-cell"}} href={ this.state.userInfo.resume} target="_blank">text</a>
+        <a
+          style={{ display: "table-cell" }}
+          href={this.state.userInfo.resume}
+          target="_blank"
+        >
+          text
+        </a>
         <input
-        type="file"
-        accept=""
-        onChange={this.handleFileUpload}
-        ref={this.fileUploader}
-        style={{
-          display: "none"
-        }}
-      />
+          type="file"
+          accept=""
+          onChange={this.handleFileUpload}
+          ref={this.fileUploader}
+          style={{
+            display: "none",
+          }}
+        />
         <Headers />
 
         <div className="user-profile-page-container">
@@ -130,38 +184,38 @@ class UserProfilePage extends Component {
             <p className="user-profile-head-font">Apply Job</p>
 
             <div className="user-profile-jobs-container">
-              { this.state.applJobList.map( (item) => {
-                  return  <div className="item">
-                            <JobDescriptionCard
-                              key={ item.compName }
-                              haveButton={true}
-                              clickToDisplay = { this.clickToDisplay }
-                              handleDeleate = { this.handleDeleate }
-                              compName={ item.compName }
-                              compDetail={item.compDetail}
-                              compCity={item.compCity }
-                              status={item.status }
-                              time={item.time }
-                              backgroundColor="#2D4059"
-                            />
-                          </div>
-                })
-              }
+              {this.state.applJobList.map((item) => {
+                console.log(item);
+                return (
+                  <div className="item">
+                    <JobDescriptionCard
+                      key={item.compName}
+                      haveButton={true}
+                      clickToDisplay={this.clickToDisplay}
+                      handleDeleate={this.handleDeleate}
+                      compName={item.compName}
+                      compDetail={item.compDetail}
+                      compCity={item.compCity}
+                      status={item.status}
+                      time={item.time}
+                      backgroundColor="#2D4059"
+                    />
+                  </div>
+                );
+              })}
 
               <div className="item">
-                <div className="dummy-square">
-                </div>
+                <div className="dummy-square"></div>
               </div>
 
-                {this.state.showEditProfilePopUp ? (
-                  <UserProfileForm
-                    user={this.state.userInfo}
-                    onCancel={this.toggleShowEditProfilePopUp}
-                    onEditProfile={this.editProfile}
-                  />
-                ) : null}
-              </div>
-
+              {this.state.showEditProfilePopUp ? (
+                <UserProfileForm
+                  user={this.state.userInfo}
+                  onCancel={this.toggleShowEditProfilePopUp}
+                  onEditProfile={this.editProfile}
+                />
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

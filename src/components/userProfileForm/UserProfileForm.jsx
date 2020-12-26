@@ -179,6 +179,45 @@ class UserProfileForm extends Component {
                 defaultValue={this.state.user.email}
               />
             </div>
+            <div className="inputRowContainer">
+              <label htmlFor="city" className="comfortaa inputLabel">
+                city
+              </label>
+              <input
+                onChange={this.handleInputChange}
+                name="city"
+                type="text"
+                id="city"
+                className="comfortaa input"
+                defaultValue={this.state.user.city}
+              />
+            </div>
+            <div className="inputRowContainer">
+              <label htmlFor="seniority" className="comfortaa inputLabel">
+                seniority
+              </label>
+              <input
+                onChange={this.handleInputChange}
+                name="seniority"
+                type="text"
+                id="seniority"
+                className="comfortaa input"
+                defaultValue={this.state.user.seniority}
+              />
+            </div>
+            <div className="inputRowContainer">
+              <label htmlFor="industries" className="comfortaa inputLabel">
+                industries
+              </label>
+              <input
+                onChange={this.handleInputChange}
+                name="industries"
+                type="text"
+                id="industries"
+                className="comfortaa input"
+                defaultValue={this.state.user.industries}
+              />
+            </div>
             <TagInputs
               onEnter={this.handleEnter}
               onDoubleClick={this.handleDoubleClick}

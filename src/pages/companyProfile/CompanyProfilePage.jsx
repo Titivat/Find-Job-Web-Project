@@ -243,8 +243,8 @@ class CompanyProfilePage extends Component {
                 key={index}
                 job={createdJob}
                 jobPosition={createdJob.jobFunction}
-                companyName={this.companyName}
-                jobLocation={this.jobLocation}
+                companyName={this.state.companyInfo.user.name}
+                jobLocation={this.state.companyInfo.user.city}
                 jobId={index}
                 onDelete={this.handleDelete}
                 onTogglePopUp={this.editJobPopUp}
