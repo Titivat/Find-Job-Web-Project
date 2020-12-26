@@ -27,6 +27,7 @@ api/employee/<int:pk>/  GET/POST/PUT/DELETE
 api/company/            GET/POST
 api/company/<int:pk>/   GET/POST/PUT/DELETE
 
+
 api/forum/              GET/POST
 api/forum/<int:pk>/     GET/POST/PUT/DELETE
 
