@@ -17,8 +17,9 @@ class PositionSearch(generics.ListCreateAPIView):
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['title', 'desc', 'senority',
+    filterset_fields = ['title', 'senority',
                         'jobtype', 'industry', 'company']
+    search_fields = ['title', 'desc', 'company']
 
 
 class PositionDetail(generics.RetrieveUpdateDestroyAPIView):

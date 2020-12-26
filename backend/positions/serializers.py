@@ -1,8 +1,11 @@
 from rest_framework import serializers
 from .models import Position
+from users.serializers import CompanySerializer
 
 
 class PositionSerializer(serializers.ModelSerializer):
+    company = CompanySerializer()
+
     class Meta:
         model = Position
 

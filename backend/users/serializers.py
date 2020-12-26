@@ -24,7 +24,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employee
-        fields = ('id', 'user', 'senority', 'industry', 'skills')
+        fields = ('id', 'user', 'senority', 'industry', 'skills', 'document')
 
     def create(self, validated_data):
         user_data = validated_data.pop('user')
@@ -53,6 +53,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
         instance.senority = validated_data.get('senority', instance.senority)
         instance.industry = validated_data.get('industry', instance.industry)
         instance.skills = validated_data.get('skills', instance.skills)
+        instance.document = validated_data.get('document', instance.document)
         instance.save()
 
         return instance

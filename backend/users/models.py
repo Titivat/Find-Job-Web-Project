@@ -46,6 +46,7 @@ class Employee(models.Model):
         _("Industry"), max_length=50, blank=True, null=True)
     skills = ArrayField(base_field=models.CharField(
         _("Skill-tags"), max_length=200), blank=True, null=True)
+    document = models.FileField(upload_to='documents/', null=True, blank=True)
     objects = EmployeeManager()
 
     class Meta:
