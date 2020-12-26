@@ -5,17 +5,23 @@ from django.contrib.auth import authenticate
 from positions.models import Position
 
 
+class UserLoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'email', 'password')
+
+
 class UserEMSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'name', 'last_name',  'email',
+        fields = ('id', 'username', 'name', 'last_name',  'email',
                   'city', 'type', )
 
 
 class UserCOMSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'name', 'email',
+        fields = ('id', 'username', 'name', 'email',
                   'city', 'type', )
 
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import User, Company, Employee
 from rest_framework import generics, status
 # , UserToEmployee, UserToCompany
-from .serializers import EmployeeSerializer, CompanySerializer, UserEMSerializer, CityListSerializer, JobTypeListSerializer
+from .serializers import EmployeeSerializer, CompanySerializer, UserEMSerializer, CityListSerializer, JobTypeListSerializer, UserLoginSerializer
 from requests.models import Response
 
 from positions.models import Position
@@ -54,7 +54,7 @@ class JobTypeList(generics.ListAPIView):
 
 
 class LoginView(generics.ListAPIView):
-    serializer_class = UserEMSerializer
+    serializer_class = UserLoginSerializer
 
     def get_queryset(self):
         given_email = self.kwargs['email']
