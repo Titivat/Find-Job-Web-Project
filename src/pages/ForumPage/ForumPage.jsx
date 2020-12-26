@@ -10,30 +10,33 @@ import React, { useState, useEffect } from 'react';
 
 function ForumPage( props ){
     let count = 0;
+    const apiApth = "https://chatty-newt-16.loca.lt"
 
     const [ isPop, setIsPop] = useState( false );
+
+    const [ postItem, setisPost] = useState( {} );
 
     const { forumName } = props.location
     const forumNumber = forumNameToId( forumName )
 
-    const userId = null
+    const userId = 4
 
     const [postList, setPostList] = useState([])
 
     function forumNameToId( name ) {
         if( name === "Enginear"){
-            return 1
-        }else if( name === "Business"){
             return 2
-        }else if( name == "Design"){
+        }else if( name === "Business"){
             return 3
+        }else if( name == "Design"){
+            return 4
         }
         
     }
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            fetch(`https://horrible-turkey-61.loca.lt/api/post/?forum=${forumNumber}`,
+            fetch(`${apiApth}/api/post/?forum=${forumNumber}`,
             {
                 method: "GET",
                 headers: new Headers({'Content-Type': 'application/json'})
@@ -49,40 +52,42 @@ function ForumPage( props ){
                         description: item.desc
                     }
                     postList.push( newElement )
-                })
-                console.log( postList ) 
+                }) 
                 setPostList( postList )
             }).catch(error => console.log(error));
-        }, 1 );
+        }, 10000 );
     });
+
+    useEffect(() => {
+        console.log("I have posted")
+        // Send a POST request
+        axios({
+            method: 'post',
+            url: `${apiApth}/api/post/`,
+            data: postItem
+        });
+    }, [ postItem ]);
 
     function togglePopup(){ 
         setIsPop( !isPop ) 
     } 
     
-    function handleAddPost( name, value){
+    function handleAddPost( title, value){
         if( userId === null ){
             alert("you must login first");
         }else{
-            const newelement = {
-                title: name,
-                userId: userId,
-                description: value
+            const newElement = {
+                "issuer": userId,
+                "title": title,
+                "desc": value,
+                "forum": forumNumber,
             }
-    
-            setPostList( [...postList, newelement])
+
+            setisPost( newElement )
         }
     }
 
-    function defineColour ( number ){
-        if( number === 0){
-            return "#2D4059"
-        }else if( number == 1){
-            return "#EA5455"
-        }else{
-            return "#DECDC3"
-        }
-    }
+    function defineColour ( number ){if( number === 0){return "#2D4059"}else if( number == 1){return "#EA5455"}else{return "#DECDC3"}}
 
     return(
         <div>
