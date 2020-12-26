@@ -7,10 +7,9 @@ import Api from '../../Api.js'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-
 function ForumPage( props ){
     let count = 0;
-    const apiApth = "https://chatty-newt-16.loca.lt"
+    const apiApth = "https://helpless-robin-76.loca.lt"
 
     const [ isPop, setIsPop] = useState( false );
 
@@ -36,7 +35,7 @@ function ForumPage( props ){
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            fetch(`${apiApth}/api/post/?forum=${forumNumber}`,
+            fetch(`${apiApth}/api/post/forum/${forumNumber}`,
             {
                 method: "GET",
                 headers: new Headers({'Content-Type': 'application/json'})
@@ -53,9 +52,9 @@ function ForumPage( props ){
                     }
                     postList.push( newElement )
                 }) 
-                setPostList( postList )
-            }).catch(error => console.log(error));
-        }, 10000 );
+                setPostList( postList.reverse() )
+            }).catch(error => console.log(`error: ${error}`));
+        },  );
     });
 
     useEffect(() => {
