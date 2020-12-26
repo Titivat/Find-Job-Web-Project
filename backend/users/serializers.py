@@ -6,14 +6,14 @@ from django.contrib.auth import authenticate
 class UserEMSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'name', 'last_name',  'email',
+        fields = ('id', 'username', 'password', 'name', 'last_name',  'email',
                   'city', 'type', )
 
 
 class UserCOMSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'name', 'email',
+        fields = ('id', 'username', 'password', 'name', 'email',
                   'city', 'type', )
 
 

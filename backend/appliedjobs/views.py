@@ -20,14 +20,15 @@ class AppliedJobEmployeeViewList(generics.ListAPIView):
     serializer_class = AppliedJobSerializer
 
     def get_queryset(self):
-        user_id = self.kwargs['user_id']
-        return AppliedJob.objects.filter(employee=user_id)
+        employee_id = self.kwargs['employee_id']
+        return AppliedJob.objects.filter(employee__id=employee_id)
 
 
 class AppliedJobCompanyViewList(generics.ListAPIView):
     serializer_class = AppliedJobSerializer
 
     def get_queryset(self):
-        user_id = self.kwargs['user_id']
-        position_id = Position.objects.filter(id=user_id)
-        return AppliedJob.objects.filter(position=position_id)
+        given_company_id = self.kwargs['company_id']
+        position_ids = Position.objects.filter(
+            company=given_company_id).only('id').all()
+        return AppliedJob.objects.filter(id__in=position_ids)
