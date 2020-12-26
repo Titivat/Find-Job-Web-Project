@@ -50,8 +50,6 @@ class JobForm extends Component {
 
   handleBlur = (blurredTag, childRenderMethod, handleDoubleClick) => {
     const blurredSkill = blurredTag.skill;
-    console.log("BlurredSKill: " + blurredSkill);
-    console.log("BlurredID", blurredTag.id);
 
     if (blurredSkill !== "") {
       const textElement = (
@@ -69,14 +67,9 @@ class JobForm extends Component {
     } else {
       this.removeSkill(blurredTag.id);
     }
-
-    console.log("After blurred");
-    console.log(this.state.jobFormInfo);
   };
 
   handleEnter = (event, tagInput, childRenderMethod) => {
-    console.log("Entered");
-    console.log(event);
     const enteredSkill = tagInput.skill;
 
     if (event.key === "Enter") {

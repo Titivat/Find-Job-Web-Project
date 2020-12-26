@@ -6,6 +6,9 @@ import CreatedJob from "../../components/createdJob/CreatedJob";
 import JobForm from "../../components/jobForm/JobForm";
 import CompanyProfileForm from "../../components/companyProfileForm/CompanyProfileForm";
 import Api from "../../Api";
+import axios from "axios";
+
+const URL = "https://shy-cougar-50.loca.lt/api/";
 
 class CompanyProfilePage extends Component {
   constructor(props) {
@@ -14,13 +17,25 @@ class CompanyProfilePage extends Component {
     this.jobLocation = "Bangkok, Bangkok City, Thailand";
     this.state = {
       companyInfo: {
-        companyName: "Mon",
-        companyEmail: "titivat@gmail.com",
+        id: 1,
+        user: {
+          id: 7,
+          username: "scute",
+          password: "",
+          name: "scute studio",
+          email: "scute@example.com",
+          city: "Bangkok",
+          type: "COMPANY",
+        },
+        desc: "good productions",
+        address_line: "sth",
+        logo: null,
       },
       showProfilePopUp: false,
       createdJobs: [],
       showPopUp: false,
       jobFormInfo: {
+        jobId: "",
         jobTitle: "",
         seniority: "",
         employmentType: "",
@@ -34,10 +49,56 @@ class CompanyProfilePage extends Component {
   }
 
   componentDidMount() {
-    const apiCaller = new Api();
-    let result = apiCaller.get("position");
-    console.log(result);
+    // fetch("https://thin-eagle-67.loca.lt/api/position")
+    //   .then((res) => res.json())
+    //   .catch((error) => {
+    //     console.log("Error", error.stack);
+    //     console.log(error);
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
+
+    this.setUp();
   }
+
+  setUp = async () => {
+    const companyResponse = await fetch(
+      URL + "company/" + this.state.companyInfo.id
+    );
+    const jobsResponse = await fetch(
+      URL + "position/company/" + this.state.companyInfo.id
+    );
+    const jobs = await jobsResponse.json();
+    const companyInfo = await companyResponse.json();
+
+    const createdJobs = [];
+
+    jobs.map((job, index) => {
+      const createdJob = {
+        jobId: job.id,
+        jobTitle: job.title,
+        seniority: job.senority,
+        employmentType: job.jobtype,
+        jobFunction: job.title,
+        industries: job.industry,
+        jobDescription: job.desc,
+        neededSkills: null,
+      };
+
+      const skillsList = [];
+
+      for (let i = 0; i < job.neededSkills.length; i++) {
+        skillsList.push({ id: i, skill: job.neededSkills[i] });
+      }
+
+      createdJob.neededSkills = skillsList;
+
+      createdJobs.push(createdJob);
+    });
+
+    this.setState({ createdJobs, companyInfo });
+  };
 
   handleDelete = (job) => {
     console.log("Deleting job");
@@ -78,13 +139,31 @@ class CompanyProfilePage extends Component {
     });
   };
 
-  createNewJob = (newJob) => {
-    console.log("Creatign new job");
+  createNewJob = async (newJob) => {
+    console.log("Creating new job");
     console.log(newJob);
     const createdJobs = [...this.state.createdJobs];
     createdJobs.push(newJob);
     this.setState({ createdJobs });
     this.toggleShowPopUp();
+
+    const response = await fetch(URL + "/position", {
+      method: "POST",
+      body: JSON.stringify({
+        title: newJob.jobTitle,
+        desc: newJob.jobDescription,
+        senority: newJob.seniority,
+        jobtype: newJob.jobTitle,
+        neededSkills: newJob.neededSkills,
+        industry: newJob.industries,
+        company: this.state.companyInfo.id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    console.log(result);
   };
 
   editJobPopUp = (jobInfo) => {
@@ -95,15 +174,34 @@ class CompanyProfilePage extends Component {
     });
   };
 
-  editJob = (oldJob, newJob) => {
+  editJob = async (oldJob, newJob) => {
     const createdJobs = [...this.state.createdJobs];
     const index = createdJobs.indexOf(oldJob);
     console.log(index);
     createdJobs[index] = { ...newJob };
+
     this.setState({
       createdJobs: createdJobs,
       showPopUp: !this.state.showPopUp,
     });
+
+    const response = await fetch(URL + "position/" + newJob.jobId, {
+      method: "PATCH",
+      body: {
+        title: newJob.jobTitle,
+        desc: newJob.jobDescription,
+        senority: newJob.seniority,
+        jobtype: newJob.jobTitle,
+        neededSkills: newJob.neededSkills,
+        industry: newJob.industries,
+        company: this.state.companyInfo.id,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    console.log(result);
   };
 
   editProfile = (newProfile) => {
@@ -115,6 +213,7 @@ class CompanyProfilePage extends Component {
   };
 
   render() {
+    console.log(this.state.companyInfo);
     return (
       <React.Fragment>
         <div className={"mainAreaContainer"} id="companyProfileContainer">
@@ -122,9 +221,9 @@ class CompanyProfilePage extends Component {
             <h1 className="comfortaa">Company Profile</h1>
             <CompanyProfileContainer
               onEditProfile={this.toggleShowProfilePopUp}
-              profileImage={testingCompanyImage}
-              companyName={this.state.companyInfo.companyName}
-              email={this.state.companyInfo.companyEmail}
+              profileImage={this.state.companyInfo.logo}
+              companyName={this.state.companyInfo.user.name}
+              email={this.state.companyInfo.user.email}
             />
           </div>
           <div className="createdJobContainer">

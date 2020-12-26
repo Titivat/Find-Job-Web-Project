@@ -16,7 +16,7 @@ class CompanyProfileForm extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    
+
     let newProfile = { ...this.state.companyInfo };
 
     newProfile[name] = value;
