@@ -2,7 +2,11 @@ const fetch = require("node-fetch");
 
 class Api {
     constructor() {
+<<<<<<< HEAD
         this.basePath = "https://horrible-turkey-61.loca.lt/api/";
+=======
+        this.basePath = "https://grumpy-insect-7.loca.lt/";
+>>>>>>> 703e1a00a5ceb2d59533cb673965978af54fc9af
     }
 
     static get = async (path) => {

@@ -4,12 +4,12 @@ from .models import Post
 from .serializers import PostSerializer
 
 
-class PostFromSameForumList(generics.ListCreateAPIView):
+class PostFromSameForumList(generics.ListAPIView):
     serializer_class = PostSerializer
 
     def get_queryset(self):
-        # forum = self.kwargs['forum']
-        return Post.objects.filter(forum=self.kwargs['forum'])
+        forum_id = self.kwargs['forum_id']
+        return Post.objects.filter(forum__id=forum_id)
 
 
 class PostList(generics.ListCreateAPIView):

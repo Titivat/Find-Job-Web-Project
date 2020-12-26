@@ -19,18 +19,26 @@ api/v1/dj-rest-auth/
 api/v1/dj-rest-auth/registration/
 
 
-api/employee/           GET
+api/user/               GET/POST
+
+api/employee/           GET/POST
 api/employee/<int:pk>/  GET/POST/PUT/DELETE
 
-api/company/            GET
+api/company/            GET/POST
 api/company/<int:pk>/   GET/POST/PUT/DELETE
 
-api/forum/              GET
+api/forum/              GET/POST
 api/forum/<int:pk>/     GET/POST/PUT/DELETE
 
-api/position/           GET
+api/position/           GET/POST
 api/position/<int:pk>/  GET/POST/PUT/DELETE
+api/position/company/<int:company_id>/ GET/
 
-api/post/               GET
-api/post/?forum=<int:forum_id> (integer)GET
+api/post/               GET/POST
+api/post/forum/<int:forum_id> GET   
 api/post/<int:pk>/      GET/POST/PUT/DELETE
+
+api/appliedjob/             GET/POST
+api/appliedjob/<int:pk>/    GET/POST/PUT/DELETE
+api/appliedjob/company/<int:company_id>     GET/
+api/appliedjob/employee/<int:employee_id>   GET/

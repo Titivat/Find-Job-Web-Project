@@ -4,95 +4,88 @@ import Header from '../../components/header/Header.jsx';
 import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
 import Api from '../../Api.js'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ForumPage( props ){
-    
-    var count = 0;
-    
-    const [ isPop, setPop] = useState( false );
+    let count = 0;
+    const apiApth = "https://pretty-donkey-100.loca.lt"
+
+    const [ isPop, setIsPop] = useState( false );
+
+    const [ postItem, setisPost] = useState( {} );
 
     const { forumName } = props.location
     const forumNumber = forumNameToId( forumName )
 
-    getPostList()
-    const userId = null
+    const userId = 4
 
-    const [postList, setPostList] = useState([{
-            title: 'Build a Pharmacy Inventory manager with Django.',
-            userId:'123',
-            description: "bulid a pharmacy is easy"
-        },
-        {
-            title: 'A tips for a good interview',
-            userId:'456',
-            description: "be prepair"
-        },
-        {
-            title: 'React server component',
-            userId:'789',
-            description: "easy to bulid component"
-        },
-        {
-            title: 'How the web is really built',
-            userId:'12',
-            description: "from beging to the end"
-        },
-        {
-            title: 'Understand peer dependecies',
-            userId:'568',
-            description: "from basic"
-        },
-        {
-            title: 'Frontend Talk',
-            userId:'104',
-            description: "road map to fontend"
-        }
-    ])
-
-    function getPostList() {
-        console.log( Api.get(`/api/post/?forum=${forumNumber}`))
-
-    }
+    const [postList, setPostList] = useState([])
 
     function forumNameToId( name ) {
         if( name === "Enginear"){
-            return 1
-        }else if( name === "Business"){
             return 2
-        }else if( name == "Design"){
+        }else if( name === "Business"){
             return 3
+        }else if( name == "Design"){
+            return 4
         }
         
     }
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            fetch(`${apiApth}/api/post/forum/${forumNumber}`,
+            {
+                method: "GET",
+                headers: new Headers({'Content-Type': 'application/json'})
+            }
+            ).then(res => res.json())
+            .then(response => {
+                const postList = []
+
+                response.map( (item) => {
+                    const newElement = {
+                        title: item.title,
+                        userId: item.issuer,
+                        description: item.desc
+                    }
+                    postList.push( newElement )
+                }) 
+                setPostList( postList.reverse() )
+            }).catch(error => console.log(`error: ${error}`));
+        },  );
+    });
+
+    useEffect(() => {
+        // Send a POST request
+        axios({
+            method: 'post',
+            url: `${apiApth}/api/post/`,
+            data: postItem
+        });
+    }, [ postItem ]);
+
     function togglePopup(){ 
-        setPop( !isPop ) 
+        setIsPop( !isPop ) 
     } 
     
-    function handleAddPost( name, value){
+    function handleAddPost( title, value){
         if( userId === null ){
             alert("you must login first");
         }else{
-            const newelement = {
-                title: name,
-                userId: userId,
-                description: value
+            const newElement = {
+                "issuer": userId,
+                "title": title,
+                "desc": value,
+                "forum": forumNumber,
             }
-    
-            setPostList( [...postList, newelement])
+
+            setisPost( newElement )
         }
     }
 
-    function defineColour ( number ){
-        if( number === 0){
-            return "#2D4059"
-        }else if( number == 1){
-            return "#EA5455"
-        }else{
-            return "#DECDC3"
-        }
-    }
+    function defineColour ( number ){if( number === 0){return "#2D4059"}else if( number == 1){return "#EA5455"}else{return "#DECDC3"}}
 
     return(
         <div>

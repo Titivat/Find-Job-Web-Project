@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from .models import User, Company, Employee
 from rest_framework import generics, status
-from .serializers import EmployeeSerializer, CompanySerializer
+from .serializers import EmployeeSerializer, CompanySerializer, UserEMSerializer
 from requests.models import Response
+
+
+class UserList(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserEMSerializer
 
 
 class CompanyList(generics.ListCreateAPIView):

@@ -2,7 +2,7 @@ import React from "react";
 import "./PopUpPostForum.css";  
 
 function PopUpPostForum( props ){ 
-    const nameInput = React.createRef();
+    const titleInput = React.createRef();
     const valueInput = React.createRef();
 
     const { closePopup, handleAddPost , text , isDisable, title, description } = props
@@ -21,7 +21,7 @@ function PopUpPostForum( props ){
                 <div className="post-forum-input-container">
                     <input 
                         disabled={ disable }
-                        ref={ nameInput }
+                        ref={ titleInput }
                         type="text" 
                         placeholder={ title } 
                         className="post-forum-input-item 
@@ -49,7 +49,7 @@ function PopUpPostForum( props ){
                         className="post-forum-button-style"
                         onClick={ () => { 
                             closePopup();                     
-                            handleAddPost( nameInput.current.value, 
+                            handleAddPost( titleInput.current.value, 
                                             valueInput.current.value 
                                         ); 
                         } }
