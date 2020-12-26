@@ -21,16 +21,30 @@ class SignUpPage extends Component {
 
           <div className="form">
             <h1 id="createAccountText">Create Your Account</h1>
-            <input
-              type="text"
-              className="signUpTextInput roundedShadowed"
-              placeholder="Username"
-            />
-            <input
-              type="text"
-              className="signUpTextInput roundedShadowed"
-              placeholder="Password"
-            />
+
+            <div className="signup-text-container">
+              <input
+                type="text"
+                className="signUpTextInput roundedShadowed"
+                placeholder="Username"
+              />
+              <input
+                type="text"
+                className="signUpTextInput roundedShadowed"
+                placeholder="Name"
+              />
+              <input
+                type="text"
+                className="signUpTextInput roundedShadowed"
+                placeholder="Email"
+              />
+              <input
+                type="text"
+                className="signUpTextInput roundedShadowed"
+                placeholder="password"
+              />
+            </div>
+
             <button id="createButton" className="roundedShadowed">
               Create
             </button>

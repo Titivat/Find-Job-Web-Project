@@ -46,6 +46,18 @@
   font-size: 3em;
 }
 
+.signUpTextInput{
+  width: 85%;
+  height: 40px;
+}
+
+.signup-text-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
 .form > input[type="text"] {
   /* can change later if Mon doesn't want. */
   width: 55%;
