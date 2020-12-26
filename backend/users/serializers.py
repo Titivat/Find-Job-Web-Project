@@ -2,6 +2,8 @@ from rest_framework import serializers, exceptions
 from .models import User, Employee, Company
 from django.contrib.auth import authenticate
 
+from positions.models import Position
+
 
 class UserEMSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,28 +34,28 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
         return employee
 
-    # def update(self, instance, validated_data):
-    #     user_data = validated_data.pop('user')
-    #     user = instance.user
+    def update(self, instance, validated_data):
+        user_data = validated_data.pop('user')
+        user = instance.user
 
-    #     # Employee data
-    #     instance.id = validated_data.get('id', instance.id)
-    #     instance.senority = validated_data.get('senority', instance.senority)
-    #     instance.industry = validated_data.get('industry', instance.industry)
-    #     instance.skills = validated_data.get('skills', instance.skills)
-    #     instance.save()
+        # user
+        user.id = validated_data.get('id', user.id)
+        user.username = validated_data.get('username', user.username)
+        user.name = validated_data.get('name', user.name)
+        user.last_name = validated_data.get('last_name', user.last_name)
+        user.email = validated_data.get('email', user.email)
+        user.city = validated_data.get('city', user.city)
+        user.type = validated_data.get('type', user.type)
+        user.save()
 
-    #     # user
-    #     user.id = validated_data.get('id', user.id)
-    #     user.username = validated_data.get('username', user.username)
-    #     user.name = validated_data.get('name', user.name)
-    #     user.last_name = validated_data.get('last_name', user.last_name)
-    #     user.email = validated_data.get('email', user.email)
-    #     user.city = validated_data.get('city', user.city)
-    #     user.type = validated_data.get('type', user.type)
-    #     user.save()
+        # Employee data
+        instance.id = validated_data.get('id', instance.id)
+        instance.senority = validated_data.get('senority', instance.senority)
+        instance.industry = validated_data.get('industry', instance.industry)
+        instance.skills = validated_data.get('skills', instance.skills)
+        instance.save()
 
-    #     return instance
+        return instance
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -94,3 +96,17 @@ class CompanySerializer(serializers.ModelSerializer):
 #             msg = "Must provide username and password both."
 #             raise exceptions.ValidationError(msg)
 #         return data
+
+
+class CityListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('city', )
+
+
+class JobTypeListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Position
+        fields = ('jobtype', )

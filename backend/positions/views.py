@@ -3,10 +3,14 @@ from rest_framework import generics
 from .models import Position
 from .serializers import PositionSerializer
 
+# search
+from rest_framework import filters
+
 
 class PositionList(generics.ListCreateAPIView):
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
+    filter_backends = [filters.SearchFilter]
 
 
 class PositionDetail(generics.RetrieveUpdateDestroyAPIView):

@@ -27,6 +27,7 @@ api/employee/<int:pk>/  GET/POST/PUT/DELETE
 api/company/            GET/POST
 api/company/<int:pk>/   GET/POST/PUT/DELETE
 
+
 api/forum/              GET/POST
 api/forum/<int:pk>/     GET/POST/PUT/DELETE
 
@@ -42,3 +43,6 @@ api/appliedjob/             GET/POST
 api/appliedjob/<int:pk>/    GET/POST/PUT/DELETE
 api/appliedjob/company/<int:company_id>     GET/
 api/appliedjob/employee/<int:employee_id>   GET/
+
+api/city/               GET/
+api/jobType/            GET/
