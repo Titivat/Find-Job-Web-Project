@@ -8,8 +8,8 @@ from requests.models import Response
 from positions.models import Position
 
 # search
-from rest_framework.filters import SearchFilter
-from django_filters.rest_framework import DjangoFilterBackend
+# from rest_framework.filters import SearchFilter
+# from django_filters.rest_framework import DjangoFilterBackend
 
 
 class UserList(generics.ListCreateAPIView):
@@ -53,19 +53,19 @@ class JobTypeList(generics.ListAPIView):
         return Position.objects.all().distinct('jobtype')
 
 
-# class LoginView(generics.ListAPIView):
-#     serializer_class = UserEMSerializer
-
-#     def get_queryset(self):
-#         given_username = self.kwargs['username']
-#         given_password = self.kwargs['password']
-#         return User.objects.filter(username=given_username, password=given_password)
-
 class LoginView(generics.ListAPIView):
-    queryset = User.objects.all()
     serializer_class = UserEMSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['email']
+
+    def get_queryset(self):
+        given_email = self.kwargs['email']
+        given_password = self.kwargs['password']
+        return User.objects.filter(email=given_email, password=given_password)
+
+# class LoginView(generics.ListAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserEMSerializer
+#     filter_backends = [DjangoFilterBackend, SearchFilter]
+#     filterset_fields = ['email']
 
 # UserToCompany,UserToEmployee
 

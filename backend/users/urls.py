@@ -3,9 +3,9 @@ from .views import EmployeeList, EmployeeDetail, CompanyList, CompanyDetail, Use
 
 urlpatterns = [
 
-    # path('login/<str:username>/<str:password>/',
-    #      LoginView.as_view(), name='Login_View'),
-    path('login/', LoginView.as_view(), name='Login_View'),
+    path('login/<str:email>/<str:password>/',
+         LoginView.as_view(), name='Login_View'),
+    # path('login/', LoginView.as_view(), name='Login_View'),
     path('user/', UserList.as_view(), name='User_list'),
     # path('user/<int:pk>/employee', UserToEmployee.as_view(), name='User_list'),
     # path('user/<int:pk>/employee', UserToCompany.as_view(), name='User_list'),
