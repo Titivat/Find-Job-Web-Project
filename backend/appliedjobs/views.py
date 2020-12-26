@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from .models import AppliedJob
-from .serializers import AppliedJobSerializer
+from .serializers import AppliedJobSerializer, AppliedJobEmployeeViewSerializer, AppliedJobCompanyViewSerializer
 from rest_framework import filters
 from positions.models import Position
 
@@ -17,7 +17,7 @@ class AppliedJobDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AppliedJobEmployeeViewList(generics.ListAPIView):
-    serializer_class = AppliedJobSerializer
+    serializer_class = AppliedJobEmployeeViewSerializer
 
     def get_queryset(self):
         employee_id = self.kwargs['employee_id']
@@ -25,7 +25,7 @@ class AppliedJobEmployeeViewList(generics.ListAPIView):
 
 
 class AppliedJobCompanyViewList(generics.ListAPIView):
-    serializer_class = AppliedJobSerializer
+    serializer_class = AppliedJobCompanyViewSerializer
 
     def get_queryset(self):
         given_company_id = self.kwargs['company_id']

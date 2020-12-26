@@ -18,6 +18,7 @@ api-auth/
 api/v1/dj-rest-auth/
 api/v1/dj-rest-auth/registration/
 
+/api/login/?email=      GET/
 
 api/user/               GET/POST
 
