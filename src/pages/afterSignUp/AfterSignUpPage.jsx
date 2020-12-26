@@ -2,9 +2,38 @@ import React, { Component } from 'react';
 import './AfterSignUpPage.css';
 import companyImage from '../../images/companiesImage.png';
 import employeeImage from '../../images/employeeImage.png';
+import axios from 'axios';
 
 class AfterSignUpPage extends Component {
-    state = {  }
+    
+    
+    constructor( props){
+        super( props )
+        this.userInformation = props.location.userInformation
+        this.state = {}
+        this.urlPath = "https://pretty-donkey-100.loca.lt"
+    }
+
+    registerEmployeRequest = () => {
+        this.requestionApi('employee')
+        console.log("I have posted employee")
+    }
+
+    requestionApi = ( type ) => {
+        console.log( this.userInformation )
+        const sentData = {"user":this.userInformation}
+        axios({
+            method: 'post',
+            url: `${this.urlPath}/api/${type}/`,
+            data: sentData
+        });
+    }
+
+    registerCompanyRequest = () => {
+        this.requestionApi('company')
+        console.log("I have posted company")
+    }
+
     render() { 
         return (
             <React.Fragment>
@@ -17,14 +46,20 @@ class AfterSignUpPage extends Component {
                         <div className="imageContainer">
                             <img id="companiesImage" src={companyImage} />
                         </div>
-                        <button className="mediumButton roundedShadowed">Companies</button>
+                        <button 
+                        onClick={ this.registerCompanyRequest}
+                        className="mediumButton roundedShadowed">Companies</button>
                     </div>
                     
                     <div className="halfFlexColumn">
                         <div className="imageContainer">
                             <img id="employeeImage" src={employeeImage} />
                         </div>
-                        <button className="mediumButton roundedShadowed">Employees</button>
+                        <button 
+                        onClick={ this.registerEmployeRequest}
+                        className="mediumButton roundedShadowed">
+                            Employees
+                        </button>
                     </div>
                 </div>
             </React.Fragment>

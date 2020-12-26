@@ -4,12 +4,12 @@ import Header from '../../components/header/Header.jsx';
 import ProfileIcon from '../../components/profileIcon/ProfileIcon.jsx';
 import Forum from '../../components/forum/forum.jsx';
 import Api from '../../Api.js'
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function ForumPage( props ){
     let count = 0;
-    const apiApth = "https://helpless-robin-76.loca.lt"
+    const apiApth = "https://pretty-donkey-100.loca.lt"
 
     const [ isPop, setIsPop] = useState( false );
 
@@ -58,7 +58,6 @@ function ForumPage( props ){
     });
 
     useEffect(() => {
-        console.log("I have posted")
         // Send a POST request
         axios({
             method: 'post',
