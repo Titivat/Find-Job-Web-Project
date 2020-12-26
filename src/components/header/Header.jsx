@@ -1,5 +1,6 @@
 import './Header.css'
 import logo from '../../images/logo.png'
+import {BrowserRouter as Link} from 'react-router-dom';
 
 function Header( props ){
     const { isDisplay } = props 
@@ -10,7 +11,7 @@ function Header( props ){
                 <a><img alt="description of image" href="#" className="header-left-img" src={logo}></img ></a>
 
                 <div className="header-left-text">
-                    <a>job spot </a>
+                    <a href="/">job spot </a>
                     <a> | </a>
                     <a>about us</a>
                 </div>

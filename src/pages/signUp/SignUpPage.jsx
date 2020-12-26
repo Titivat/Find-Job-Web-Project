@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./SignUpPage.css";
 import signUpImage from "../../images/signUpImage.jpg";
-import { Redirect } from 'react-router'
-
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -11,7 +9,7 @@ class SignUpPage extends Component {
       userName: "",
       name:"",
       email:"",
-      password: ""
+      password: "",
     };
   }
 
@@ -48,7 +46,6 @@ class SignUpPage extends Component {
       password: password,
       name: name,
       email: email,
-
     }
     this.props.history.push({ pathname:"/afterSignUp", userInformation: userInformation});
   }

@@ -11,26 +11,35 @@ class AfterSignUpPage extends Component {
         super( props )
         this.userInformation = props.location.userInformation
         this.state = {}
-        this.urlPath = "https://pretty-donkey-100.loca.lt"
+        this.urlPath = "https://hungry-pug-10.loca.lt"
     }
 
     registerEmployeRequest = () => {
-        this.requestionApi('employee')
+        this.requestionApi('employee', 'userProfilePage')
         console.log("I have posted employee")
     }
 
-    requestionApi = ( type ) => {
+    requestionApi = ( type , linkPath) => {
         console.log( this.userInformation )
         const sentData = {"user":this.userInformation}
+        
         axios({
             method: 'post',
+            headers: { 'Content-Type': 'application/json'},
             url: `${this.urlPath}/api/${type}/`,
             data: sentData
+        }).then(response => { 
+            console.log(`response: ${response}`)
+            this.props.history.push({ pathname:`/${linkPath}`})
+        })
+        .catch(error => {
+            alert("your email or username or name is alredy taken");
+            console.log(`error: ${error.response}`)
         });
     }
 
     registerCompanyRequest = () => {
-        this.requestionApi('company')
+        this.requestionApi('company', 'companyProfile')
         console.log("I have posted company")
     }
 

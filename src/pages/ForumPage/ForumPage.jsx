@@ -9,7 +9,7 @@ import axios from 'axios';
 
 function ForumPage( props ){
     let count = 0;
-    const apiApth = "https://pretty-donkey-100.loca.lt"
+    const apiApth = "https://hungry-pug-10.loca.lt"
 
     const [ isPop, setIsPop] = useState( false );
 
