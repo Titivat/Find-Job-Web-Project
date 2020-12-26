@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './LogInPage.css';
 import redCurveImage from '../../images/redCurve.png';
 import personImage from '../../images/personImage.png';
+import axios from 'axios';
 
 class LogInPage extends Component {
 
@@ -30,7 +31,7 @@ class LogInPage extends Component {
             data: sentData
         }).then(response => { 
             const type = response.type
-            
+
             if( type === "COMPANY"){
                 this.props.history.push({ pathname:"/companyProfile"});
             }else if( type === "EMPLOYEE"){
