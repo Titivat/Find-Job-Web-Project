@@ -32,3 +32,8 @@
     justify-content: flex-end;
     padding-right: 20px;
 }
+
+.header-no-display-a{
+    text-decoration: none;
+    color: black;
+}

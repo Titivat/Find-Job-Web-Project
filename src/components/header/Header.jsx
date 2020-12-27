@@ -7,17 +7,16 @@ function Header( props ){
     return(
         <div className="header-container">
             <div className="header-left-item">
-                <a><img alt="description of image" href="#" className="header-left-img" src={logo}></img ></a>
+                <a href="/"><img alt="description of image" href="#" className="header-left-img" src={logo}></img ></a>
 
                 <div className="header-left-text">
-                    <a>job spot </a>
-                    <a> | </a>
-                    <a>about us</a>
+                    <a className="header-no-display-a" href="/">job spot </a>
                 </div>
             </div>
 
             <div className="header-right-item">
-                < DisplaySignUp isDisplay = { isDisplay } >
+                < DisplaySignUp 
+                    isDisplay = { isDisplay } >
                     { props.children }
                 </DisplaySignUp>
             </div>
@@ -30,12 +29,12 @@ function DisplaySignUp( props  ){
 
     return ( ( isDisplay )  ? 
               <div>
-                <a>sign in</a> 
+                <a className="header-no-display-a" href="/login">sign in</a> 
                 <a> &nbsp; | &nbsp; </a>
-                <a>sign up</a>
+                <a className="header-no-display-a" href="/signUp">sign up</a>
               </div>
               : 
-              <div>{props.children}</div>
+              <div><a className="header-no-display-a" href="/">Profile</a><a>&nbsp;&nbsp;&nbsp;&nbsp;Log out</a></div>
               
     );
 }
