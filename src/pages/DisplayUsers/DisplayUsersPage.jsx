@@ -3,6 +3,7 @@ import { useReducer } from "react";
 import Applicant from "../../components/applicant/Applicant";
 import Header from "../../components/header/Header.jsx";
 import testingCompanyImage from "../../images/companyLogo.jpg";
+import axios from "axios";
 
 import "./DisplayUsersPage.css";
 
@@ -109,6 +110,13 @@ class DisplayUsersPage extends Component {
 
     console.log("ussers states");
     console.log(this.state.users);
+  };
+
+  acceptanceAction = async (action) => {
+    axios({
+      method: "post",
+      url: "",
+    });
   };
 
   render() {
