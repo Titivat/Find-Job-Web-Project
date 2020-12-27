@@ -14,38 +14,37 @@ if django admin cannot find account which means database is clean and nothing th
 
 admin/
 
-api/login/<str:email>/<str:password>/    GET/
+GET/                    api/login/<str:email>/<str:password>/    
 
-api/user/               GET/POST
+GET/POST                api/user/               
 
-api/employee/           GET/POST
-api/employee/<int:pk>/  GET/POST/PUT/DELETE
-api/employee/search/?user__id=<int:user__id>  GET
+GET/POST                api/employee/           
+GET/POST/PUT/DELETE     api/employee/<int:pk>/  
+GET/                    api/employee/search/?user__id=<int:user__id>  
 
-api/company/            GET/POST
-api/company/<int:pk>/   GET/POST/PUT/DELETE
-/api/company/search/?user__id=<int:employee_id>  GET
+GET/POST                api/company/            
+GET/POST/PUT/DELETE     api/company/<int:pk>/   
+GET/                    api/company/search/?user__id=<int:employee_id>
 
 
-api/forum/              GET/POST
-api/forum/<int:pk>/     GET/POST/PUT/DELETE
+GET/POST                api/forum/              
+GET/POST/PUT/DELETE     api/forum/<int:pk>/     
 
-api/position/           GET/POST
-api/position/<int:pk>/  GET/POST/PUT/DELETE
-api/position/company/<int:company_id>/ GET/
-api/position/search/
-/api/position/search/?title=&senority=&jobtype=&industry=&company__user__city=      GET
-/api/position/search/?search=test   GET
+GET/POST                api/position/           
+GET/POST/PUT/DELETE     api/position/<int:pk>/  
+GET/                    api/position/company/<int:company_id>/
+GET/                    api/position/search/?search=test
+GET/                    api/position/search/?title=&senority=&jobtype=&industry=&company__user__city=
 
-api/post/               GET/POST
-api/post/forum/<int:forum_id> GET   
-api/post/<int:pk>/      GET/POST/PUT/DELETE
+GET/POST                api/post/               
+GET/                    api/post/forum/<int:forum_id>   
+GET/POST/PUT/DELETE     api/post/<int:pk>/      
 
-api/appliedjob/             GET/POST
-api/appliedjob/<int:pk>/    GET/POST/PUT/DELETE
-api/appliedjob/company/<int:company_id>     GET/
-api/appliedjob/employee/<int:employee_id>   GET/
-api/appliedjob/search/?position=<int:position_id>   GET
+GET/POST                api/appliedjob/             
+GET/POST/PUT/DELETE     api/appliedjob/<int:pk>/    
+GET/                    api/appliedjob/company/<int:company_id>     
+GET/                    api/appliedjob/employee/<int:employee_id>   
+GET/                    api/appliedjob/search/?position=<int:position_id>   
 
-api/city/               GET/
-api/jobType/            GET/
+GET/                    api/city/               
+GET/                    api/jobType/            
