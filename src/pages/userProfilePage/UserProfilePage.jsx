@@ -5,6 +5,7 @@ import ProfileBar from "../../components/profileBar/ProfileBar.jsx";
 import JobDescriptionCard from "../../components/JobDescriptionCard/JobDescriptionCard.jsx";
 import UserProfileForm from "../../components/userProfileForm/UserProfileForm";
 import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
+import testingImage from "../../images/logo.png";
 
 const URL = "https://clever-parrot-62.loca.lt/api/";
 
@@ -32,6 +33,7 @@ class UserProfilePage extends Component {
           compCity: "Bangkok, Bangkok City, Thailand",
           status: "pending",
           time: "1 month",
+          image: { testingImage },
         },
         {
           compName: "Win - Win (Asia) Co. Ltd.",
@@ -39,13 +41,14 @@ class UserProfilePage extends Component {
           compDetail: "English data entry officer",
           status: "pending",
           time: "1 month",
+          image: { testingImage },
         },
       ],
     };
   }
 
   componentDidMount() {
-    this.setUp();
+    // this.setUp();
   }
 
   setUp = async () => {
@@ -75,6 +78,7 @@ class UserProfilePage extends Component {
         compCity: appliedJob.position.company.user.city,
         status: appliedJob.is_accepted,
         time: appliedJob.created_at,
+        image: appliedJob.employee.document,
       };
 
       appliedJobsList.push(job);
@@ -144,13 +148,6 @@ class UserProfilePage extends Component {
   render() {
     return (
       <div>
-        <a
-          style={{ display: "table-cell" }}
-          href={this.state.userInfo.resume}
-          target="_blank"
-        >
-          text
-        </a>
         <input
           type="file"
           accept=""
@@ -198,6 +195,7 @@ class UserProfilePage extends Component {
                       compCity={item.compCity}
                       status={item.status}
                       time={item.time}
+                      image={item.image}
                       backgroundColor="#2D4059"
                     />
                   </div>

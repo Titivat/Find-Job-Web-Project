@@ -6,6 +6,8 @@ import testingCompanyImage from "../../images/companyLogo.jpg";
 
 import "./DisplayUsersPage.css";
 
+URL = "";
+
 class DisplayUsersPage extends Component {
   constructor(props) {
     super(props);
@@ -80,6 +82,29 @@ class DisplayUsersPage extends Component {
       ],
     };
   }
+
+  componentDidMount() {}
+
+  setUp = async () => {
+    const usersResponse = await fetch(URL + "appliedjob/company/");
+    const users = await usersResponse.json();
+
+    const usersList = [];
+
+    users.map((user, index) => {
+      const appliedUser = {
+        username: user.employee.username,
+        email: user.emmployee.email,
+        resume: "https://www.gundamkitscollection.com/",
+      };
+
+      usersList.push(appliedUser);
+    });
+
+    this.setState({ users: usersList });
+
+    console.log(users);
+  };
 
   render() {
     console.log(this.state);
