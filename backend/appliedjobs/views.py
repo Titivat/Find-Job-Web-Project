@@ -5,10 +5,22 @@ from .serializers import AppliedJobSerializer, AppliedJobEmployeeViewSerializer,
 from rest_framework import filters
 from positions.models import Position
 
+# search
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
+from django.contrib.postgres import search
+
 
 class AppliedJobList(generics.ListCreateAPIView):
     queryset = AppliedJob.objects.all()
     serializer_class = AppliedJobSerializer
+
+
+class AppliedJobSearchList(generics.ListAPIView):
+    queryset = AppliedJob.objects.all()
+    serializer_class = AppliedJobSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['position']
 
 
 class AppliedJobDetail(generics.RetrieveUpdateDestroyAPIView):

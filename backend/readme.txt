@@ -20,9 +20,11 @@ api/user/               GET/POST
 
 api/employee/           GET/POST
 api/employee/<int:pk>/  GET/POST/PUT/DELETE
+api/employee/search/?user__id=<int:user__id>  GET
 
 api/company/            GET/POST
 api/company/<int:pk>/   GET/POST/PUT/DELETE
+/api/company/search/?user__id=<int:employee_id>  GET
 
 
 api/forum/              GET/POST
@@ -43,6 +45,7 @@ api/appliedjob/             GET/POST
 api/appliedjob/<int:pk>/    GET/POST/PUT/DELETE
 api/appliedjob/company/<int:company_id>     GET/
 api/appliedjob/employee/<int:employee_id>   GET/
+api/appliedjob/search/?position=<int:position_id>   GET
 
 api/city/               GET/
 api/jobType/            GET/

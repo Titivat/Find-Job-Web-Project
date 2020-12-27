@@ -45,6 +45,13 @@ class CompanyDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CompanySerializer
 
 
+class CompanySearchDetail(generics.ListAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['user__id']
+
+
 #  CityList, JobTypeList
 
 class CityList(generics.ListAPIView):
