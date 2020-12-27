@@ -34,7 +34,7 @@ GET/POST                api/position/
 GET/POST/PUT/DELETE     api/position/<int:pk>/  
 GET/                    api/position/company/<int:company_id>/
 GET/                    api/position/search/?search=test
-GET/                    api/position/search/?title=&senority=&jobtype=&industry=&company__user__city=
+GET/                    api/position/search/?company__user__city=&industry=&jobtype=&ordering=-updated_at&senority=&title=
 
 GET/POST                api/post/               
 GET/                    api/post/forum/<int:forum_id>   
