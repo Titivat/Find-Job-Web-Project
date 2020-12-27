@@ -18,13 +18,6 @@ class UserEMSerializer(serializers.ModelSerializer):
                   'city', 'type', )
 
 
-class UserCOMSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'password', 'name', 'email',
-                  'city', 'type', )
-
-
 class EmployeeSerializer(serializers.ModelSerializer):
     user = UserEMSerializer()
 
@@ -63,6 +56,13 @@ class EmployeeSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+
+class UserCOMSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'password', 'name', 'email',
+                  'city', 'type', )
 
 
 class CompanySerializer(serializers.ModelSerializer):

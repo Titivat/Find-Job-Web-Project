@@ -6,11 +6,16 @@ if django admin cannot find account which means database is clean and nothing th
 
 3.open a new cmd and go to the working directory
 4. docker-compose run web python manage.py createsuperuser
+5. docker-compose run web python manage.py makemigrations appliedjobs
 5. docker-compose run web python manage.py makemigrations forums
 6. docker-compose run web python manage.py makemigrations positions
 7. docker-compose run web python manage.py makemigrations posts
 8. docker-compose run web python manage.py makemigrations users
 9. docker-compose run web python manage.py migrate
+
+pgsql-server
+admin
+secret
 
 admin/
 
