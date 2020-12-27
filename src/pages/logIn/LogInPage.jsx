@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 
 function LogInPage( props ){
 
-    const urlPath = ""
+    const urlPath = "https://tricky-gecko-63.loca.lt"
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -26,14 +26,22 @@ function LogInPage( props ){
         axios({
             method: 'get',
             headers: { 'Content-Type': 'application/json'},
-            url: `${ urlPath}/api/login/${ email}/${ password}/`,
-        }).then(response => { 
-            const type = response.type
+            url: `https://tricky-gecko-63.loca.lt/api/login/${email}/${password}/`,
+        }).then(response => { return response.data[0]  
+        }).then( dataRecive => {
+            console.log(  dataRecive )
+            localStorage.setItem('id', dataRecive.id);
+            localStorage.setItem('email', dataRecive.email);
+            localStorage.setItem('type', dataRecive.type);
+            localStorage.setItem('isLogin', true );
+
+            const type = dataRecive.type
 
             if( type === "COMPANY"){
-                this.props.history.push({ pathname:"/companyProfile"});
+                props.history.push("/companyProfile");
             }else if( type === "EMPLOYEE"){
-                this.props.history.push({ pathname:"/userProfilePage"});
+                console.log( "I am a employeee")
+                props.history.push({ pathname:"/userProfilePage"});
             }
         })
         .catch(error => {
@@ -42,7 +50,14 @@ function LogInPage( props ){
         });    
     }
 
- 
+    function login(){
+        return{
+             type: 'SIGN_IN',
+             email: email,
+             password: password
+       };
+    } 
+
         return (
             <React.Fragment>
                 <Header isDisplay={false} />
@@ -68,14 +83,11 @@ function LogInPage( props ){
                             <button 
                                 id="loginButton" 
                                 className="styledText"
-                                onClick={ onSummit }
+                                onClick={ () => onSummit() }
                             >
                                 Log in
                             </button>
                         </div>
-                        <h1 id="forgotPasswordText">
-                            <a href="#">forgot password</a>
-                        </h1>
                     </div>
                 </div>
             </React.Fragment>

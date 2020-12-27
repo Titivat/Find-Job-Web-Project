@@ -11,7 +11,7 @@ class AfterSignUpPage extends Component {
         super( props )
         this.userInformation = props.location.userInformation
         this.state = {}
-        this.urlPath = "https://hungry-pug-10.loca.lt"
+        this.urlPath = "https://tricky-gecko-63.loca.lt"
     }
 
     registerEmployeRequest = () => {

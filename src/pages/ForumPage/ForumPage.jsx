@@ -9,7 +9,7 @@ import axios from 'axios';
 
 function ForumPage( props ){
     let count = 0;
-    const apiApth = "https://hungry-pug-10.loca.lt"
+    const apiApth = "https://tricky-gecko-63.loca.lt"
 
     const [ isPop, setIsPop] = useState( false );
 
@@ -18,7 +18,7 @@ function ForumPage( props ){
     const { forumName } = props.location
     const forumNumber = forumNameToId( forumName )
 
-    const userId = 4
+    const userId = localStorage.getItem('id')
 
     const [postList, setPostList] = useState([])
 
