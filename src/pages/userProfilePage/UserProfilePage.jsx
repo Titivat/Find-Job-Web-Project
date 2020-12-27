@@ -7,7 +7,7 @@ import UserProfileForm from "../../components/userProfileForm/UserProfileForm";
 import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 import testingImage from "../../images/logo.png";
 
-const URL = "https://clever-parrot-62.loca.lt/api/";
+const URL = "https://tricky-gecko-63.loca.lt/api/";
 
 class UserProfilePage extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class UserProfilePage extends Component {
   }
 
   componentDidMount() {
-    // this.setUp();
+    this.setUp();
   }
 
   setUp = async () => {
@@ -78,7 +78,7 @@ class UserProfilePage extends Component {
         compCity: appliedJob.position.company.user.city,
         status: appliedJob.is_accepted,
         time: appliedJob.created_at,
-        image: appliedJob.employee.document,
+        image: appliedJob.position.company.logo,
       };
 
       appliedJobsList.push(job);

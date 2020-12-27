@@ -8,7 +8,7 @@ import CompanyProfileForm from "../../components/companyProfileForm/CompanyProfi
 import Api from "../../Api";
 import axios from "axios";
 
-const URL = "https://shy-cougar-50.loca.lt/api/";
+const URL = "https://tricky-gecko-63.loca.lt/api/";
 
 class CompanyProfilePage extends Component {
   constructor(props) {

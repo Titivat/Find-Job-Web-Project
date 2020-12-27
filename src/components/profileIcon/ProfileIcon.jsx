@@ -2,7 +2,6 @@ import "./ProfileIcon.css";
 
 function ProfileIcon(props) {
   const { img, radius, size } = props;
-  console.log(img);
   let haveProfile = false;
 
   img === undefined ? (haveProfile = false) : (haveProfile = true);

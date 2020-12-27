@@ -177,27 +177,36 @@ class JobForm extends Component {
               <label htmlFor="seniority" className="comfortaa inputLabel">
                 Seniority
               </label>
-              <input
+              <select
                 onChange={this.handleInputChange}
                 name="seniority"
                 type="text"
                 id="seniority"
                 className="comfortaa input"
                 defaultValue={this.state.jobFormInfo.seniority}
-              />
+              >
+                <option value="INTERN">INTERN</option>
+                <option value="INTERN">ASSOCIATE</option>
+              </select>
             </div>
             <div className="inputRowContainer">
               <label htmlFor="employmentType" className="comfortaa inputLabel">
                 Employment Type
               </label>
-              <input
+              <select
                 onChange={this.handleInputChange}
                 name="employmentType"
                 type="text"
                 id="employmentType"
                 className="comfortaa input"
                 defaultValue={this.state.jobFormInfo.employmentType}
-              />
+              >
+                <option value="INTERN">INTERN</option>
+                <option value="FULL-TIME">FULL-TIME</option>
+                <option value="Contract">Contract</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Temporary">Temporary</option>
+              </select>
             </div>
             <div className="inputRowContainer">
               <label htmlFor="jobFunction" className="comfortaa inputLabel">

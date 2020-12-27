@@ -83,7 +83,9 @@ class DisplayUsersPage extends Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setUp();
+  }
 
   setUp = async () => {
     const usersResponse = await fetch(URL + "appliedjob/company/");

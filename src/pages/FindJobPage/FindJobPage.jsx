@@ -1,160 +1,188 @@
 import "./FindJobPage.css";
-import Header from '../../components/header/Header.jsx'
-import RocketMan from '../../images/rocketMan.png'
-import SearchBar from '../../components/searchBar/SearchBar.jsx'
-import JobDescriptionCard from '../../components/JobDescriptionCard/JobDescriptionCard.jsx'
-import FullJobDetailCard from '../../components/fullJobDetailCard/fullJobDetailCard.jsx'
-import React, { Component } from 'react';
+import Header from "../../components/header/Header.jsx";
+import RocketMan from "../../images/rocketMan.png";
+import SearchBar from "../../components/searchBar/SearchBar.jsx";
+import JobDescriptionCard from "../../components/JobDescriptionCard/JobDescriptionCard.jsx";
+import FullJobDetailCard from "../../components/fullJobDetailCard/fullJobDetailCard.jsx";
+import React, { Component } from "react";
 import { faWizardsOfTheCoast } from "@fortawesome/free-brands-svg-icons";
 
-class FindJobPage extends Component{
+const URL = "https://tricky-gecko-63.loca.lt/api/";
 
-    constructor( props ){
-        super( props )
-        this.count = 0
-    }
+class FindJobPage extends Component {
+  constructor(props) {
+    super(props);
+    this.count = 0;
 
-    state = {
-        comPanyDetail: {
-            compName: "PR & Social Media / Marketing",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
-            time: "1 month",
-            detail:''
+    this.state = {
+      comPanyDetail: {
+        compName: "PR & Social Media / Marketing",
+        compCity: "Bangkok, Bangkok City, Thailand",
+        compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
+        time: "1 month",
+        detail: "",
+      },
+      filter: "",
+      jobType: "",
+      data: [
+        {
+          compName: "PR & Social Media / Marketing",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
+          time: "1 month",
         },
-        filter: "",
-        jobType: "",
-        data: [
-          {
-            compName: "PR & Social Media / Marketing",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
-            time: "1 month"
-          },
-          {
-            compName: "Shopee",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "Social Media Associate",
-            time: "1 month"
-          },
-          {
-            compName: "Win - Win (Asia) Co. Ltd.",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "English data entry officer",
-            time: "3 months"
-          },
-          {
-            compName: "Roche",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "Study Start Up Specialist",
-            time: "5 days"
-          },
-          {
-            compName: "United Nations",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "United Nations",
-            time: "5 days"
-          },
-          {
-            compName: "Booking.com",
-            compCity: "Bangkok, Bangkok City, Thailand",
-            compDetail: "Customer Service Partner Team Lead",
-            time: "5 days"
-          }
-        ]
+        {
+          compName: "Shopee",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "Social Media Associate",
+          time: "1 month",
+        },
+        {
+          compName: "Win - Win (Asia) Co. Ltd.",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "English data entry officer",
+          time: "3 months",
+        },
+        {
+          compName: "Roche",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "Study Start Up Specialist",
+          time: "5 days",
+        },
+        {
+          compName: "United Nations",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "United Nations",
+          time: "5 days",
+        },
+        {
+          compName: "Booking.com",
+          compCity: "Bangkok, Bangkok City, Thailand",
+          compDetail: "Customer Service Partner Team Lead",
+          time: "5 days",
+        },
+      ],
     };
-    
-    handleChangeSearch = event => {
-        this.setState({ filter: event.target.value });
-    };
+  }
 
-    handleChangeJobType = event => {
-        this.setState({ jobType: event.target.value });
-    };
+  componentDidMount() {
+    this.setUp();
+  }
 
-    handleChangeTime = event => {
-        this.setState({ filter: event.target.value });
-    };
+  setUp = async () => {
+    console.log(URL + "position/search/?ordering=update_at");
+    const dataResponse = await fetch(URL + "position/");
+    const dataResults = await dataResponse.json();
 
-    handleChangeLocation = event => {
-        this.setState({ filter: event.target.value });
-    };
+    const dataList = [];
 
-    displayStatus = (childData) => {
-        this.setState({ comPanyDetail: childData });
-    }
+    dataResults.map((data, index) => {
+      console.log(data);
+      const newData = {
+        compName: data.company.user.name,
+        compCity: data.company.user.city,
+        compDetail: data.company.desc,
+        time: data.created_at,
+        seniority: data.senriotiy,
+        employementType: data.employementType,
+      };
 
-    getObjectList =() => {
-        const { filter, data} = this.state;
-        const lowercasedFilter = filter.toLowerCase();
+      dataList.push(newData);
+    });
 
-        const filteredData = data.filter(item => {
+    this.setState({ data: dataList });
+  };
 
-        return Object.keys(item).some(key =>
-            item[key].toLowerCase().includes(lowercasedFilter)
-            );
-        });
+  handleChangeSearch = (event) => {
+    this.setState({ filter: event.target.value });
+  };
 
-        return filteredData
-    }
-    
-    render() {
-        const { comPanyDetail } = this.state
-        const { compName, compCity, compDetail, time, detail} = comPanyDetail
+  handleChangeJobType = (event) => {
+    this.setState({ jobType: event.target.value });
+  };
 
-        return(
-            <div className="findjob-page-overflow">
-                <Header isDisplay={true} />
+  handleChangeTime = (event) => {
+    this.setState({ filter: event.target.value });
+  };
 
-                <div className="find-job-page-top-container">
-                    <p className="find-job-page-top-text">Find your dream job<br/>here</p>
-                    <p className="find-job-page-top-img">
-                        <img src={RocketMan}></img>
-                    </p>
-                </div>
+  handleChangeLocation = (event) => {
+    this.setState({ filter: event.target.value });
+  };
 
-                <div className="find-job-page-content-container">
-                    <div className="find-job-page-searchbar">
-                        <SearchBar 
-                            seach={this.handleChangeSearch} 
-                        />
+  displayStatus = (childData) => {
+    this.setState({ comPanyDetail: childData });
+  };
 
-                    </div>
-                
-                    <div className="find-job-page-job-list-container">
-                        
-                        { this.getObjectList().map((item, index) => (
-                            <div className="find-job-page-list-item">
-                                <JobDescriptionCard 
-                                    haveButton = {false}
-                                    key={item.compName}
-                                    clickToDisplay={ this.displayStatus }
-                                    compCity={ item.compCity}
-                                    compName={item.compName}
-                                    compDetail={item.compDetail}
-                                    time = {item.time}
-                                    backgroundColor={"white"}
-                                />
-    
-                            </div>
-                            ))
-                        }
-                    </div>
+  getObjectList = () => {
+    const { filter, data } = this.state;
+    const lowercasedFilter = filter.toLowerCase();
 
-                    <div   className="find-job-page-job-deatail-container">
-                        <FullJobDetailCard 
-                            compName={ compName }
-                            compDetail={ compDetail }
-                            compCity={ compCity}
-                            time = { time }
-                        />
-                    </div>
+    const filteredData = data.filter((item) => {
+      return Object.keys(item).some((key) =>
+        item[key].toLowerCase().includes(lowercasedFilter)
+      );
+    });
 
-                </div>
-            </div>
-        );
-    }
-    
+    return filteredData;
+  };
+
+  render() {
+    const { comPanyDetail } = this.state;
+    const { compName, compCity, compDetail, time, detail } = comPanyDetail;
+
+    return (
+      <div className="findjob-page-overflow">
+        <Header isDisplay={true} />
+
+        <div className="find-job-page-top-container">
+          <p className="find-job-page-top-text">
+            Find your dream job
+            <br />
+            here
+          </p>
+          <p className="find-job-page-top-img">
+            <img src={RocketMan}></img>
+          </p>
+        </div>
+
+        <div className="find-job-page-content-container">
+          <div className="find-job-page-searchbar">
+            <SearchBar
+              search={this.handleChangeSearch}
+              onChangeJobType={this.handleChangeJobType}
+              onChangeLocation={this.handleChangeLocation}
+            />
+          </div>
+
+          <div className="find-job-page-job-list-container">
+            {this.getObjectList().map((item, index) => (
+              <div className="find-job-page-list-item">
+                <JobDescriptionCard
+                  haveButton={false}
+                  key={item.compName}
+                  clickToDisplay={this.displayStatus}
+                  compCity={item.compCity}
+                  compName={item.compName}
+                  compDetail={item.compDetail}
+                  time={item.time}
+                  backgroundColor={"white"}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="find-job-page-job-deatail-container">
+            <FullJobDetailCard
+              compName={compName}
+              compDetail={compDetail}
+              compCity={compCity}
+              time={time}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default FindJobPage;
