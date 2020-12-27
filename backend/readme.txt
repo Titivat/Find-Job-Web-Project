@@ -14,10 +14,6 @@ if django admin cannot find account which means database is clean and nothing th
 
 admin/
 
-api-auth/
-api/v1/dj-rest-auth/
-api/v1/dj-rest-auth/registration/
-
 api/login/<str:email>/<str:password>/    GET/
 
 api/user/               GET/POST

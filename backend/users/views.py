@@ -8,8 +8,9 @@ from requests.models import Response
 from positions.models import Position
 
 # search
-# from rest_framework.filters import SearchFilter
-# from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
+from django.contrib.postgres import search
 
 
 class UserList(generics.ListCreateAPIView):
@@ -25,6 +26,13 @@ class EmployeeList(generics.ListCreateAPIView):
 class EmployeeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+
+class EmployeeSearchDetail(generics.ListAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    filterset_fields = ['user__id']
 
 
 class CompanyList(generics.ListCreateAPIView):
@@ -60,19 +68,3 @@ class LoginView(generics.ListAPIView):
         given_email = self.kwargs['email']
         given_password = self.kwargs['password']
         return User.objects.filter(email=given_email, password=given_password)
-
-# class LoginView(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserEMSerializer
-#     filter_backends = [DjangoFilterBackend, SearchFilter]
-#     filterset_fields = ['email']
-
-# UserToCompany,UserToEmployee
-
-# class UserToEmployee(generics.RetrieveUpdateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserEMSerializer
-
-# class UserToCompany(generics.RetrieveUpdateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserToCompany
