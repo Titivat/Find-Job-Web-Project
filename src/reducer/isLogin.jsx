@@ -3,17 +3,18 @@
 const loggedReducer = ( state = {}, action ) => {
     switch (action.type) {
         case "SIGN_IN":
-            return getUserId();
+            return getUserId( action.email, action.password );
         default:
-            return false;
+            return {};
     }
 };
-
-const getUserId = () => {
+// call api in here
+const getUserId = ( email, password ) => {
     return {
-        id: 'name',
-        email: 'titivemo@gmail.com'
+        email: email,
+        password: password
     }
+    
 }
 
 export default loggedReducer;

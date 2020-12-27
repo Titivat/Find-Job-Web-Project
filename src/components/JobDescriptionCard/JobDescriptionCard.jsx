@@ -30,8 +30,10 @@ function JobDescriptionCard(props) {
     time: time,
   };
 
+  const companyDetail = props.fullCompanyDetail;
+
   return (
-    <div style={container} onClick={() => clickToDisplay(comonentValue)}>
+    <div style={container} onClick={() => clickToDisplay(companyDetail)}>
       <p className="job-description-card-profile">
         <ProfileIcon
           img={props.image}

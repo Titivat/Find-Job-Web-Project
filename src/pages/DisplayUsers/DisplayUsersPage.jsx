@@ -6,7 +6,7 @@ import testingCompanyImage from "../../images/companyLogo.jpg";
 
 import "./DisplayUsersPage.css";
 
-URL = "";
+URL = "https://dull-bobcat-33.loca.lt/api/";
 
 class DisplayUsersPage extends Component {
   constructor(props) {
@@ -88,16 +88,18 @@ class DisplayUsersPage extends Component {
   }
 
   setUp = async () => {
-    const usersResponse = await fetch(URL + "appliedjob/company/");
+    console.log(URL + "appliedjob/search/?position=" + 1);
+    const usersResponse = await fetch(URL + "appliedjob/search/?position=" + 1);
     const users = await usersResponse.json();
+    console.log(users);
 
     const usersList = [];
 
     users.map((user, index) => {
       const appliedUser = {
-        username: user.employee.username,
-        email: user.emmployee.email,
-        resume: "https://www.gundamkitscollection.com/",
+        username: user.employee.user.username,
+        email: user.employee.user.email,
+        resume: user.employee.document,
       };
 
       usersList.push(appliedUser);
@@ -105,11 +107,11 @@ class DisplayUsersPage extends Component {
 
     this.setState({ users: usersList });
 
-    console.log(users);
+    console.log("ussers states");
+    console.log(this.state.users);
   };
 
   render() {
-    console.log(this.state);
     return (
       <React.Fragment>
         <div id="displayUsersPage">
@@ -123,9 +125,10 @@ class DisplayUsersPage extends Component {
             resume={this.state.users[0].resume}
           /> */}
             {this.state.users.map((user, index) => {
+              console.log("Testign ~");
+              console.log(user);
               return (
                 <Applicant
-                  key={user.username}
                   userImage={user.userImage}
                   username={user.username}
                   email={user.email}

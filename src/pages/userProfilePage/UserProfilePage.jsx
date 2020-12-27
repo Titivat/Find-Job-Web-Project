@@ -7,7 +7,7 @@ import UserProfileForm from "../../components/userProfileForm/UserProfileForm";
 import { faBorderNone } from "@fortawesome/free-solid-svg-icons";
 import testingImage from "../../images/logo.png";
 
-const URL = "https://tricky-gecko-63.loca.lt/api/";
+const URL = "https://grumpy-otter-68.loca.lt/api/";
 
 class UserProfilePage extends Component {
   constructor(props) {
@@ -52,9 +52,9 @@ class UserProfilePage extends Component {
   }
 
   setUp = async () => {
-    console.log(URL + "/employee/15");
-    const userResponse = await fetch(URL + "employee/15");
-    const appliedJobResponse = await fetch(URL + "appliedjob/employee/15");
+    console.log(URL + "/employee/1");
+    const userResponse = await fetch(URL + "employee/1");
+    const appliedJobResponse = await fetch(URL + "appliedjob/employee/1");
 
     const user = await userResponse.json();
     const appliedJobs = await appliedJobResponse.json();

@@ -7,7 +7,7 @@ class Applicant extends Component {
     return (
       <div className="applicantContainer comfortaa">
         <div className="userImageContainer">
-          <img src={this.props.userImage} className="userProfileImage" />
+          {/* <img src={this.props.userImage} className="userProfileImage" /> */}
         </div>
         <div className="textInfoContainer">
           <p className="mediumFontSize white">{this.props.username}</p>

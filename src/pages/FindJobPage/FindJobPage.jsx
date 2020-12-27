@@ -6,8 +6,9 @@ import JobDescriptionCard from "../../components/JobDescriptionCard/JobDescripti
 import FullJobDetailCard from "../../components/fullJobDetailCard/fullJobDetailCard.jsx";
 import React, { Component } from "react";
 import { faWizardsOfTheCoast } from "@fortawesome/free-brands-svg-icons";
+import axios from "axios";
 
-const URL = "https://tricky-gecko-63.loca.lt/api/";
+const URL = "https://dull-bobcat-33.loca.lt//api/";
 
 class FindJobPage extends Component {
   constructor(props) {
@@ -15,12 +16,15 @@ class FindJobPage extends Component {
     this.count = 0;
 
     this.state = {
+      employeeId: 3,
       comPanyDetail: {
-        compName: "PR & Social Media / Marketing",
-        compCity: "Bangkok, Bangkok City, Thailand",
-        compDetail: "Sharke Hand( Thailand ) Co.,Ltd.",
-        time: "1 month",
-        detail: "",
+        compName: "",
+        compCity: "",
+        compDetail: "",
+        time: "",
+        seniority: "",
+        employementType: "",
+        positionId: "",
       },
       filter: "",
       jobType: "",
@@ -70,9 +74,16 @@ class FindJobPage extends Component {
   }
 
   setUp = async () => {
-    console.log(URL + "position/search/?ordering=update_at");
-    const dataResponse = await fetch(URL + "position/");
+    // console.log(URL + "employee/search/?user__id=" + 1);
+    const dataResponse = await fetch(URL + "position/fullDetail");
     const dataResults = await dataResponse.json();
+    // localStorage.getItem('id')
+    const employeeResponse = await fetch(
+      URL + "employee/search/?user__id=" + 3
+    );
+    const employee = await employeeResponse.json();
+    console.log("EMPLOYEE");
+    console.log(employee);
 
     const dataList = [];
 
@@ -85,12 +96,60 @@ class FindJobPage extends Component {
         time: data.created_at,
         seniority: data.senriotiy,
         employementType: data.employementType,
+        positionId: data.id,
       };
 
       dataList.push(newData);
     });
 
-    this.setState({ data: dataList });
+    this.setState({ data: dataList, employeeId: employee.id });
+  };
+
+  applyJob = async () => {
+    // const response = await fetch(URL + "/position", {
+    //     method: "POST",
+    //     body: {
+    //       title: newJob.jobTitle,
+    //       desc: newJob.jobDescription,
+    //       senority: newJob.seniority,
+    //       jobtype: newJob.jobTitle,
+    //       neededSkills: newJob.neededSkills,
+    //       industry: newJob.industries,
+    //       company: this.state.companyInfo.id,
+    //     },
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+
+    // console.log(URL + "appliedjob");
+    // const applyJobResponse = await fetch(URL + "appliedjob", {
+    //   method: "POST",
+    //   body: {
+    //     position: this.state.comPanyDetail.positionId,
+    //     employee: this.state.employeeId,
+    //     is_accepted: false,
+    //     is_rejected: false,
+    //   },
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // const appliedJobs = await applyJobResponse.json();
+    const postItem = {
+      position: this.state.comPanyDetail.positionId,
+      employee: this.state.employeeId,
+      is_accepted: false,
+      is_rejected: false,
+    };
+
+    axios({
+      method: "post",
+      url: URL + "appliedjob",
+      data: postItem,
+    })
+      .then((response) => response.json())
+      .then((response) => console.log(response));
   };
 
   handleChangeSearch = (event) => {
@@ -114,14 +173,18 @@ class FindJobPage extends Component {
   };
 
   getObjectList = () => {
+    console.log("FILTER");
     const { filter, data } = this.state;
     const lowercasedFilter = filter.toLowerCase();
+    console.log(data);
 
     const filteredData = data.filter((item) => {
       return Object.keys(item).some((key) =>
         item[key].toLowerCase().includes(lowercasedFilter)
       );
     });
+
+    console.log(filteredData);
 
     return filteredData;
   };
@@ -158,6 +221,7 @@ class FindJobPage extends Component {
             {this.getObjectList().map((item, index) => (
               <div className="find-job-page-list-item">
                 <JobDescriptionCard
+                  fullCompanyDetail={item}
                   haveButton={false}
                   key={item.compName}
                   clickToDisplay={this.displayStatus}
@@ -173,10 +237,12 @@ class FindJobPage extends Component {
 
           <div className="find-job-page-job-deatail-container">
             <FullJobDetailCard
+              fullCompanyDetail={this.state.comPanyDetail}
               compName={compName}
               compDetail={compDetail}
               compCity={compCity}
               time={time}
+              onApplyJob={this.applyJob}
             />
           </div>
         </div>

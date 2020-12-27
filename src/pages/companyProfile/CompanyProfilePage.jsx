@@ -5,10 +5,11 @@ import testingCompanyImage from "../../images/companyLogo.jpg";
 import CreatedJob from "../../components/createdJob/CreatedJob";
 import JobForm from "../../components/jobForm/JobForm";
 import CompanyProfileForm from "../../components/companyProfileForm/CompanyProfileForm";
+import Header from "../../components/header/Header";
 import Api from "../../Api";
 import axios from "axios";
 
-const URL = "https://tricky-gecko-63.loca.lt/api/";
+const URL = "https://grumpy-otter-68.loca.lt/api/";
 
 class CompanyProfilePage extends Component {
   constructor(props) {
@@ -149,7 +150,7 @@ class CompanyProfilePage extends Component {
 
     const response = await fetch(URL + "/position", {
       method: "POST",
-      body: JSON.stringify({
+      body: {
         title: newJob.jobTitle,
         desc: newJob.jobDescription,
         senority: newJob.seniority,
@@ -157,7 +158,7 @@ class CompanyProfilePage extends Component {
         neededSkills: newJob.neededSkills,
         industry: newJob.industries,
         company: this.state.companyInfo.id,
-      }),
+      },
       headers: {
         "Content-Type": "application/json",
       },
@@ -216,6 +217,7 @@ class CompanyProfilePage extends Component {
     console.log(this.state.companyInfo);
     return (
       <React.Fragment>
+        <Header />
         <div className={"mainAreaContainer"} id="companyProfileContainer">
           <div className="profileSection">
             <h1 className="comfortaa">Company Profile</h1>
