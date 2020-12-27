@@ -1,6 +1,5 @@
 import './Header.css'
 import logo from '../../images/logo.png'
-import {BrowserRouter as Link} from 'react-router-dom';
 
 function Header( props ){
     const { isDisplay } = props 
@@ -35,7 +34,7 @@ function DisplaySignUp( props  ){
                 <a className="header-no-display-a" href="/signUp">sign up</a>
               </div>
               : 
-              <div><a className="header-no-display-a" href="/">Profile</a></div>
+              <div><a className="header-no-display-a" href="/">Profile</a><a>&nbsp;&nbsp;&nbsp;&nbsp;Log out</a></div>
               
     );
 }

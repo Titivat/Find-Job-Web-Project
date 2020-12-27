@@ -1,34 +1,32 @@
-import React, { Component } from 'react';
 import './LogInPage.css';
 import redCurveImage from '../../images/redCurve.png';
 import personImage from '../../images/personImage.png';
 import Header from '../../components/header/Header.jsx'
 import axios from 'axios';
+import { useSelector , useDispatch } from 'react-redux'
+import React, { useState } from 'react';
 
-class LogInPage extends Component {
+function LogInPage( props ){
 
-    constructor(props) {
-        super( props )
-        this.urlPath = ""
-        this.state = {
-          email: "",
-          password: "",
-        };
+    const urlPath = ""
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
+    
+    const onInputchangeEmail = (event) =>{
+        setEmail( event.target.value );
     }
 
-    onInputchangeEmail = (event) =>{
-        this.setState({email: event.target.value});
+    const onInputchangePassword = (event) => {
+        setPassword( event.target.value );
     }
 
-    onInputchangePassword = (event) => {
-        this.setState({password: event.target.value});
-    }
-
-    onSummit = () => {
+    const onSummit = () => {
         axios({
             method: 'get',
             headers: { 'Content-Type': 'application/json'},
-            url: `${this.urlPath}/api/login/${this.state.email}/${this.state.password}/`,
+            url: `${ urlPath}/api/login/${ email}/${ password}/`,
         }).then(response => { 
             const type = response.type
 
@@ -44,7 +42,7 @@ class LogInPage extends Component {
         });    
     }
 
-    render() { 
+ 
         return (
             <React.Fragment>
                 <Header isDisplay={false} />
@@ -59,18 +57,18 @@ class LogInPage extends Component {
                             <input 
                                 type="text" 
                                 placeholder="jane@example.com" className="textInput" 
-                                onChange={ this.onInputchangeEmail }
+                                onChange={ onInputchangeEmail }
                             />
                             <input 
                                 type="text" 
                                 placeholder="password" className="textInput" 
-                                onChange={ this.onInputchangePassword }
+                                onChange={ onInputchangePassword }
                             />
 
                             <button 
                                 id="loginButton" 
                                 className="styledText"
-                                onClick={ this.onSummit }
+                                onClick={ onSummit }
                             >
                                 Log in
                             </button>
@@ -82,7 +80,7 @@ class LogInPage extends Component {
                 </div>
             </React.Fragment>
         );
-    }
+    
 }
  
 export default LogInPage;
